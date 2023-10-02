@@ -3,7 +3,7 @@ import doctorSlice from './reducer/doctorSlice';
 
 const store = configureStore({
   reducer: {
-    allDoctors: doctorSlice,
+    doctorsList: doctorSlice,
   },
 });
 

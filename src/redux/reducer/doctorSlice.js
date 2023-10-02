@@ -13,9 +13,9 @@ const initialState = {
 };
 
 const doctorSlice = createSlice({
-  name: ' allDoctors',
+  name: 'doctorsList',
   initialState,
-  reducers: {},
+  // reducers: {},
   extraReducers: (builder) => {
     builder.addCase(doctorData.fulfilled, (state, action) => {
       const receivedData = action.payload;
