@@ -24,18 +24,23 @@ const Sidebar = () => {
 
   const [activeBounce, setActiveBounce] = useState("");
 const [activeLink, setActivelink] = useState(null);
+const [isLinkDelayed, setIsLinkDelayed] = useState(false);
 
 const BounceEffect = () => {
   setActiveBounce(true);
- setActivelink('/')
 
 };
 
+const DelayLink = () => {
+  setActivelink('/')
+
+}
+
 useEffect(() => {
-  if (activeLink) {
+  if ( activeLink) {
     const timeoutId = setTimeout(() => {
-      setActivelink('/')
-    }, 700); // animation duration
+      setActivelink('/');
+    }, 2 * 250); // animation duration
 
     return () => {
       clearTimeout(timeoutId); // Clear the timeout if the effect runs again
@@ -89,8 +94,9 @@ useEffect(() => {
       </div>
       <div className="text-[#181818] w-[20%] min-h-screen py-2 border-r-2 border-r-[#f3f3f3] overflow-x-hidden hidden lg:block">
         <div className={ `logo w-[15%] h-[9%] ml-[1%] mt-[1%] align-center justify-center ${activeBounce  ? 'bounce' : ''}` } onClick={BounceEffect}  >
-        <Link
-              to={activeLink}
+        <Link 
+              onClick={DelayLink}
+              to= {activeLink}
               className="block w-full "
             >
           <img src={DocLogo} alt="Logo Image" className=''/>
