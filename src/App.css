@@ -7,7 +7,7 @@
   pointer-events: none;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
 .active {
   text-decoration: underline; /* You can add any styles you want for the active link */
@@ -26,13 +26,13 @@
   transition: all 0.4s ease;
 } */
 
-.bounce:active {
-  transform: scale(0.7);
-}
-
 .bounce {
   animation: bounceAnimation 0.6s ease 3;
   box-shadow: rgb(38, 57, 77) 0 20px 30px -10px !important;
+}
+
+.bounce:active {
+  transform: scale(0.7);
 }
 
 @keyframes bounceAnimation {
@@ -84,7 +84,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   color: #171717;
 }
 
@@ -138,20 +138,19 @@
   margin-top: 20px;
 }
 
-.social-icon:hover {
-  background-color: #4ecca3;
-}
-
 .social-icon {
   margin: 0 10px;
   width: 25px;
   padding: 5px;
-  border: 1px solid #e3e3e3;
   border-radius: 50%;
   cursor: pointer;
   background-color: transparent;
   color: #746f6f !important;
   border: 1px solid #a59f9f;
+}
+
+.social-icon:hover {
+  background-color: #4ecca3;
 }
 
 .forward-button {
@@ -180,15 +179,23 @@
   left: 1.9%;
   top: 1%;
   overflow: hidden;
-  border-radius: 14% 14% 13% 15% / 42% 44% 44% 46%  ;
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  border-radius: 14% 14% 13% 15% / 42% 44% 44% 46%;
+  box-shadow:
+    rgba(0, 0, 0, 0.17) 0 -23px 25px 0 inset,
+    rgba(0, 0, 0, 0.15) 0 -36px 30px 0 inset,
+    rgba(0, 0, 0, 0.1) 0 -79px 40px 0 inset,
+    rgba(0, 0, 0, 0.06) 0 2px 1px,
+    rgba(0, 0, 0, 0.09) 0 4px 2px,
+    rgba(0, 0, 0, 0.09) 0 8px 4px,
+    rgba(0, 0, 0, 0.09) 0 16px 8px,
+    rgba(0, 0, 0, 0.09) 0 32px 16px;
   border: 1px solid #4ecca3;
   width: calc(15% - 10px) !important;
 }
 
 .logo-image {
-position: absolute;
-display: block;
+  position: absolute;
+  display: block;
   left: 1%;
   top: 1%;
 }
@@ -220,6 +227,7 @@ display: block;
 
   .doctor-list-container {
     margin-top: 0 !important;
+
     /* margin-left: 10%; */
   }
 
