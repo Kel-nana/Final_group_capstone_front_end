@@ -1,17 +1,17 @@
 /* eslint-disable react/no-array-index-key */
 
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   FaTwitter,
   FaFacebookF,
   FaGooglePlusG,
   FaVimeoV,
   FaPinterestP,
-} from "react-icons/fa";
-import { HiMenuAlt4 } from "react-icons/hi";
-import { AiOutlineCloseCircle } from "react-icons/ai";
-import DocLogo from "../assets/logo.png";
+} from 'react-icons/fa';
+import { HiMenuAlt4 } from 'react-icons/hi';
+import { AiOutlineCloseCircle } from 'react-icons/ai';
+import DocLogo from '../assets/logo.png';
 
 const socialIcons = [
   FaTwitter,
@@ -28,10 +28,10 @@ const Sidebar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const menuItems = [{ label: "HOME", to: "/" }];
+  const menuItems = [{ label: 'HOME', to: '/' }];
 
   const [activeBounce, setActiveBounce] = useState(false);
-  const [activeLink, setActivelink] = useState("");
+  const [activeLink, setActivelink] = useState('');
   const navigate = useNavigate();
 
   const BounceEffect = () => {
@@ -41,8 +41,8 @@ const Sidebar = () => {
   const DelayLink = (e) => {
     e.preventDefault();
     setTimeout(() => {
-      setActivelink("/");
-      navigate("/");
+      setActivelink('/');
+      navigate('/');
     }, 600);
   };
 
@@ -50,7 +50,7 @@ const Sidebar = () => {
     let timeOutId;
     if (activeLink) {
       timeOutId = setTimeout(() => {
-        setActivelink("/");
+        setActivelink('/');
       }, 600);
     }
     return () => {
@@ -67,13 +67,12 @@ const Sidebar = () => {
       return () => {
         clearTimeout(timeoutId); // Clear the timeout if the effect runs again
       };
-    } else {
-      // Add a return statement for the case where activeBounce is false
-      return () => {};
     }
+    // Add a return statement for the case where activeBounce is false
+    return () => {};
   }, [activeBounce]);
 
-  const setPath = activeLink || "/";
+  const setPath = activeLink || '/';
 
   return (
     <>
@@ -88,7 +87,7 @@ const Sidebar = () => {
       </div>
       <div
         className={`fixed left-0 top-0 w-full h-full border-r bg-black z-10 opacity-65 border-r-gray-900 text-white transition-transform ease-in-out duration-500 ${
-          isMenuOpen ? "translate-x-0" : "-translate-x-full"
+          isMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         <ul className="pt-24 uppercase">
@@ -99,7 +98,7 @@ const Sidebar = () => {
             <li
               key={index}
               className={`py-4 px-8 ${
-                index < menuItems.length - 1 ? "border-b border-white-700" : ""
+                index < menuItems.length - 1 ? 'border-b border-white-700' : ''
               } cursor-pointer hover:text-green-400 transition-colors`}
             >
               <Link to={item.to} className="block w-full">
@@ -117,21 +116,23 @@ const Sidebar = () => {
         </ul>
       </div>
       <div className="text-[#181818] w-[20%] min-h-screen py-2 border-r-2 border-r-[#f3f3f3] overflow-x-hidden hidden lg:block">
-        <div
+        <button
           className={`logo w-[15%] text-center mb-4 hover:text-white hover:bg-green-400 transition-all ${
-            activeBounce ? "bounce" : ""
+            activeBounce ? 'bounce' : ''
           }`}
           onClick={BounceEffect}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              BounceEffect(); // Perform the same action as onClick for keyboard users
+            }
+          }}
+          tabIndex={0} // Make the div focusable
         >
-          <Link
-            onClick={DelayLink}
-            // onClick={ClickLink}
-            to={setPath}
-            className="block w-full "
-          >
-            <img src={DocLogo} alt="Logo Image" className="" />
+          <Link onClick={DelayLink} to={setPath} className="block w-full ">
+            <img src={DocLogo} alt="Logo img" className="" />
           </Link>
-        </div>
+        </button>
+
         <ul className="flex flex-col py-16 justify-center items-center text-base sm:text-lg md:text-lg lg:text-xl xl:text-2xl">
           {menuItems.map((item, index) => (
             <li
