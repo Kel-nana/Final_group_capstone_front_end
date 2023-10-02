@@ -117,6 +117,7 @@ const Sidebar = () => {
       </div>
       <div className="text-[#181818] w-[20%] min-h-screen py-2 border-r-2 border-r-[#f3f3f3] overflow-x-hidden hidden lg:block">
         <button
+          type="button"
           className={`logo w-[15%] text-center mb-4 hover:text-white hover:bg-green-400 transition-all ${
             activeBounce ? 'bounce' : ''
           }`}
