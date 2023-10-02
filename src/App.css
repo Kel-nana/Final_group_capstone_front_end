@@ -134,9 +134,12 @@
   height: auto;
   display: flex;
   justify-content: center;
-  background-color: #a59f9f;
   border-radius: 5px;
   margin-top: 20px;
+}
+
+.social-icon:hover {
+  background-color: #a59f9f;
 }
 
 .social-icon {
@@ -146,6 +149,7 @@
   border: 1px solid #e3e3e3;
   border-radius: 50%;
   cursor: pointer;
+  background-color: #4ecca3;
 }
 
 .forward-button {
