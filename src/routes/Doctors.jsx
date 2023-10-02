@@ -22,8 +22,8 @@ const Doctors = () => {
   }, [dispatch]);
 
   // Render each doctor's information
-  const doctorsList = allDoctorList.map((doctor) => (
-    <div className="doctor-card" key={doctor.id}>
+  const doctorsList = allDoctorList.map((doctor, index) => (
+    <div className={`doctor-card ${index === 7 ? 'first_doc' : ''}`} key={doctor.id}>
       <img className="doc-image" src={doctor.profile_pic} alt={doctor.doc_name} />
       <h3>{doctor.doc_name}</h3>
       <p>{doctor.education}</p>

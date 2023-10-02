@@ -22,7 +22,7 @@ const Sidebar = () => {
     {label: 'HOME', to: '/' },
   ];
 
-  const [activeBounce, setActiveBounce] = useState(false);
+const [activeBounce, setActiveBounce] = useState(false);
 const [activeLink, setActivelink] = useState('');
 const navigate = useNavigate();
 
@@ -32,11 +32,11 @@ const BounceEffect = () => {
 };
 
 const DelayLink = (e) => {
-  e.preventDefault();
-  setTimeout(() => {
+   e.preventDefault();
+   setTimeout(() => {
    setActivelink('/')
-navigate('/')
- }, 600);
+ navigate('/')
+  }, 600);
 
 }
 
@@ -45,7 +45,7 @@ useEffect(() => {
  if(activeLink){
   timeOutId=setTimeout(() => {
     setActivelink('/')
-  }, 500);
+  }, 600);
 
  }
  return () => {

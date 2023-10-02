@@ -213,18 +213,23 @@ display: block;
     width: 100%;
   }
 
-  .forward-button,
+  /* .forward-button,
   .return-back-btn  {
     display: none;
-  }
+  } */
 
   .doctor-list-container {
     margin-top: 0 !important;
-    margin-left: 10%;
+    /* margin-left: 10%; */
   }
 
   .doctor-card {
     width: calc(50% - 10px);
+    margin-left: 30% !important;
+  }
+
+  .first_doc {
+    margin-left: 160% !important;
   }
 }
 
