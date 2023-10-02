@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   FaTwitter, FaFacebookF, FaGooglePlusG, FaVimeoV, FaPinterestP,
 } from 'react-icons/fa';
@@ -22,30 +22,35 @@ const Sidebar = () => {
     {label: 'HOME', to: '/' },
   ];
 
-  const [activeBounce, setActiveBounce] = useState("");
-const [activeLink, setActivelink] = useState(null);
-const [isLinkDelayed, setIsLinkDelayed] = useState(false);
+  const [activeBounce, setActiveBounce] = useState(false);
+const [activeLink, setActivelink] = useState('');
+const navigate = useNavigate();
 
 const BounceEffect = () => {
   setActiveBounce(true);
 
 };
 
-const DelayLink = () => {
-  setActivelink('/')
+const DelayLink = (e) => {
+  e.preventDefault();
+  setTimeout(() => {
+   setActivelink('/')
+navigate('/')
+ }, 600);
 
 }
 
 useEffect(() => {
-  if ( activeLink) {
-    const timeoutId = setTimeout(() => {
-      setActivelink('/');
-    }, 2 * 250); // animation duration
+ let timeOutId;
+ if(activeLink){
+  timeOutId=setTimeout(() => {
+    setActivelink('/')
+  }, 500);
 
-    return () => {
-      clearTimeout(timeoutId); // Clear the timeout if the effect runs again
-    };
-  }
+ }
+ return () => {
+  clearTimeout(timeOutId); // Clear the timeout if the effect runs again
+};
 }, [activeLink]);
 
 useEffect(() => {
@@ -60,15 +65,17 @@ useEffect(() => {
   }
 }, [activeBounce]);
 
+const setPath = activeLink || "/" 
+
   return (
     <>
       <div className="lg:hidden p-4">
         <button
           type="button"
-          className="p-2 text-black hover:text-green-400"
+          className="p-2 text-black hover:text-green-400 move-button"
           onClick={ toggleMenu }
         >
-          <HiMenuAlt4 />
+          <HiMenuAlt4 className='menu-button'/>
         </button>
       </div>
       <div className={`fixed left-0 top-0 w-full h-full border-r bg-black z-10 opacity-65 border-r-gray-900 text-white transition-transform ease-in-out duration-500 ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
@@ -93,14 +100,16 @@ useEffect(() => {
         </ul>
       </div>
       <div className="text-[#181818] w-[20%] min-h-screen py-2 border-r-2 border-r-[#f3f3f3] overflow-x-hidden hidden lg:block">
-        <div className={ `logo w-[15%] h-[9%] ml-[1%] mt-[1%] align-center justify-center ${activeBounce  ? 'bounce' : ''}` } onClick={BounceEffect}  >
+        <div className={`logo w-[15%] text-center mb-4 hover:text-white hover:bg-green-400 transition-all ${activeBounce  ? 'bounce' : ''}` } onClick={BounceEffect}>
         <Link 
               onClick={DelayLink}
-              to= {activeLink}
+              // onClick={ClickLink}
+              to={setPath}
               className="block w-full "
             >
           <img src={DocLogo} alt="Logo Image" className=''/>
           </Link>
+          
            </div>
       <ul className="flex flex-col py-16 justify-center items-center text-base sm:text-lg md:text-lg lg:text-xl xl:text-2xl">
           {menuItems.map((item, index) => (
