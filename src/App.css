@@ -19,7 +19,7 @@
 }
 
 .grey:hover {
-  background-color: #066546 !important;  
+  background-color: #066546 !important;
 }
 
 /* .bounce {
@@ -32,27 +32,28 @@
 
 .bounce {
   animation: bounceAnimation 0.6s ease 3;
-  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px !important;
-}
-
-.bounce:active {
-  transform: scale(0.7);
+  box-shadow: rgb(38, 57, 77) 0 20px 30px -10px !important;
 }
 
 @keyframes bounceAnimation {
-    0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(0.9);
   }
+
   70% {
     transform: scale(1.1);
   }
+
   85% {
     transform: scale(0.95);
   }
 }
+
 .doctor-container {
   width: 100%;
   height: auto;
@@ -128,15 +129,6 @@
   margin-top: 50px;
 }
 
-.doctor-name {
-  font-size: 15px;
-  font-weight: 700;
-  text-transform: capitalize;
-  padding: 15px;
-  border-bottom: 3px solid #e8e8e8;
-  border-style: dotted;
-}
-
 .social-icon-container {
   width: 80%;
   height: auto;
@@ -156,17 +148,12 @@
   cursor: pointer;
 }
 
-/* .return-back-btn {
-  transform: rotate(180deg);
-} */
-
 .forward-button {
   padding: 10px;
   border-top-left-radius: 45px;
   border-bottom-left-radius: 45px;
   background: #4ecca3;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  
+  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
 }
 
 .return-back-btn {
@@ -174,11 +161,11 @@
   border-top-right-radius: 45px;
   border-bottom-right-radius: 45px;
   background: #4ecca3;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
 }
 
 .forward-button:hover {
-    background: #066546;  
+  background: #066546;
 }
 
 @media screen and (max-width: 1100px) {
@@ -208,4 +195,3 @@
     flex-direction: column;
   }
 }
-

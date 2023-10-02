@@ -12,7 +12,8 @@ const Doctors = () => {
   const allDoctorList = useSelector((state) => state.doctorsList.allDoctors);
   const dispatch = useDispatch();
 
-// State to track the active button
+  // State to track the active button
+
   const [activeButton, setActiveButton] = useState(null);
   const [activeBounce, setActiveBounce] = useState(null);
   // Fetch doctor data when the component mounts
@@ -27,7 +28,10 @@ const Doctors = () => {
       <h3>{doctor.doc_name}</h3>
       <p>{doctor.education}</p>
       <p>{doctor.bio}</p>
-      <p>Years of Experience: {doctor.years_of_experience}</p>
+      <p>
+      Years of Experience:
+       {doctor.years_of_experience}
+       </p>
       <div className="social-icon-container">
         <img src={facebookIcon} alt="Facebook Icon" className="social-icon" />
         <img src={twitterIcon} alt="Twitter Icon" className="social-icon" />
@@ -85,10 +89,10 @@ const Doctors = () => {
     if (activeBounce) {
       const timeoutId = setTimeout(() => {
         setActiveBounce(false);
-      }, 400); //animation duration
+      }, 400); // animation duration
 
       return () => {
-        clearTimeout(timeoutId); //Clear the timeout if the effect runs again
+        clearTimeout(timeoutId); // Clear the timeout if the effect runs again
       };
     }
   }, [activeBounce]);
@@ -98,7 +102,7 @@ const Doctors = () => {
       <div className="doctor-container">
         <Sidebar className="sidebar-doctor" />
         <div className="doctors-main-container">
-          <button type="button"  onClick={backArrow}>
+          <button type="button" onClick={backArrow}>
             <img src={backwardIcon} alt="Forward Icon" className={`return-back-btn ${activeButton === 'backward' ? 'grey' : ''} ${activeBounce && activeButton === 'forward' ? 'bounce' : ''}`} />
           </button>
           <div className="doctor-list-container">
@@ -110,7 +114,7 @@ const Doctors = () => {
               {doctorsList}
             </div>
           </div>
-          <button type="button"  onClick={forwardArrow}>
+          <button type="button" onClick={forwardArrow}>
             <img src={forwardIcon} alt="Forward Icon" className={`forward-button ${activeButton === 'forward' ? 'grey' : ''} ${activeBounce && activeButton === 'backward' ? 'bounce' : ''}`} />
           </button>
         </div>
