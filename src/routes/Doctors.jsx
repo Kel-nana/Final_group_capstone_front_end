@@ -114,7 +114,7 @@ const Doctors = () => {
               {doctorsList}
             </div>
           </div>
-          <button type="button" onClick={forwardArrow}>
+          <button type="button"  onClick={forwardArrow}>
             <img src={forwardIcon} alt="Forward Icon" className={`forward-button ${activeButton === 'forward' ? 'grey' : ''} ${activeBounce && activeButton === 'backward' ? 'bounce' : ''}`} />
           </button>
         </div>
