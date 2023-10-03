@@ -23,7 +23,6 @@ const Homepage = () => {
   // }, [dispatch]);
   // console.log(allDoctors);
 
-
   return (
     <div className={`bg-home-background bg-cover bg-center h-screen relative flex flex-col items-center ${'md:bg-home-background'}`}>
       <div className="flex justify-between items-center h-24 w-[90%] mx-auto text-white">
@@ -60,10 +59,9 @@ const Homepage = () => {
         >
           <IoSettingsOutline className="text-3xl" />
           <Link
-              to="/doctors"
-
-            >
-          <span className="px-4">Get Your Appointment</span>
+            to="/doctors"
+          >
+            <span className="px-4">Get Your Appointment</span>
           </Link>
           <IoIosArrowDropright className="text-3xl" />
         </button>

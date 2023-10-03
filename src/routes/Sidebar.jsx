@@ -5,7 +5,7 @@ import {
 } from 'react-icons/fa';
 import { HiMenuAlt4 } from 'react-icons/hi';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
-import DocLogo from '../assets/logo.png'
+import DocLogo from '../assets/logo.png';
 
 const socialIcons = [
   FaTwitter, FaFacebookF, FaGooglePlusG, FaVimeoV, FaPinterestP,
@@ -19,41 +19,40 @@ const Sidebar = () => {
   };
 
   const menuItems = [
-    {label: 'HOME', to: '/' },
+    { label: 'HOME', to: '/' },
   ];
 
-  const [activeBounce, setActiveBounce] = useState("");
-const [activeLink, setActivelink] = useState(null);
+  const [activeBounce, setActiveBounce] = useState('');
+  const [activeLink, setActivelink] = useState(null);
 
-const BounceEffect = () => {
-  setActiveBounce(true);
- setActivelink('/')
+  const BounceEffect = () => {
+    setActiveBounce(true);
+    setActivelink('/');
+  };
 
-};
+  useEffect(() => {
+    if (activeLink) {
+      const timeoutId = setTimeout(() => {
+        setActivelink('/');
+      }, 700); // animation duration
 
-useEffect(() => {
-  if (activeLink) {
-    const timeoutId = setTimeout(() => {
-      setActivelink('/')
-    }, 700); // animation duration
+      return () => {
+        clearTimeout(timeoutId); // Clear the timeout if the effect runs again
+      };
+    }
+  }, [activeLink]);
 
-    return () => {
-      clearTimeout(timeoutId); // Clear the timeout if the effect runs again
-    };
-  }
-}, [activeLink]);
+  useEffect(() => {
+    if (activeBounce) {
+      const timeoutId = setTimeout(() => {
+        setActiveBounce(false);
+      }, 400); // animation duration
 
-useEffect(() => {
-  if (activeBounce) {
-    const timeoutId = setTimeout(() => {
-      setActiveBounce(false);
-    }, 400); // animation duration
-
-    return () => {
-      clearTimeout(timeoutId); // Clear the timeout if the effect runs again
-    };
-  }
-}, [activeBounce]);
+      return () => {
+        clearTimeout(timeoutId); // Clear the timeout if the effect runs again
+      };
+    }
+  }, [activeBounce]);
 
   return (
     <>
@@ -61,7 +60,7 @@ useEffect(() => {
         <button
           type="button"
           className="p-2 text-black hover:text-green-400"
-          onClick={ toggleMenu }
+          onClick={toggleMenu}
         >
           <HiMenuAlt4 />
         </button>
@@ -88,15 +87,15 @@ useEffect(() => {
         </ul>
       </div>
       <div className="text-[#181818] w-[20%] min-h-screen py-2 border-r-2 border-r-[#f3f3f3] overflow-x-hidden hidden lg:block">
-        <div className={ `logo w-[15%] h-[9%] ml-[1%] mt-[1%] align-center justify-center ${activeBounce  ? 'bounce' : ''}` } onClick={BounceEffect}  >
-        <Link
-              to={activeLink}
-              className="block w-full "
-            >
-          <img src={DocLogo} alt="Logo Image" className=''/>
+        <div className={`logo w-[15%] h-[9%] ml-[1%] mt-[1%] align-center justify-center ${activeBounce ? 'bounce' : ''}`} onClick={BounceEffect}>
+          <Link
+            to={activeLink}
+            className="block w-full "
+          >
+            <img src={DocLogo} alt="Logo Image" className="" />
           </Link>
-           </div>
-      <ul className="flex flex-col py-16 justify-center items-center text-base sm:text-lg md:text-lg lg:text-xl xl:text-2xl">
+        </div>
+        <ul className="flex flex-col py-16 justify-center items-center text-base sm:text-lg md:text-lg lg:text-xl xl:text-2xl">
           {menuItems.map((item, index) => (
             <li key={index} className="w-full text-center py-4 mb-4 hover:text-white hover:bg-green-400 transition-all">
               <Link to={item.to} className="block w-full">

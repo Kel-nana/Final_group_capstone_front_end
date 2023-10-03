@@ -29,9 +29,9 @@ const Doctors = () => {
       <p>{doctor.education}</p>
       <p>{doctor.bio}</p>
       <p>
-      Years of Experience:
-       {doctor.years_of_experience}
-       </p>
+        Years of Experience:
+        {doctor.years_of_experience}
+      </p>
       <div className="social-icon-container">
         <img src={facebookIcon} alt="Facebook Icon" className="social-icon" />
         <img src={twitterIcon} alt="Twitter Icon" className="social-icon" />
@@ -114,7 +114,7 @@ const Doctors = () => {
               {doctorsList}
             </div>
           </div>
-          <button type="button"  onClick={forwardArrow}>
+          <button type="button" onClick={forwardArrow}>
             <img src={forwardIcon} alt="Forward Icon" className={`forward-button ${activeButton === 'forward' ? 'grey' : ''} ${activeBounce && activeButton === 'backward' ? 'bounce' : ''}`} />
           </button>
         </div>
