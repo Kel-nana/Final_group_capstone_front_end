@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { HiMenuAlt4 } from 'react-icons/hi';
 import { LiaSearchSolid } from 'react-icons/lia';
 import { AiOutlineClose } from 'react-icons/ai';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { IoIosArrowDropright } from 'react-icons/io';
-// import { doctorData } from '../redux/reducer/doctorSlice';
 
 const Homepage = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -14,14 +12,6 @@ const Homepage = () => {
   const handleNav = () => {
     setIsNavOpen(!isNavOpen);
   };
-
-  // const allDoctors = useSelector((state) => state.allDoctors);
-  // // console.log(todos);
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(doctorData());
-  // }, [dispatch]);
-  // console.log(allDoctors);
 
   return (
     <div className={`bg-home-background bg-cover bg-center h-screen relative flex flex-col items-center ${'md:bg-home-background'}`}>

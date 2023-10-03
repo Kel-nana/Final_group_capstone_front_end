@@ -73,22 +73,12 @@ const Doctors = () => {
     scrollList('forward');
     setActiveButton('backward');
     setActiveBounce(true);
-
-    // // Remove the bounce class after animation duration (adjust this value as needed)
-    // setTimeout(() => {
-    //   setActiveBounce(false);
-    // }, 400);
   };
 
   const backArrow = () => {
     scrollList('backward');
     setActiveButton('forward');
     setActiveBounce(true);
-
-    // // Remove the bounce class after animation duration (adjust this value as needed)
-    // setTimeout(() => {
-    //   setActiveBounce(false);
-    // }, 400);
   };
 
   // Remove the bounce class after animation duration
