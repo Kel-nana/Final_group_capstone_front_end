@@ -160,7 +160,11 @@ const Sidebar = () => {
           {menuItems.map((item) => (
             <li
               key={item.label}
-              className="w-full text-center py-4 mb-4 hover:text-white hover:bg-green-400 transition-all"
+              className={`w-full text-center py-4 mb-4 hover:text-white hover:bg-green-400 transition-all ${
+                item.label === 'Home'
+                  ? 'hidden'
+                  : 'block'
+              }`}
             >
               <Link to={item.to} className="block w-full">
                 {item.label}
