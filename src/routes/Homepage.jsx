@@ -48,7 +48,11 @@ const Homepage = () => {
           className="flex flex-row items-center justify-evenly mt-8 rounded-full bg-green-400 py-4 px-8 cursor-pointer hover:bg-green-500 transition-bg"
         >
           <IoSettingsOutline className="text-3xl" />
-          <span className="px-4">Get Your Appointment</span>
+          <Link
+            to="/doctors"
+          >
+            <span className="px-4">Get Your Appointment</span>
+          </Link>
           <IoIosArrowDropright className="text-3xl" />
         </button>
       </div>
