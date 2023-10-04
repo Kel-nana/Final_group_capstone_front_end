@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import facebookIcon from '../assets/facebook.png';
 import twitterIcon from '../assets/twitter.png';
 import linkedinIcon from '../assets/linkedin.png';
@@ -23,22 +24,26 @@ const Doctors = () => {
 
   // Render each doctor's information
   const doctorsList = allDoctorList.map((doctor, index) => (
+
     <div
       className={`doctor-card ${index === 7 ? 'first_doc' : ''}`}
       key={doctor.id}
     >
-      <img
-        className="doc-image"
-        src={doctor.profile_pic}
-        alt={doctor.doc_name}
-      />
-      <h3>{doctor.doc_name}</h3>
-      <p>{doctor.education}</p>
-      <p>{doctor.bio}</p>
-      <p>
-        Years of Experience:
-        {doctor.years_of_experience}
-      </p>
+      <Link to={`/doctor/${doctor.id}`} key={doctor.id}>
+        <img
+          className="doc-image"
+          src={doctor.profile_pic}
+          alt={doctor.doc_name}
+        />
+
+        <h3>{doctor.doc_name}</h3>
+        <p>{doctor.education}</p>
+        <p>{doctor.bio}</p>
+        <p>
+          Years of Experience:
+          {doctor.years_of_experience}
+        </p>
+      </Link>
       <div className="social-icon-container">
         <img src={facebookIcon} alt="Facebook Icon" className="social-icon" />
         <img src={twitterIcon} alt="Twitter Icon" className="social-icon" />
