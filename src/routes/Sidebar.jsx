@@ -44,7 +44,7 @@ const Sidebar = () => {
 
   const menuItems = [
     { label: 'Home', to: '/' },
-    { label: 'DOCTORS', to: '/doctor' },
+    { label: 'DOCTORS', to: '/doctors' },
   ];
 
   const [activeBounce, setActiveBounce] = useState(false);
