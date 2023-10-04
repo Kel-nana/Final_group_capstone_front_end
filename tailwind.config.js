@@ -8,6 +8,9 @@ module.exports = {
       backgroundImage: {
         'home-background': "url('/public/assets/bg-home.jpg')",
       },
+      spacing: {
+        125: '500px',
+      },
     },
   },
   plugins: [],
