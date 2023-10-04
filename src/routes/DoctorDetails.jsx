@@ -16,7 +16,7 @@ const DoctorDetails = () => {
 
     <div>
       <Sidebar />
-      <div className="flex justify-center align-center flex-col text-center mt-16 p-4 sm:flex-row sm:justify-between md:ml-96 md:-mt-125 lg:-mt-125">
+      <div className="flex justify-center align-center flex-col text-center mt-16 p-4 sm:flex-row sm:justify-around md:ml-96 md:-mt-125 lg:-mt-125">
         <div className="flex justify-center ">
           <img className="rounded-full w-80 h-80" src={doctor.profile_pic} alt="Doctor Profile" />
         </div>
