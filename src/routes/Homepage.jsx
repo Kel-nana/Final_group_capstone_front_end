@@ -47,13 +47,13 @@ const Homepage = () => {
           type="button"
           className="flex flex-row items-center justify-evenly mt-8 rounded-full bg-green-400 py-4 px-8 cursor-pointer hover:bg-green-500 transition-bg"
         >
-          <IoSettingsOutline className="text-3xl" />
+          <IoSettingsOutline className="text-3xl text-white" />
           <Link
             to="/doctors"
           >
-            <span className="px-4">Get Your Appointment</span>
+            <span className="px-4 text-white">Get Your Appointment</span>
           </Link>
-          <IoIosArrowDropright className="text-3xl" />
+          <IoIosArrowDropright className="text-3xl text-white" />
         </button>
       </div>
     </div>
