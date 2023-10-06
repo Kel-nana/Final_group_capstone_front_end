@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import { AiOutlineHome } from 'react-icons/ai';
-import axios from 'axios';
+import React, { useState } from "react";
+import { AiOutlineHome } from "react-icons/ai";
+import axios from "axios";
 
 function SignUp() {
   const [formData, setFormData] = useState({
-    name: '',
+    name: "",
+    email: "",
+    password: "",
   });
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -13,31 +15,43 @@ function SignUp() {
 
     try {
       // Create a JSON object from formData
-      const jsonData = JSON.stringify(formData);
-
-      // Make a POST request using Axios with the JSON data
-      const response = await axios.post('http://127.0.0.1:3000/users', jsonData, {
-        headers: {
-          'Content-Type': 'application/json', // Set the content type to JSON
+      const jsonData = JSON.stringify({
+        user: {
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
         },
       });
-      console.log(response);
+
+      // Make a POST request using Axios with the JSON data
+      const response = await axios.post(
+        "http://127.0.0.1:3000/users",
+        jsonData,
+        {
+          headers: {
+            "Content-Type": "application/json", // Set the content type to JSON
+          },
+        }
+      );
       // Handle the response as needed
-      if (response.status === 201) {
-        console.log('Account created successfully.');
+      if (response.status === 200) {
         setIsSuccess(true); // Set isSuccess to true
         // Clear the input field
-        setFormData({ name: '' });
+        setFormData({ name: "", email: "", password: "" });
       } else {
-        console.error('Failed to create an account.');
       }
     } catch (error) {
-      console.error('An error occurred:', error);
+      console.error("An error occurred:", error);
     }
   };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+      [e.target.email]: e.target.value,
+      [e.target.password]: e.target.value,
+    });
   };
 
   return (
@@ -47,9 +61,9 @@ function SignUp() {
           <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
             <h1 className="mb-8 text-3xl text-center">Register</h1>
             {isSuccess && (
-            <div className="text-center text-green-600 mt-4">
-              Account created successfully.
-            </div>
+              <div className="text-center text-green-600 mt-4">
+                Account created successfully
+              </div>
             )}
 
             <form onSubmit={handleSubmit}>
@@ -93,17 +107,14 @@ function SignUp() {
               </button>
             </form>
             <div className="text-center text-sm text-grey-dark mt-4">
-              By signing up, you agree to the
-              {' '}
+              By signing up, you agree to the{" "}
               <a
                 className="no-underline border-b border-grey-dark text-grey-dark"
                 href="/terms-of-service"
               >
                 Terms of Service
-              </a>
-              {' '}
-              and
-              {' '}
+              </a>{" "}
+              and{" "}
               <a
                 className="no-underline border-b border-grey-dark text-grey-dark"
                 href="/privacy-policy"
@@ -118,16 +129,13 @@ function SignUp() {
               className="no-underline border-b border-blue text-blue-500"
               href="../login/"
             >
-              {' '}
+              {" "}
               Log in
             </a>
           </div>
           <div className="text-grey-dark mt-6">
-            <a
-              className="border-blue text-blue-500"
-              href="/"
-            >
-              {' '}
+            <a className="border-blue text-blue-500" href="/">
+              {" "}
               <AiOutlineHome className="w-6 h-6" />
             </a>
           </div>
