@@ -37,7 +37,12 @@ function SignUp() {
       if (response.status === 200) {
         setIsSuccess(true); // Set isSuccess to true
         // Clear the input field
-        setFormData({ name: "", email: "", password: "" });
+        setFormData({
+          name: "",
+          email: "",
+          password: "",
+          confirm_password: "",
+        });
       } else {
       }
     } catch (error) {
@@ -51,6 +56,7 @@ function SignUp() {
       [e.target.name]: e.target.value,
       [e.target.email]: e.target.value,
       [e.target.password]: e.target.value,
+      [e.target.confirm_password]: e.target.value,
     });
   };
 
