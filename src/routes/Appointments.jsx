@@ -12,20 +12,19 @@ import { doctorData } from '../redux/reducer/doctorSlice';
 
 const Appointments = () => {
   const allDoctorList = useSelector((state) => state.doctorsList.allDoctors);
-
   const appointmentsData = useSelector(
     (state) => state.appointments.appointmentsdata,
   );
   const dispatch = useDispatch();
 
-  const handleDeleteClick = (appointmentId) => {
-    dispatch(deleteAppointment(appointmentId));
-  };
-
   useEffect(() => {
     dispatch(fetchAppointments());
     dispatch(doctorData());
-  }, []);
+  }, [dispatch]);
+
+  const handleDeleteClick = (appointmentId) => {
+    dispatch(deleteAppointment(appointmentId));
+  };
 
   const formatDate = (originalDate) => {
     const date = new Date(originalDate);
