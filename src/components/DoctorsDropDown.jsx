@@ -1,6 +1,6 @@
-import { Fragment, useState } from 'react'
-import { Listbox, Transition } from '@headlessui/react'
-import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
+import { Fragment, useState } from 'react';
+import { Listbox, Transition } from '@headlessui/react';
+import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 
 const people = [
   {
@@ -63,14 +63,14 @@ const people = [
     avatar:
       'https://images.unsplash.com/photo-1561505457-3bcad021f8ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
   },
-]
+];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(' ');
 }
 
 export default function Example() {
-  const [selected, setSelected] = useState(people[3])
+  const [selected, setSelected] = useState(people[3]);
 
   return (
     <Listbox value={selected} onChange={setSelected}>
@@ -99,12 +99,10 @@ export default function Example() {
                 {people.map((person) => (
                   <Listbox.Option
                     key={person.id}
-                    className={({ active }) =>
-                      classNames(
-                        active ? 'bg-indigo-600 text-white' : 'text-gray-900',
-                        'relative cursor-default select-none py-2 pl-3 pr-9'
-                      )
-                    }
+                    className={({ active }) => classNames(
+                      active ? 'bg-indigo-600 text-white' : 'text-gray-900',
+                      'relative cursor-default select-none py-2 pl-3 pr-9',
+                    )}
                     value={person}
                   >
                     {({ selected, active }) => (
@@ -122,7 +120,7 @@ export default function Example() {
                           <span
                             className={classNames(
                               active ? 'text-white' : 'text-indigo-600',
-                              'absolute inset-y-0 right-0 flex items-center pr-4'
+                              'absolute inset-y-0 right-0 flex items-center pr-4',
                             )}
                           >
                             <CheckIcon className="h-5 w-5" aria-hidden="true" />
@@ -138,5 +136,5 @@ export default function Example() {
         </>
       )}
     </Listbox>
-  )
+  );
 }
