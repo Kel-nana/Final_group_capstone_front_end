@@ -37,10 +37,10 @@ const Appointments = () => {
   };
 
   return (
-    <div className="flex bg-slate-200 h-full">
+    <div className="flex bg-slate-200 h-full p-4 sm:p-0">
       <Sidebar />
       <div className="flex flex-col gap-8 mt-24 mx-auto">
-        <div className="flex justify-between items-center px-12 sm:px-0">
+        <div className="flex justify-between items-center px-8 sm:px-8">
           <h1 className="text-lg md:text-xl lg:text-2xl text-center font-bold uppercase">
             Your Appointments
           </h1>
@@ -53,15 +53,15 @@ const Appointments = () => {
             </button>
           </Link>
         </div>
-        <div className="relative overflow-x-auto shadow-md rounded-lg hidden md:block">
-          <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 sm:overflow-x-auto">
+        <div className="relative overflow-x-auto shadow-md rounded-lg hidden md:block mx-auto">
+          <table className="w-full text-lg text-left text-gray-500 dark:text-gray-400 sm:overflow-x-auto">
             <thead className="text-md text-white uppercase bg-sky-700 text-white">
               <tr>
                 <th className="text-center p-1">Appontment Id</th>
                 <th className="py-4 px-2 text-center">Date</th>
                 <th className="py-4 px-2 text-center">Time</th>
                 <th className="py-4 px-2 text-center">Location</th>
-                <th className="py-4 px-2 text-center">Doctor Details</th>
+                <th className="py-4 px-2 text-center">Doctor</th>
                 <th className="py-4 px-2 text-center"> </th>
               </tr>
             </thead>
@@ -92,15 +92,6 @@ const Appointments = () => {
                         <Link to={`/doctor/${doctor.id}`} key={doctor.id}>
                           <p className="text-sky-700 hover:underline" title="See Doctor Details">{doctor.doc_name}</p>
                         </Link>
-                        <p className="border-sky-700">
-                          <span>
-                            (
-                          </span>
-                          {doctor.bio}
-                          <span>
-                            )
-                          </span>
-                        </p>
                       </td>
                     ))}
 
@@ -146,22 +137,22 @@ const Appointments = () => {
             {allDoctorList
               .filter((doctor) => doctor.id === appointment.doctor_id)
               .map((doctor) => (
-                <li key={doctor.id} className="flex flex-col text-lg py-2 px-4 text-center flex justify-between border-b-2">
-                  <img
-                    className="w-16 h-16 rounded-full mx-auto"
-                    src={doctor.profile_pic}
-                    alt={doctor.doc_name}
-                  />
+                <li key={doctor.id} className="flex justify-between text-lg text-center border-b-2 items-center  px-2">
+                  <div className="flex flex-start">
+                    <img
+                      className="w-16 h-16 rounded-full mx-auto"
+                      src={doctor.profile_pic}
+                      alt={doctor.doc_name}
+                    />
+                  </div>
                   <Link to={`/doctor/${doctor.id}`} key={doctor.id}>
                     <p className="underline-offset-1 text-sky-700" title="See Doctor Details">{doctor.doc_name}</p>
                   </Link>
-                  <p className="border-sky-700">
-                    {doctor.bio}
-                  </p>
                 </li>
               ))}
             <li className="flex justify-center items-center">
               <button
+                title="Delete Appointment"
                 className="text-red-600 hover:text-red-900 text-2xl py-2 hover:scale-110 transition-ease-in-out duration-100"
                 type="button"
                 tabIndex={0}
