@@ -7,7 +7,6 @@ import Doctors from './routes/Doctors';
 import Appointments from './routes/Appointments';
 import DoctorDetail from './routes/DoctorDetails';
 
-
 function App() {
   return (
     <div className="App">
