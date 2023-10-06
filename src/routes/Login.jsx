@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AiOutlineHome } from 'react-icons/ai';
 import axios from 'axios';
 
@@ -7,6 +8,8 @@ function Login() {
     email: '',
     password: '',
   });
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,7 +42,7 @@ function Login() {
           email: '',
           password: '',
         });
-        // navigate('/login');
+        navigate('/doctors');
       } else {
         console.error('Failed to create an account');
       }
@@ -51,8 +54,7 @@ function Login() {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.email]: e.target.value,
-      [e.target.password]: e.target.value,
+      [e.target.name]: e.target.value,
     });
   };
   return (
