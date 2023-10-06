@@ -16,7 +16,7 @@ function SignUp() {
       const jsonData = JSON.stringify(formData);
 
       // Make a POST request using Axios with the JSON data
-      const response = await axios.post('http://127.0.0.1:3000/api/v1/users', jsonData, {
+      const response = await axios.post('http://127.0.0.1:3000/users', jsonData, {
         headers: {
           'Content-Type': 'application/json', // Set the content type to JSON
         },
