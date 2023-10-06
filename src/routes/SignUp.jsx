@@ -61,24 +61,30 @@ function SignUp() {
                 onChange={handleChange}
                 placeholder="Full Name"
               />
-              {/* <input
+              <input
                 type="text"
                 className="block border border-grey-light w-full p-3 rounded mb-4"
                 name="email"
+                value={formData.email}
+                onChange={handleChange}
                 placeholder="Email"
               />
               <input
                 type="password"
                 className="block border border-grey-light w-full p-3 rounded mb-4"
                 name="password"
+                value={formData.password}
+                onChange={handleChange}
                 placeholder="Password"
               />
               <input
                 type="password"
                 className="block border border-grey-light w-full p-3 rounded mb-4"
                 name="confirm_password"
+                value={formData.confirm_password}
+                onChange={handleChange}
                 placeholder="Confirm Password"
-              /> */}
+              />
               <button
                 type="submit"
                 className="w-full text-center py-3 rounded bg-green-400 hover:bg-green-500 text-white py-2 px-4"
