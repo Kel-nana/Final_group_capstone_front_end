@@ -36,15 +36,17 @@ function Login() {
       console.log(response);
       // Handle the response as needed
       if (response.status === 200) {
+        const token = response.headers.get('Authorization');
         // setMessage('Account created successfully'); // Set message to true
         // Clear the input field
+        localStorage.setItem('token', token);
         setFormData({
           email: '',
           password: '',
         });
         navigate('/doctors');
       } else {
-        console.error('Failed to create an account');
+        console.error('Authentication failed. Please try again');
       }
     } catch (error) {
       console.error('An error occurred:', error);

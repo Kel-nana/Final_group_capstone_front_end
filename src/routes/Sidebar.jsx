@@ -20,6 +20,7 @@ const Sidebar = () => {
 
   const menuItems = [
     { label: 'HOME', to: '/' },
+    { label: 'SIGN OUT', to: '/login' },
   ];
 
   const [activeBounce, setActiveBounce] = useState('');
