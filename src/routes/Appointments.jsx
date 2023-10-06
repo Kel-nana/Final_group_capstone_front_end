@@ -1,200 +1,186 @@
-
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchAppointments, addAppointment, updateAppointment, deleteAppointment } from '../redux/reducer/appointmentSlice';
+import { FaTrashAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { IoAdd } from 'react-icons/io5';
+import {
+  fetchAppointments,
+  deleteAppointment,
+} from '../redux/reducer/appointmentSlice';
 import Sidebar from './Sidebar';
+import { doctorData } from '../redux/reducer/doctorSlice';
 
 const Appointments = () => {
-    // const status = useSelector((state) => state.appointments.status);
-    // const error = useSelector((state) => state.appointments.error);
-    const appointmentsData = useSelector((state) => state.appointments.appointmentsdata);
-    const dispatch = useDispatch();
-    const [formData, setFormData] = useState({
-        // Initialize your form fields here
-        user_id: '', // Clear the user_id field
-      doctor_id: '', // Clear the doctor_id field
-      appointment_time: '', // Clear the appointment_time field
-        appointment_date: '',
-        location: '',
-        // Add more fields as needed
-      });
+  const allDoctorList = useSelector((state) => state.doctorsList.allDoctors);
 
-      const [updateFormData, setUpdateFormData] = useState({
-        id: '', // Add an id field to track the appointment to be updated
-        user_id: '',
-        doctor_id: '',
-        appointment_time: '',
-        appointment_date: '',
-        location: '',
-      });
+  const appointmentsData = useSelector(
+    (state) => state.appointments.appointmentsdata,
+  );
+  const dispatch = useDispatch();
 
-      const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-      };
-
-      const handleUpdateChange = (e) => {
-        const { name, value } = e.target;
-        setUpdateFormData({ ...updateFormData, [name]: value });
-      };
-
-      const handleUpdateClick = (appointment) => {
-        setUpdateFormData(appointment);
-      };
-
-      const handleDeleteClick = (appointmentId) => {
-        // Dispatch the deleteAppointment action with the appointmentId
-        dispatch(deleteAppointment(appointmentId));
-      };
-    
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        // Dispatch the addAppointment action with formData
-        dispatch(addAppointment(formData));
-        // Clear the form or perform any other necessary actions
-        setFormData({
-            user_id: '', // Clear the user_id field
-      doctor_id: '', // Clear the doctor_id field
-      appointment_time: '',
-          appointment_date: '',
-          location: '',
-          // Clear other form fields
-        });
-      };
-
-        // Function to handle the update submission
-  const handleUpdateSubmit = (e) => {
-    e.preventDefault();
-    // Dispatch the updateAppointment action with updateFormData
-    dispatch(updateAppointment(updateFormData));
-    // Clear the update form
-    setUpdateFormData({
-      id: '',
-      user_id: '',
-      doctor_id: '',
-      appointment_time: '',
-      appointment_date: '',
-      location: '',
-    });
+  const handleDeleteClick = (appointmentId) => {
+    dispatch(deleteAppointment(appointmentId));
   };
-//   Getting the appointments data
-    useEffect(() => {
-        dispatch(fetchAppointments());
-      }, [dispatch]);
 
-  console.log(appointmentsData)
-    return (
-      <>
-        <div className="appointment-container">
-          <Sidebar className="sidebar-doctor" />
-          <div className='justify-center  align-center '>
-         <p>Appointments</p>
-        
-          <ul>
-            {appointmentsData.map((appointment) => (
-              <li key={appointment.id}>
-                {appointment.appointment_date} - {appointment.location}
-                <button onClick={() => handleUpdateClick(appointment)}>Update</button>
-                <button onClick={() => handleDeleteClick(appointment.id)}>Delete</button> 
-              </li>
-            ))}
-          </ul>
+  useEffect(() => {
+    dispatch(fetchAppointments());
+    dispatch(doctorData());
+  }, []);
 
-          {/* Form add appointment data */}
-        <form onSubmit={handleSubmit}>
-        <input
-        type="text"
-        name="doctor_id"
-        placeholder="doctor_id"
-        value={formData.doctor_id}
-        onChange={handleChange}
-        required
-      />
-        <input
-        type="text"
-        name="user_id"
-        placeholder="user_id"
-        value={formData.user_id}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="text"
-        name="appointment_time"
-        placeholder="appointment_time"
-        value={formData.appointment_time}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="text"
-        name="appointment_date"
-        placeholder="Appointment Date"
-        value={formData.appointment_date}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="text"
-        name="location"
-        placeholder="Location"
-        value={formData.location}
-        onChange={handleChange}
-        required
-      />
+  const formatDate = (originalDate) => {
+    const date = new Date(originalDate);
+    return `${date.toLocaleDateString()}`;
+  };
 
-      <button type="submit">Add Appointment</button>
-    </form> *
+  const formatTime = (originalTime) => {
+    const date = new Date(originalTime);
+    return `${date.toLocaleTimeString()}`;
+  };
 
-    {/* For updating appointment */}
-    <form onSubmit={handleUpdateSubmit}>
-        {/* Include form fields with values from updateFormData */}
-         <input
-          type="text"
-          name="doctor_id"
-          placeholder="doctor_id"
-          value={updateFormData.doctor_id}
-          onChange={handleUpdateChange}
-          required
-        /> 
-          <input
-        type="text"
-        name="user_id"
-        placeholder="user_id"
-        value={updateFormData.user_id}
-        onChange={handleUpdateChange}
-        required
-      />
-      <input
-        type="text"
-        name="appointment_time"
-        placeholder="appointment_time"
-        value={updateFormData.appointment_time}
-        onChange={handleUpdateChange}
-        required
-      />
-      <input
-        type="text"
-        name="appointment_date"
-        placeholder="Appointment Date"
-        value={updateFormData.appointment_date}
-        onChange={handleUpdateChange}
-        required
-      />
-      <input
-        type="text"
-        name="location"
-        placeholder="Location"
-        value={updateFormData.location}
-        onChange={handleUpdateChange}
-        />
-        <button type="submit">Update Appointment</button>
-      </form>
-      </div>
+  return (
+    <div className="flex bg-slate-200 h-full">
+      <Sidebar />
+      <div className="flex flex-col gap-8 mt-24 mx-auto">
+        <div className="flex justify-between items-center px-12 sm:px-0">
+          <h1 className="text-lg md:text-xl lg:text-2xl text-center font-bold uppercase">
+            Your Appointments
+          </h1>
+          <Link to="/new-appointment-form">
+            <button type="button" className="bg-sky-700 text-md px-4 py-2 text-white rounded flex items-center hover:bg-sky-900 hover:scale-105 transition-ease-in-out duration-100 sm:text-lg">
+              <span className="text-white">
+                <IoAdd />
+              </span>
+              New Appointment
+            </button>
+          </Link>
         </div>
-      </>
-    );
-  };
-  
-  export default Appointments;
-  
+        <div className="relative overflow-x-auto shadow-md rounded-lg hidden md:block">
+          <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 sm:overflow-x-auto">
+            <thead className="text-md text-white uppercase bg-sky-700 text-white">
+              <tr>
+                <th className="text-center p-1">Appontment Id</th>
+                <th className="py-4 px-2 text-center">Date</th>
+                <th className="py-4 px-2 text-center">Time</th>
+                <th className="py-4 px-2 text-center">Location</th>
+                <th className="py-4 px-2 text-center">Doctor Details</th>
+                <th className="py-4 px-2 text-center"> </th>
+              </tr>
+            </thead>
+            {appointmentsData.map((appointment) => (
+              <tbody key={appointment.id}>
+                <tr className="text-black border-b-2 bg-white hover:bg-slate-100">
+                  <td className="text-md text-center">
+                    {appointment.id}
+                  </td>
+                  <td className="text-md py-2 px-2 text-center">
+                    {formatDate(appointment.appointment_date)}
+                  </td>
+                  <td className="text-md py-2 px-2 text-center">
+                    {formatTime(appointment.appointment_time)}
+                  </td>
+                  <td className="text-md py-2 px-2 text-center">
+                    {appointment.location}
+                  </td>
+                  {allDoctorList
+                    .filter((doctor) => doctor.id === appointment.doctor_id)
+                    .map((doctor) => (
+                      <td key={doctor.id} className="text-md float-left flex justify-center items-center px-8">
+                        <img
+                          className="w-16 h-16 rounded-full mx-auto"
+                          src={doctor.profile_pic}
+                          alt={doctor.doc_name}
+                        />
+                        <Link to={`/doctor/${doctor.id}`} key={doctor.id}>
+                          <p className="text-sky-700 hover:underline" title="See Doctor Details">{doctor.doc_name}</p>
+                        </Link>
+                        <p className="border-sky-700">
+                          <span>
+                            (
+                          </span>
+                          {doctor.bio}
+                          <span>
+                            )
+                          </span>
+                        </p>
+                      </td>
+                    ))}
+
+                  <td className="pr-4">
+                    <button
+                      title="Delete Appointment"
+                      className="text-red-600 hover:text-red-900 text-lg hover:scale-110 transition-ease-in-out duration-100"
+                      type="button"
+                      tabIndex={0}
+                      onClick={() => handleDeleteClick(appointment.id)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          handleDeleteClick(appointment.id);
+                        }
+                      }}
+                    >
+                      <FaTrashAlt />
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            ))}
+          </table>
+        </div>
+
+        {appointmentsData.map((appointment) => (
+          <ul
+            key={appointment.id}
+            className="flex flex-col mx-auto shadow-md rounded-lg bg-white relative md:hidden w-4/5"
+          >
+            <li className="text-lg py-2 px-2 text-center flex justify-between border-b-2">
+              <p>Appointment Id: </p>
+              <p>{appointment.id}</p>
+            </li>
+            <li className="text-lg py-2 px-2 text-center flex justify-between border-b-2">
+              <p>Time: </p>
+              <p>{formatDate(appointment.appointment_time)}</p>
+            </li>
+            <li className="text-lg py-2 px-2 text-center flex justify-between border-b-2">
+              <p>Location: </p>
+              <p>{appointment.location}</p>
+            </li>
+            {allDoctorList
+              .filter((doctor) => doctor.id === appointment.doctor_id)
+              .map((doctor) => (
+                <li key={doctor.id} className="flex flex-col text-lg py-2 px-4 text-center flex justify-between border-b-2">
+                  <img
+                    className="w-16 h-16 rounded-full mx-auto"
+                    src={doctor.profile_pic}
+                    alt={doctor.doc_name}
+                  />
+                  <Link to={`/doctor/${doctor.id}`} key={doctor.id}>
+                    <p className="underline-offset-1 text-sky-700" title="See Doctor Details">{doctor.doc_name}</p>
+                  </Link>
+                  <p className="border-sky-700">
+                    {doctor.bio}
+                  </p>
+                </li>
+              ))}
+            <li className="flex justify-center items-center">
+              <button
+                className="text-red-600 hover:text-red-900 text-2xl py-2 hover:scale-110 transition-ease-in-out duration-100"
+                type="button"
+                tabIndex={0}
+                onClick={() => handleDeleteClick(appointment.id)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    handleDeleteClick(appointment.id);
+                  }
+                }}
+              >
+                <FaTrashAlt />
+              </button>
+            </li>
+          </ul>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Appointments;
