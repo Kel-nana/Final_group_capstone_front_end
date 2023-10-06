@@ -11,18 +11,18 @@ const fetchAppointments = createAsyncThunk('appointments/fetch', async () => {
 
 // Create an async thunk to add a new appointment
 const addAppointment = createAsyncThunk('appointments/add', async (newAppointment) => {
-    try {
-      const response = await axios.post(urlappoint, newAppointment, {
-        headers: {
-          'Content-Type': 'application/json', // Set the content type to JSON
-        },
-      });
-      return response.data;
-    } catch (error) {
-      console.error('Add appointment error:', error.response.data); // Log the error response
-      throw error; // Rethrow the error to propagate it to the component
-    }
-  });
+  try {
+    const response = await axios.post(urlappoint, newAppointment, {
+      headers: {
+        'Content-Type': 'application/json', // Set the content type to JSON
+      },
+    });
+    return response.data;
+  } catch (error) {
+    error.push('Add appointment error:', error.response.data); // Log the error response
+    throw error; // Rethrow the error to propagate it to the component
+  }
+});
 
 // Create an async thunk to update an appointment
 const updateAppointment = createAsyncThunk('appointments/update', async (updatedAppointment) => {
@@ -40,37 +40,42 @@ const deleteAppointment = createAsyncThunk('appointments/delete', async (appoint
   return appointmentId;
 });
 
-
 const initialState = {
-    appointmentsdata: [],
-  };
+  appointmentsdata: [],
+};
 
 const appointmentsSlice = createSlice({
   name: 'appointments',
-    initialState,
-    appointmentsdata: [],
-    status: 'idle',
-    error: null,
+  initialState,
+  appointmentsdata: [],
+  status: 'idle',
+  error: null,
   reducers: {},
   extraReducers: (builder) => {
     builder
-
-      .addCase(fetchAppointments.fulfilled, (state, action) => {
-        return { ...state, appointmentsdata: action.payload };
-      })
-      .addCase(addAppointment.fulfilled, (state, action) => {
-        state.appointmentsdata.push(action.payload);
-      })
+      .addCase(fetchAppointments.fulfilled, (state, action) => ({
+        ...state, appointmentsdata: action.payload,
+      }))
+      .addCase(addAppointment.fulfilled, (state, action) => ({
+        ...state, appointmentsdata: action.payload,
+      }))
       .addCase(updateAppointment.fulfilled, (state, action) => {
         const updatedAppointment = action.payload;
-        const index = state.appointmentsdata.findIndex((appointment) => appointment.id === updatedAppointment.id);
-        if (index !== -1) {
-          state.appointmentsdata[index] = updatedAppointment;
-        }
+        const updatedAppointmentsData = state.appointmentsdata.map((appointment) => {
+          if (appointment.id === updatedAppointment.id) {
+            return updatedAppointment;
+          }
+          return appointment;
+        });
+        // Return a new state object instead of directly modifying the 'state' parameter
+        return { ...state, appointmentsdata: updatedAppointmentsData };
       })
       .addCase(deleteAppointment.fulfilled, (state, action) => {
         const appointmentId = action.payload;
-        state.appointmentsdata = state.appointmentsdata.filter((appointment) => appointment.id !== appointmentId);
+        const updatedAppointmentsData = state.appointmentsdata.filter(
+          (appointment) => appointment.id !== appointmentId,
+        );
+        return { ...state, appointmentsdata: updatedAppointmentsData };
       });
   },
 });
