@@ -8,7 +8,7 @@ function SignUp() {
     email: "",
     password: "",
   });
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ function SignUp() {
       );
       // Handle the response as needed
       if (response.status === 200) {
-        setIsSuccess(true); // Set isSuccess to true
+        setMessage(response.message); // Set message to true
         // Clear the input field
         setFormData({
           name: "",
@@ -44,9 +44,9 @@ function SignUp() {
           confirm_password: "",
         });
       } else {
+        setMessage(response.message);
       }
     } catch (error) {
-      console.error("An error occurred:", error);
     }
   };
 
@@ -66,12 +66,7 @@ function SignUp() {
         <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
           <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
             <h1 className="mb-8 text-3xl text-center">Register</h1>
-            {isSuccess && (
-              <div className="text-center text-green-600 mt-4">
-                Account created successfully
-              </div>
-            )}
-
+            <div className="text-center text-green-600 mt-4">{message}</div>
             <form onSubmit={handleSubmit}>
               <input
                 type="text"
