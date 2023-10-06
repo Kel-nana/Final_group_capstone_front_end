@@ -67,7 +67,7 @@ const Appointments = () => {
             </thead>
             {appointmentsData.map((appointment) => (
               <tbody key={appointment.id}>
-                <tr className="text-black border-b-2 bg-white hover:bg-slate-100">
+                <tr className="text-black border-b-2 bg-white hover:bg-green-100">
                   <td className="text-md text-center">
                     {appointment.id}
                   </td>
