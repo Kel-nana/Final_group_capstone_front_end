@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import DatePicker from 'react-datepicker';
-import TimePicker from 'react-time-picker';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import dayjs from 'dayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import {
   fetchAppointments, addAppointment, deleteAppointment,
 } from '../redux/reducer/appointmentSlice';
@@ -9,11 +12,22 @@ import Sidebar from './Sidebar';
 import DoctorsDropDown from '../components/DoctorsDropDown';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const Appointments = () => {
-  const [date, setDate] = useState(new Date());
+const NewAppointments = () => {
+  // const [date, setDate] = useState(new Date());
   const [message, setMessage] = useState('Hello');
-  const [value, setTime] = useState('10:00');
+  const [date, setDate] = useState(dayjs('2023-10-07'));
+  const [time, setTime] = useState(dayjs('2023-10-07T15:30'));
 
+  // console.log(time, 'time value');
+  // console.log(date, 'time date');
+
+  // Get the time in the desired format
+  const formattedTime = time.format('HH:mm:ss');
+  // ddd MMM D YYYY"
+  // console.log(formattedTime, 'formatted time');
+  const formattedDate = date.format('MMM D YYYY');
+
+  console.log(formattedDate, 'formatted Date');
   const changeMessage = (newMessage) => {
     setMessage(newMessage);
   };
@@ -37,13 +51,13 @@ const Appointments = () => {
   };
   const handleChangeDate = () => {
     setTimeout(() => {
-      setFormData({ ...formData, appointment_date: date });
+      setFormData({ ...formData, appointment_date: formattedDate });
     }, 600);
   };
 
   const handleChangeTime = () => {
     setTimeout(() => {
-      setFormData({ ...formData, appointment_time: value });
+      setFormData({ ...formData, appointment_time: formattedTime });
     }, 600);
   };
 
@@ -54,8 +68,8 @@ const Appointments = () => {
         setFormData({
           user_id: '4',
           doctor_id: message,
-          appointment_time: value,
-          appointment_date: date,
+          appointment_time: formattedTime,
+          appointment_date: formattedDate,
           location: 'England',
         });
       }, 600);
@@ -115,22 +129,36 @@ const Appointments = () => {
           </ul>
 
           {/* Form add appointment data */}
-          <form className="w-[50%] h-[50%] ml-[25%] mt-[10%] items-center justify-center  p-4 space-y-4 bg-gray-100">
+          <form className="w-[50%] h-[50%] ml-[25%] mt-[10%] items-center justify-center  p-4 space-y-4 bg-gray-100 rounded-lg">
             <div className="w-[80%] ml-[29.5%]">
               <DoctorsDropDown
+                defaultValue={dayjs('2022-04-17T15:30')}
                 changeMessage={changeMessage}
                 onChange={handleChangeDrop}
               />
               <p>{message}</p>
             </div>
             <div>
-              <DatePicker selected={date} onChange={(date) => setDate(date)} onClick={handleChangeDate} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker
+                  label="Appoinment Date"
+                  onChange={(date) => setDate(date)}
+                  onClick={handleChangeDate}
+                />
+              </LocalizationProvider>
             </div>
             <div className="w-[60%] ml-[29.5%]">
-              <TimePicker onChange={(value) => setTime(value)} onClick={handleChangeTime} />
+              {/* <TimePicker onChange={(date) => setDate(date)} onClick={handleChangeDate} /> */}
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <TimePicker
+                  label="Appoinment Time"
+                  onChange={(time) => setTime(time)}
+                  onClick={handleChangeTime}
+                />
+              </LocalizationProvider>
             </div>
             {/* location = doctor.location */}
-            <button type="submit" onClick={handleUpdateDrop} className="ml-[32.5%] text-md px-4 py-2 text-white rounded flex items-center rounded-full bg-[#97bf0f] hover:bg-[#5b740a] cursor-pointer transition-ease-in-out duration-100 sm:text-lg">+New Appointment</button>
+            <button type="submit" onClick={handleUpdateDrop} className="ml-[40.5%] text-md px-4 py-2 text-white rounded flex items-center rounded-full bg-[#97bf0f] hover:bg-[#5b740a] cursor-pointer transition-ease-in-out duration-100 sm:text-lg">Book Now</button>
           </form>
         </div>
       </div>
@@ -138,4 +166,4 @@ const Appointments = () => {
   );
 };
 
-export default Appointments;
+export default NewAppointments;
