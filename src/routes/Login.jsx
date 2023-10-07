@@ -14,6 +14,9 @@ function Login() {
   });
 
   const [showPassword, setShowPassword] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [message, setMessage] = useState("");
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -41,6 +44,7 @@ function Login() {
       console.log(response);
       // Handle the response as needed
       if (response.status === 200) {
+        setMessage("Login successfull");
         const token = response.headers.get("Authorization");
         // setMessage('Account created successfully'); // Set message to true
         // Clear the input field
@@ -49,7 +53,8 @@ function Login() {
           email: "",
           password: "",
         });
-        navigate("/doctors");
+        setShowSuccessModal(true);
+        // navigate("/doctors");
       } else {
         console.error("Authentication failed. Please try again");
       }
@@ -66,6 +71,11 @@ function Login() {
   };
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const closeSuccessModal = () => {
+    setShowSuccessModal(false);
+    navigate("/doctors");
   };
 
   return (
@@ -152,6 +162,22 @@ function Login() {
           </div>
         </div>
       </div>
+      {showSuccessModal && (
+        <div className="fixed border border-green inset-0 flex items-center justify-center z-50">
+          <div className="bg-green-300 p-6 rounded shadow-lg">
+            <h2 className="text-2xl font-semibold mb-4">Login Successful</h2>
+            <p>{message}</p>
+            <div className="mt-4">
+              <button
+                className="bg-green-400 text-white px-4 py-2 rounded"
+                onClick={closeSuccessModal}
+              >
+                OK
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
