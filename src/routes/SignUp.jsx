@@ -70,7 +70,7 @@ function SignUp() {
       e.target.name === "confirm_password" &&
       formData.password !== e.target.value
     ) {
-      setPasswordError("Passwords do not match");
+      setPasswordError("Passwords not match");
     } else {
       setPasswordError("");
     }
@@ -89,7 +89,7 @@ function SignUp() {
             <form onSubmit={handleSubmit}>
               <input
                 type="text"
-                className="block border border-grey-light w-full p-3 rounded mb-4"
+                className="block border focus:outline-none border-grey-light w-full p-3 rounded mb-4"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
@@ -97,7 +97,7 @@ function SignUp() {
               />
               <input
                 type="text"
-                className="block border border-grey-light w-full p-3 rounded mb-4"
+                className="block border focus:outline-none border-grey-light w-full p-3 rounded mb-4"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
