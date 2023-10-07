@@ -46,7 +46,6 @@ const Sidebar = () => {
     { label: 'Home', to: '/' },
     { label: 'DOCTORS', to: '/doctors' },
     { label: 'APPOINTMENTS', to: '/appointments' },
-
   ];
 
   const [activeBounce, setActiveBounce] = useState(false);
@@ -140,11 +139,11 @@ const Sidebar = () => {
           ))}
         </ul>
       </div>
-      <div className="text-[#181818] w-[20%] min-h-screen py-2 border-r-2 border-r-[#f3f3f3] overflow-x-hidden hidden lg:block bg-white">
+      <div className="text-[#181818] w-[20%] min-h-screen py-2 border-r-2 border-r-[#f3f3f3] overflow-x-hidden hidden lg:grid bg-white">
         <ul className="flex flex-col py-16 justify-center items-center text-base sm:text-lg md:text-lg lg:text-xl xl:text-2xl">
           <button
             type="button"
-            className={`logo w-[80%] mt-[1%] ml-[2%] ${
+            className={`logo w-[80%] ml-[2%] mb-8${
               activeBounce ? 'bounce' : ''
             }`}
             onClick={BounceEffect}
@@ -162,7 +161,7 @@ const Sidebar = () => {
           {menuItems.map((item) => (
             <li
               key={item.label}
-              className={`w-full text-center py-4 mb-4 hover:text-white hover:bg-green-400 transition-all ${
+              className={`w-full text-center py-4 mb-4 hover:text-white hover:bg-[#97bf0f] transition-all ${
                 item.label === 'Home'
                   ? 'hidden'
                   : 'block'
@@ -177,7 +176,7 @@ const Sidebar = () => {
         <ul className="flex py-24 flex-row self-end align-center justify-center">
           {socialIcons.map((icon) => (
             <li key={icon.id} className="p-[5px]">
-              <icon.name className="cursor-pointer hover:text-green-400 transition-colors" />
+              <icon.name className="cursor-pointer hover:text-[#97bf0f] transition-colors" />
             </li>
           ))}
         </ul>
