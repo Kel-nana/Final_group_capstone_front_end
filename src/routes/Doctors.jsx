@@ -86,19 +86,19 @@ const Doctors = () => {
     setActiveBounce(true);
   };
 
-  // Remove the bounce class after animation duration
-  useEffect(() => {
-    if (activeBounce) {
-      const timeoutId = setTimeout(() => {
-        setActiveBounce(false);
-      }, 400); // animation duration
+  // // Remove the bounce class after animation duration
+  // useEffect(() => {
+  //   if (activeBounce) {
+  //     const timeoutId = setTimeout(() => {
+  //       setActiveBounce(false);
+  //     }, 400); // animation duration
 
-      return () => {
-        clearTimeout(timeoutId); // Clear the timeout if the effect runs again
-      };
-    }
-    return () => {};
-  }, [activeBounce]);
+  //     return () => {
+  //       clearTimeout(timeoutId); // Clear the timeout if the effect runs again
+  //     };
+  //   }
+  //   return () => {};
+  // }, [activeBounce]);
 
   return (
     <>
