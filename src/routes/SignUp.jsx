@@ -17,6 +17,7 @@ function SignUp() {
   const [message, setMessage] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -52,7 +53,8 @@ function SignUp() {
           password: "",
           confirm_password: "",
         });
-        navigate("/login");
+        setShowSuccessModal(true);
+        // navigate('/login');
       } else {
         console.error("Failed to create an account");
       }
@@ -77,6 +79,11 @@ function SignUp() {
   };
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const closeSuccessModal = () => {
+    setShowSuccessModal(false);
+    navigate("/login");
   };
 
   return (
@@ -185,6 +192,30 @@ function SignUp() {
           </div>
         </div>
       </div>
+      {showSuccessModal && (
+        <div className="fixed border border-green inset-0 flex items-center justify-center z-50">
+          <div className="bg-green-300 p-6 rounded shadow-lg">
+            <h2 className="text-2xl font-semibold mb-4">
+              Registration Successful
+            </h2>
+            <p>{message}</p>
+            <div className="mt-4">
+              <button
+                className="bg-green-400 text-white px-4 py-2 rounded"
+                onClick={closeSuccessModal}
+              >
+                Close
+              </button>
+              <button
+                className="bg-blue-400 text-white px-4 py-2 rounded ml-2"
+                onClick={() => navigate("/login")}
+              >
+                Go to Login
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
