@@ -163,9 +163,14 @@
   background: #97bf0f;
 }
 
-/* .forward-button:hover {
-  background: #5b740a;
-} */
+.react-time-picker__inputGroup__input {
+  width: 40px !important;
+} 
+/* react-time-picker__inputGroup__hour */
+.react-time-picker__inputGroup__input{
+  width: 40px !important;
+} 
+/* react-time-picker__inputGroup__minute */
 
 .logo {
   overflow: hidden;

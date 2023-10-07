@@ -44,7 +44,7 @@ const Appointments = () => {
           <h1 className="text-lg sm:text-2xl text-center font-bold uppercase">
             Your Appointments
           </h1>
-          <Link to="/new-appointment-form">
+          <Link to="/new-appointment">
             <button type="button" className="text-md px-4 py-2 text-white rounded flex items-center rounded-full bg-[#97bf0f] hover:bg-[#5b740a] cursor-pointer transition-ease-in-out duration-100 sm:text-lg">
               <span className="text-white text-md">
                 <IoMdAdd />
