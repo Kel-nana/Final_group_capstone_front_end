@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { AiOutlineHome } from 'react-icons/ai';
-import axios from 'axios';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  AiOutlineHome,
+  AiOutlineEye,
+  AiOutlineEyeInvisible,
+} from "react-icons/ai";
+import axios from "axios";
 
 function Login() {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -25,31 +30,31 @@ function Login() {
 
       // Make a POST request using Axios with the JSON data
       const response = await axios.post(
-        'http://127.0.0.1:3000/users/sign_in',
+        "http://127.0.0.1:3000/users/sign_in",
         jsonData,
         {
           headers: {
-            'Content-Type': 'application/json', // Set the content type to JSON
+            "Content-Type": "application/json", // Set the content type to JSON
           },
-        },
+        }
       );
       console.log(response);
       // Handle the response as needed
       if (response.status === 200) {
-        const token = response.headers.get('Authorization');
+        const token = response.headers.get("Authorization");
         // setMessage('Account created successfully'); // Set message to true
         // Clear the input field
-        localStorage.setItem('token', token);
+        localStorage.setItem("token", token);
         setFormData({
-          email: '',
-          password: '',
+          email: "",
+          password: "",
         });
-        navigate('/doctors');
+        navigate("/doctors");
       } else {
-        console.error('Authentication failed. Please try again');
+        console.error("Authentication failed. Please try again");
       }
     } catch (error) {
-      console.error('An error occurred:', error);
+      console.error("An error occurred:", error);
     }
   };
 
@@ -59,6 +64,10 @@ function Login() {
       [e.target.name]: e.target.value,
     });
   };
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div>
       <div className="bg-slate-200">
@@ -69,21 +78,30 @@ function Login() {
               <form onSubmit={handleSubmit}>
                 <input
                   type="text"
-                  className="block border border-grey-light w-full p-3 rounded mb-4"
+                  className="block focus:outline-none border border-grey-light w-full p-3 rounded mb-4"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Email"
                 />
 
-                <input
-                  type="password"
-                  className="block border border-grey-light w-full p-3 rounded mb-4"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  placeholder="Password"
-                />
+                <div className="flex items-stretch justify-between border border-grey-light items-stretch w-full rounded mb-4">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    className="focus:outline-none w-3/4 p-3"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    placeholder="Password"
+                  />
+                  <button type="button" onClick={togglePasswordVisibility}>
+                    {showPassword ? (
+                      <AiOutlineEyeInvisible className="w-6 h-6 mr-4" />
+                    ) : (
+                      <AiOutlineEye className="w-6 h-6 mr-4" />
+                    )}
+                  </button>
+                </div>
 
                 <div className="mb-6 flex items-center justify-between">
                   {/* Remember me checkbox */}
@@ -93,8 +111,7 @@ function Login() {
                       type="checkbox"
                       defaultValue=""
                       className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 hover:cursor-pointer"
-                    />
-                    {' '}
+                    />{" "}
                     {/* eslint-disable jsx-a11y/label-has-associated-control */}
                     <label
                       className="inline-block pl-[0.15rem] hover:cursor-pointer"
@@ -114,8 +131,7 @@ function Login() {
               </form>
             </div>
             <div className="text-grey-dark mt-6">
-              Don&apos;t have an account?
-              {' '}
+              Don&apos;t have an account?{" "}
               <a
                 className="no-underline border-b border-blue text-blue-500"
                 href="../sign_up/"
@@ -129,7 +145,7 @@ function Login() {
                 className="no-underline border-b border-blue text-blue-500"
                 href="/"
               >
-                {' '}
+                {" "}
                 <AiOutlineHome className="w-6 h-6" />
               </a>
             </div>
