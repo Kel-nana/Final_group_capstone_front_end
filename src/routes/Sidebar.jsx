@@ -45,6 +45,8 @@ const Sidebar = () => {
   const menuItems = [
     { label: 'Home', to: '/' },
     { label: 'DOCTORS', to: '/doctors' },
+    { label: 'APPOINTMENTS', to: '/appointments' },
+
   ];
 
   const [activeBounce, setActiveBounce] = useState(false);
@@ -99,7 +101,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="lg:hidden p-4">
+      <div className="lg:hidden p-4 absolute">
         <button
           type="button"
           className="p-2 text-black hover:text-green-400 move-button"
@@ -138,7 +140,7 @@ const Sidebar = () => {
           ))}
         </ul>
       </div>
-      <div className="text-[#181818] w-[20%] min-h-screen py-2 border-r-2 border-r-[#f3f3f3] overflow-x-hidden hidden lg:block">
+      <div className="text-[#181818] w-[20%] min-h-screen py-2 border-r-2 border-r-[#f3f3f3] overflow-x-hidden hidden lg:block bg-white">
         <ul className="flex flex-col py-16 justify-center items-center text-base sm:text-lg md:text-lg lg:text-xl xl:text-2xl">
           <button
             type="button"

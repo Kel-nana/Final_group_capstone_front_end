@@ -54,7 +54,8 @@
   }
 }
 
-.doctor-container {
+.doctor-container,
+.appointment-container {
   width: 100%;
   height: auto;
   display: flex;
