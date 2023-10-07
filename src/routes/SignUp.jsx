@@ -8,8 +8,10 @@ function SignUp() {
     name: '',
     email: '',
     password: '',
+    confirm_password: '',
   });
   const [message, setMessage] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -59,6 +61,14 @@ function SignUp() {
       ...formData,
       [e.target.name]: e.target.value,
     });
+    if (
+      e.target.name === 'confirm_password'
+      && formData.password !== e.target.value
+    ) {
+      setPasswordError('Passwords do not match');
+    } else {
+      setPasswordError('');
+    }
   };
 
   return (
@@ -96,6 +106,9 @@ function SignUp() {
                 onChange={handleChange}
                 placeholder="Password"
               />
+              {passwordError && (
+              <div className="text-red-600">{passwordError}</div>
+              )}
               <input
                 type="password"
                 className="block border border-grey-light w-full p-3 rounded mb-4"
