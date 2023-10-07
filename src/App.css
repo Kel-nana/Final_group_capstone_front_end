@@ -163,14 +163,46 @@
   background: #97bf0f;
 }
 
-.react-time-picker__inputGroup__input {
-  width: 40px !important;
+.react-time-picker{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  padding: 10px 10px;
 } 
-/* react-time-picker__inputGroup__hour */
+.react-time-picker__wrapper{
+  display: flex;
+}
 .react-time-picker__inputGroup__input{
-  width: 40px !important;
+  width: 50px !important;
+  border: 2px solid #97bf0f;
+  border-radius: 8px;
 } 
-/* react-time-picker__inputGroup__minute */
+.react-time-picker__inputGroup__input:hover {
+  border: 1px solid #a2c530;
+
+}
+.react-time-picker__clock-button__icon{
+  display: none !important;
+} 
+/* react-time-picker__button__icon */
+
+.react-time-picker__inputGroup__divider{
+  width: 20px;
+}
+
+.react-time-picker__clear-button__icon{
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 100%;
+  margin-left: 20px;
+  background: #bee43f;
+}
+
+.react-time-picker__clear-button__icon:hover {
+background-color: #97bf0f;
+}
+/* 
+react-time-picker__clear-button__icon react-time-picker__button__icon */
 
 .logo {
   overflow: hidden;

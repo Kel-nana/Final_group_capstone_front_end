@@ -115,20 +115,22 @@ const Appointments = () => {
           </ul>
 
           {/* Form add appointment data */}
-          <form className="w-[50%]">
-            <DoctorsDropDown
-              changeMessage={changeMessage}
-              onChange={handleChangeDrop}
-            />
-            <p>{message}</p>
+          <form className="w-[50%] h-[50%] ml-[25%] mt-[10%] items-center justify-center  p-4 space-y-4 bg-gray-100">
+            <div className="w-[80%] ml-[29.5%]">
+              <DoctorsDropDown
+                changeMessage={changeMessage}
+                onChange={handleChangeDrop}
+              />
+              <p>{message}</p>
+            </div>
             <div>
               <DatePicker selected={date} onChange={(date) => setDate(date)} onClick={handleChangeDate} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </div>
-            <div className="w-[90%]">
+            <div className="w-[60%] ml-[29.5%]">
               <TimePicker onChange={(value) => setTime(value)} onClick={handleChangeTime} />
             </div>
             {/* location = doctor.location */}
-            <button type="submit" onClick={handleUpdateDrop}>Add Appointment</button>
+            <button type="submit" onClick={handleUpdateDrop} className="ml-[32.5%] text-md px-4 py-2 text-white rounded flex items-center rounded-full bg-[#97bf0f] hover:bg-[#5b740a] cursor-pointer transition-ease-in-out duration-100 sm:text-lg">+New Appointment</button>
           </form>
         </div>
       </div>
