@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { AiOutlineHome } from 'react-icons/ai';
-import axios from 'axios';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  AiOutlineHome,
+  AiOutlineEye,
+  AiOutlineEyeInvisible,
+} from "react-icons/ai";
+import axios from "axios";
 
 function SignUp() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirm_password: '',
+    name: "",
+    email: "",
+    password: "",
+    confirm_password: "",
   });
-  const [message, setMessage] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+  const [message, setMessage] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -29,30 +34,30 @@ function SignUp() {
 
       // Make a POST request using Axios with the JSON data
       const response = await axios.post(
-        'http://127.0.0.1:3000/users',
+        "http://127.0.0.1:3000/users",
         jsonData,
         {
           headers: {
-            'Content-Type': 'application/json', // Set the content type to JSON
+            "Content-Type": "application/json", // Set the content type to JSON
           },
-        },
+        }
       );
       // Handle the response as needed
       if (response.status === 200) {
-        setMessage('Account created successfully'); // Set message to true
+        setMessage("Account created successfully"); // Set message to true
         // Clear the input field
         setFormData({
-          name: '',
-          email: '',
-          password: '',
-          confirm_password: '',
+          name: "",
+          email: "",
+          password: "",
+          confirm_password: "",
         });
-        navigate('/login');
+        navigate("/login");
       } else {
-        console.error('Failed to create an account');
+        console.error("Failed to create an account");
       }
     } catch (error) {
-      console.error('An error occurred:', error);
+      console.error("An error occurred:", error);
     }
   };
 
@@ -62,13 +67,16 @@ function SignUp() {
       [e.target.name]: e.target.value,
     });
     if (
-      e.target.name === 'confirm_password'
-      && formData.password !== e.target.value
+      e.target.name === "confirm_password" &&
+      formData.password !== e.target.value
     ) {
-      setPasswordError('Passwords do not match');
+      setPasswordError("Passwords do not match");
     } else {
-      setPasswordError('');
+      setPasswordError("");
     }
+  };
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -98,25 +106,43 @@ function SignUp() {
               <div className="text-center text-yellow-600 mt-4">
                 Password Should be at least 6 charecter
               </div>
-              <input
-                type="password"
-                className="block border border-grey-light w-full p-3 rounded mb-4"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                placeholder="Password"
-              />
+              <div className="flex items-stretch justify-between border border-grey-light items-stretch w-full rounded mb-4">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  className="focus:outline-none w-3/4 p-3"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  placeholder="Password"
+                />
+                <button type="button" onClick={togglePasswordVisibility}>
+                  {showPassword ? (
+                    <AiOutlineEyeInvisible className="w-6 h-6 mr-4" />
+                  ) : (
+                    <AiOutlineEye className="w-6 h-6 mr-4" />
+                  )}
+                </button>
+              </div>
               {passwordError && (
-              <div className="text-red-600">{passwordError}</div>
+                <div className="text-red-600">{passwordError}</div>
               )}
-              <input
-                type="password"
-                className="block border border-grey-light w-full p-3 rounded mb-4"
-                name="confirm_password"
-                value={formData.confirm_password}
-                onChange={handleChange}
-                placeholder="Confirm Password"
-              />
+              <div className="flex items-stretch justify-between border border-grey-light items-stretch w-full rounded mb-4">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  className="focus:outline-none w-3/4 p-3"
+                  name="confirm_password"
+                  value={formData.confirm_password}
+                  onChange={handleChange}
+                  placeholder="Confirm Password"
+                />
+                <button type="button" onClick={togglePasswordVisibility}>
+                  {showPassword ? (
+                    <AiOutlineEyeInvisible className="w-6 h-6 mr-4" />
+                  ) : (
+                    <AiOutlineEye className="w-6 h-6 mr-4" />
+                  )}
+                </button>
+              </div>
               <button
                 type="submit"
                 className="w-full text-center py-3 rounded bg-green-400 hover:bg-green-500 text-white py-2 px-4"
@@ -125,17 +151,14 @@ function SignUp() {
               </button>
             </form>
             <div className="text-center text-sm text-grey-dark mt-4">
-              By signing up, you agree to the
-              {' '}
+              By signing up, you agree to the{" "}
               <a
                 className="no-underline border-b border-grey-dark text-grey-dark"
                 href="/terms-of-service"
               >
                 Terms of Service
-              </a>
-              {' '}
-              and
-              {' '}
+              </a>{" "}
+              and{" "}
               <a
                 className="no-underline border-b border-grey-dark text-grey-dark"
                 href="/privacy-policy"
@@ -150,13 +173,13 @@ function SignUp() {
               className="no-underline border-b border-blue text-blue-500"
               href="../login/"
             >
-              {' '}
+              {" "}
               Log in
             </a>
           </div>
           <div className="text-grey-dark mt-6">
             <a className="border-blue text-blue-500" href="/">
-              {' '}
+              {" "}
               <AiOutlineHome className="w-6 h-6" />
             </a>
           </div>
