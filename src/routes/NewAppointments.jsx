@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import TextField from '@mui/material/TextField';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs from 'dayjs';
@@ -11,16 +12,23 @@ import {
 import Sidebar from './Sidebar';
 import DoctorsDropDown from '../components/DoctorsDropDown';
 import 'react-datepicker/dist/react-datepicker.css';
+import { doctorData } from '../redux/reducer/doctorSlice';
 
 const NewAppointments = () => {
-  // const [date, setDate] = useState(new Date());
+  const allDoctorList = useSelector((state) => state.doctorsList.allDoctors);
+  const dispatch1 = useDispatch();
+  useEffect(() => {
+    dispatch1(doctorData());
+  }, [dispatch1]);
   const [message, setMessage] = useState('Hello');
   const [date, setDate] = useState(dayjs('2023-10-07'));
   const [time, setTime] = useState(dayjs('2023-10-07T15:30'));
+  const [doctorsLocation, setDoctorsLocation] = useState(null);
+
 
   // console.log(time, 'time value');
   // console.log(date, 'time date');
-
+  console.log(allDoctorList);
   // Get the time in the desired format
   const formattedTime = time.format('HH:mm:ss');
   // ddd MMM D YYYY"
@@ -43,6 +51,27 @@ const NewAppointments = () => {
     location: '',
     // Add more fields as needed
   });
+
+  useEffect(() => {
+    let timeOutId3;
+    if (doctorsLocation) {
+      timeOutId3 = setTimeout(() => {
+        setFormData({
+          user_id: '4',
+          doctor_id: message,
+          appointment_time: formattedTime,
+          appointment_date: formattedDate,
+          location: 'England',
+        });
+      }, 600);
+      console.log(formData, 'handleChangeDrop');
+    }
+    return () => {
+      clearTimeout(timeOutId3); // Clear the timeout if the effect runs again
+    };
+  }, [formData]);
+
+  
 
   const handleChangeDrop = () => {
     setTimeout(() => {
@@ -129,8 +158,8 @@ const NewAppointments = () => {
           </ul>
 
           {/* Form add appointment data */}
-          <form className="w-[50%] h-[50%] ml-[25%] mt-[10%] items-center justify-center  p-4 space-y-4 bg-gray-100 rounded-lg">
-            <div className="w-[80%] ml-[29.5%]">
+          <form className="w-[350px] h-[50%] ml-[35%] mt-[10%] items-center justify-center  p-4 space-y-4 bg-gray-100 rounded-lg appointment-form">
+            <div className="w-full ">
               <DoctorsDropDown
                 defaultValue={dayjs('2022-04-17T15:30')}
                 changeMessage={changeMessage}
@@ -138,27 +167,38 @@ const NewAppointments = () => {
               />
               <p>{message}</p>
             </div>
-            <div>
+            <div className="date-picker">
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
-                  label="Appoinment Date"
+                  label="Appointment Date"
                   onChange={(date) => setDate(date)}
                   onClick={handleChangeDate}
                 />
               </LocalizationProvider>
             </div>
-            <div className="w-[60%] ml-[29.5%]">
+            <div className="time-picker">
               {/* <TimePicker onChange={(date) => setDate(date)} onClick={handleChangeDate} /> */}
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <TimePicker
-                  label="Appoinment Time"
+                  label="Appointment Time"
                   onChange={(time) => setTime(time)}
                   onClick={handleChangeTime}
                 />
               </LocalizationProvider>
             </div>
+            <div>
+              <TextField
+                id="outlined-read-only-input"
+                label="Location"
+                onChange={handleChangeLocation}
+                defaultValue={doctorsLocation}
+                InputProps={{
+                  readOnly: true,
+                }}
+              />
+            </div>
             {/* location = doctor.location */}
-            <button type="submit" onClick={handleUpdateDrop} className="ml-[40.5%] text-md px-4 py-2 text-white rounded flex items-center rounded-full bg-[#97bf0f] hover:bg-[#5b740a] cursor-pointer transition-ease-in-out duration-100 sm:text-lg">Book Now</button>
+            <button type="submit" onClick={handleUpdateDrop} className="ml-[31.5%] text-md px-4 py-2 text-white rounded flex items-center rounded-full bg-[#97bf0f] hover:bg-[#5b740a] cursor-pointer transition-ease-in-out duration-100 sm:text-lg">Book Now</button>
           </form>
         </div>
       </div>
