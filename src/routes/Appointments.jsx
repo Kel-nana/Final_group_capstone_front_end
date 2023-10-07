@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { IoAdd } from 'react-icons/io5';
+import { IoMdAdd } from 'react-icons/io';
 import {
   fetchAppointments,
   deleteAppointment,
@@ -37,7 +37,7 @@ const Appointments = () => {
   };
 
   return (
-    <div className="flex bg-slate-200 h-full p-4 sm:p-0">
+    <div className="flex h-full p-4 sm:p-0">
       <Sidebar />
       <div className="flex flex-col gap-8 mt-24 mx-auto">
         <div className="flex justify-between items-center px-8 sm:px-8">
@@ -45,9 +45,9 @@ const Appointments = () => {
             Your Appointments
           </h1>
           <Link to="/new-appointment-form">
-            <button type="button" className="bg-sky-700 text-md px-4 py-2 text-white rounded flex items-center hover:bg-sky-900 hover:scale-105 transition-ease-in-out duration-100 sm:text-lg">
-              <span className="text-white">
-                <IoAdd />
+            <button type="button" className="bg-sky-700 text-md px-4 py-2 text-white rounded flex items-center rounded-full bg-[#97bf0f] hover:bg-[#5b740a] cursor-pointer transition-ease-in-out duration-100 sm:text-lg">
+              <span className="text-white text-md">
+                <IoMdAdd />
               </span>
               New Appointment
             </button>
