@@ -18,16 +18,12 @@ export default function DoctorsDropDown({ changeMessage }) {
   }, [dispatch]);
 
   useEffect(() => {
-    // console.log(selected.id);
   }, [selected]);
-
-  console.log(selected.doc_name, 'useEffect');
 
   const ClickHandler = () => {
     setTimeout(() => {
       changeMessage(selected.id);
     }, 600);
-    // changeMessage(selected.doc_name);
   };
 
   useEffect(() => {
@@ -36,19 +32,17 @@ export default function DoctorsDropDown({ changeMessage }) {
       timeOutId = setTimeout(() => {
         changeMessage(selected.id);
       }, 600);
-      console.log(selected.id, 'clickhandler');
     }
     return () => {
       clearTimeout(timeOutId); // Clear the timeout if the effect runs again
     };
   }, [selected]);
 
-  console.log(allDoctorList);
   return (
     <Listbox value={selected} onChange={setSelected}>
       {({ open }) => (
         <>
-          <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900 w-[90%]">Assigned to</Listbox.Label>
+          <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900 w-[90%]">Assign Doctor</Listbox.Label>
           <div className="relative mt-2">
             <Listbox.Button className="relative w-[82%] h-[55px] cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
               <span className="flex items-center">
@@ -85,7 +79,6 @@ export default function DoctorsDropDown({ changeMessage }) {
                             className={classNames(selected ? 'font-semibold' : 'font-normal', 'ml-3 block truncate')}
                           >
                             {doctor.doc_name}
-                            {/* {doctor.doctor.id} */}
                           </span>
                         </div>
 

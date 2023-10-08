@@ -8,6 +8,7 @@ import {
   FaVimeoV,
   FaPinterestP,
 } from 'react-icons/fa';
+import { LiaSearchSolid } from 'react-icons/lia';
 import { HiMenuAlt4 } from 'react-icons/hi';
 import { AiOutlineClose } from 'react-icons/ai';
 
@@ -62,7 +63,10 @@ const NewAppointmentMenu = () => {
           className="p-2 text-black hover:text-green-400 move-button"
           onClick={toggleMenu}
         >
-          <HiMenuAlt4 onClick={handleNav} className={`text-3xl cursor-pointer hover:text-green-400 transition-colors ${isNavOpen ? 'hidden' : 'block'}`} />
+          <div className="flex justify-between items-center h-24 w-[95vw] mx-auto text-white">
+            <HiMenuAlt4 onClick={handleNav} className={`text-3xl cursor-pointer hover:text-green-400 transition-colors ${isNavOpen ? 'hidden' : 'block'}`} />
+            <LiaSearchSolid className={`text-3xl cursor-pointer hover:text-green-400 transition-colors ${isNavOpen ? 'hidden' : 'block'}`} />
+          </div>
         </button>
       </div>
       <div
