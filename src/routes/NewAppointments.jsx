@@ -23,8 +23,7 @@ const NewAppointments = () => {
   const [message, setMessage] = useState('Hello');
   const [date, setDate] = useState(dayjs('2023-10-07'));
   const [time, setTime] = useState(dayjs('2023-10-07T15:30'));
-  const [doctorsLocation, setDoctorsLocation] = useState(null);
-
+  // const [doctorsLocation, setDoctorsLocation] = useState(null);
 
   // console.log(time, 'time value');
   // console.log(date, 'time date');
@@ -54,7 +53,7 @@ const NewAppointments = () => {
 
   useEffect(() => {
     let timeOutId3;
-    if (doctorsLocation) {
+    if (formData) {
       timeOutId3 = setTimeout(() => {
         setFormData({
           user_id: '4',
@@ -70,8 +69,6 @@ const NewAppointments = () => {
       clearTimeout(timeOutId3); // Clear the timeout if the effect runs again
     };
   }, [formData]);
-
-  
 
   const handleChangeDrop = () => {
     setTimeout(() => {
@@ -136,7 +133,7 @@ const NewAppointments = () => {
   console.log(appointmentsData, 'appointmentsData');
   return (
     <>
-      <div className="appointment-container w-full">
+      <div className="appointment-container appointment-bg">
         <Sidebar className="sidebar-doctor" />
         <div className="justify-center  align-center w-full">
           <p>Appointments</p>
@@ -158,7 +155,7 @@ const NewAppointments = () => {
           </ul>
 
           {/* Form add appointment data */}
-          <form className="w-[350px] h-[50%] ml-[35%] mt-[10%] items-center justify-center  p-4 space-y-4 bg-gray-100 rounded-lg appointment-form">
+          <form className="w-[350px] h-[63%] ml-[35%] mt-[10%] items-center justify-center  p-4 space-y-4 bg-gray-100 rounded-lg appointment-form">
             <div className="w-full ">
               <DoctorsDropDown
                 defaultValue={dayjs('2022-04-17T15:30')}
@@ -190,8 +187,7 @@ const NewAppointments = () => {
               <TextField
                 id="outlined-read-only-input"
                 label="Location"
-                onChange={handleChangeLocation}
-                defaultValue={doctorsLocation}
+                defaultValue="Location"
                 InputProps={{
                   readOnly: true,
                 }}

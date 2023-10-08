@@ -178,6 +178,36 @@
   display: block;
 }
 
+.sidebar-doctor {
+  z-index: 50;
+}
+
+.form-container.active {
+  z-index: 60; 
+}
+
+.appointment-bg {
+  position: relative; /* Make sure the parent element has a positioning context */
+  background-image: url(./assets/hospitalbgsajpg.jpg) !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -10;
+}
+
+.appointment-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 86%;
+  height: 100%;
+  background: #90b80e6f; 
+  z-index: -5;
+  pointer-events: none;
+}
+
+
+
 @media screen and (max-width: 1100px) {
   .doctors-listing {
     max-width: 800px;
@@ -205,9 +235,6 @@
   .doctor-card {
     width: calc(49% - 10px);
   }
-  /* .appointment-form{
-    width: 38% !important;
-  } */
   
 }
 
