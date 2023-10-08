@@ -178,15 +178,11 @@
   display: block;
 }
 
-.sidebar-doctor,
-.appointment-form {
-  z-index: 60 !important;
-}
-
 .appointment-bg {
   background-image: url(./assets/hospitalbgsajpg.jpg) !important;
   background-size: cover;
   background-repeat: no-repeat;
+  height: 100vh !important;
   z-index: 1;
 }
 
