@@ -136,24 +136,7 @@ const NewAppointments = () => {
       <div className="appointment-container appointment-bg">
         <Sidebar className="sidebar-doctor" />
         <div className="justify-center  align-center w-full">
-          <p>Appointments</p>
-
-          <ul>
-            {appointmentsData.map((appointment) => (
-              <li key={appointment.id}>
-                {appointment.doctor_id}
-                {appointment.appointment_date}
-                {appointment.appointment_time}
-                {/* {appointment.appointment_date}
-                {appointment.location}
-                {appointment.appointment_time} */}
-                {/* <button type="button"
-                onClick={() => handleUpdateClick(appointment)}>Update</button> */}
-                <button type="button" onClick={() => handleDeleteClick(appointment.id)}>Delete</button>
-              </li>
-            ))}
-          </ul>
-
+          <p>Book Appointments</p>
           {/* Form add appointment data */}
           <form className="w-[350px] h-[63%] ml-[35%] mt-[10%] items-center justify-center  p-4 space-y-4 bg-gray-100 rounded-lg appointment-form">
             <div className="w-full ">
