@@ -1,0 +1,102 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import {
+  FaTwitter,
+  FaFacebookF,
+  FaGooglePlusG,
+  FaVimeoV,
+  FaPinterestP,
+} from 'react-icons/fa';
+import { HiMenuAlt4 } from 'react-icons/hi';
+import { AiOutlineClose } from 'react-icons/ai';
+
+const socialIcons = [
+  {
+    id: 1,
+    name: FaTwitter,
+  },
+  {
+    id: 2,
+    name: FaFacebookF,
+  },
+  {
+    id: 3,
+    name: FaGooglePlusG,
+  },
+  {
+    id: 4,
+    name: FaVimeoV,
+  },
+  {
+    id: 5,
+    name: FaPinterestP,
+  },
+];
+
+const NewAppointmentMenu = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const menuItems = [
+    { label: 'Home', to: '/' },
+    { label: 'DOCTORS', to: '/doctors' },
+    { label: 'APPOINTMENTS', to: '/appointments' },
+    { label: 'NEW APPOINTMENTS', to: '/new-appointment' },
+  ];
+
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const handleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+
+  return (
+    <>
+      <div className="p-4 absolute">
+        <button
+          type="button"
+          className="p-2 text-black hover:text-green-400 move-button"
+          onClick={toggleMenu}
+        >
+          <HiMenuAlt4 onClick={handleNav} className={`text-3xl cursor-pointer hover:text-green-400 transition-colors ${isNavOpen ? 'hidden' : 'block'}`} />
+        </button>
+      </div>
+      <div
+        className={`fixed left-0 top-0 w-[34%] h-full border-r bg-black z-10 opacity-65 border-r-gray-900 text-white transition-transform ease-in-out duration-500 ${
+          isMenuOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        <ul className="pt-24 uppercase">
+          <li className="py-4 px-8 cursor-pointer hover:text-green-400 transition-colors flex justify-center " onKeyDown={handleNav} onClick={handleNav}>
+            <AiOutlineClose onClick={toggleMenu} className="text-3xl" />
+          </li>
+          {menuItems.map((item, index) => (
+            <li
+              key={item.label}
+              className={`py-4 px-8 ${
+                index < menuItems.length - 1 ? 'border-b border-white-700' : ''
+              } cursor-pointer hover:text-green-400 transition-colors`}
+            >
+              <Link to={item.to} className="block w-full">
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <ul className="flex py-24 flex-row self-end align-center justify-center">
+          {socialIcons.map((icon) => (
+            <li key={icon.id} className="p-[5px]">
+              <icon.name className="cursor-pointer hover:text-green-400 transition-colors" />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
+  );
+};
+
+export default NewAppointmentMenu;

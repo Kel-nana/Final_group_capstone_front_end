@@ -9,7 +9,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import {
   fetchAppointments, addAppointment,
 } from '../redux/reducer/appointmentSlice';
-import Sidebar from './Sidebar';
+import NewAppointmentMenu from '../components/NewAppointmentMenu';
 import DoctorsDropDown from '../components/DoctorsDropDown';
 import 'react-datepicker/dist/react-datepicker.css';
 import { doctorData } from '../redux/reducer/doctorSlice';
@@ -129,7 +129,7 @@ const NewAppointments = () => {
   return (
     <>
       <div className="appointment-container appointment-bg green-tint">
-        <Sidebar className="sidebar-doctor" />
+        <NewAppointmentMenu />
         <div className="justify-center  align-center w-full">
           <p>Book Appointments</p>
           {/* Form add appointment data */}
@@ -141,6 +141,8 @@ const NewAppointments = () => {
                 onChange={handleChangeDrop}
               />
               <p>{message}</p>
+
+              message == doctor.id ? doctor.location : null
             </div>
             <div className="date-picker">
               <LocalizationProvider dateAdapter={AdapterDayjs}>
