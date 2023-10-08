@@ -26,13 +26,13 @@
   transition: all 0.4s ease;
 } */
 
-.bounce:active {
-  transform: scale(0.7);
-}
-
 .bounce {
   animation: bounceAnimation 0.6s ease 3;
   box-shadow: rgb(38, 57, 77) 0 20px 30px -10px !important;
+}
+
+.bounce:active {
+  transform: scale(0.7);
 }
 
 @keyframes bounceAnimation {
@@ -138,20 +138,19 @@
   margin-top: 20px;
 }
 
-.social-icon:hover {
-  background-color: #4ecca3;
-}
-
 .social-icon {
   margin: 0 10px;
   width: 25px;
   padding: 5px;
-  border: 1px solid #e3e3e3;
   border-radius: 50%;
   cursor: pointer;
   background-color: transparent;
   color: #746f6f !important;
   border: 1px solid #a59f9f;
+}
+
+.social-icon:hover {
+  background-color: #4ecca3;
 }
 
 .forward-button {
