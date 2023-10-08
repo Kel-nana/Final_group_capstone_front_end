@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import {
-  fetchAppointments, addAppointment, deleteAppointment,
+  fetchAppointments, addAppointment,
 } from '../redux/reducer/appointmentSlice';
 import Sidebar from './Sidebar';
 import DoctorsDropDown from '../components/DoctorsDropDown';
@@ -120,11 +120,6 @@ const NewAppointments = () => {
     console.log(formData, 'handleUpdateDropdis');
   };
 
-  const handleDeleteClick = (appointmentId) => {
-    // Dispatch the deleteAppointment action with the appointmentId
-    dispatch(deleteAppointment(appointmentId));
-  };
-
   //   Getting the appointments data
   useEffect(() => {
     dispatch(fetchAppointments());
@@ -133,7 +128,7 @@ const NewAppointments = () => {
   console.log(appointmentsData, 'appointmentsData');
   return (
     <>
-      <div className="appointment-container appointment-bg">
+      <div className="appointment-container appointment-bg green-tint">
         <Sidebar className="sidebar-doctor" />
         <div className="justify-center  align-center w-full">
           <p>Book Appointments</p>
