@@ -18,8 +18,7 @@ export default function DoctorsDropDown({ changeMessage }) {
     dispatch(doctorData());
   }, [dispatch]);
 
-  useEffect(() => {
-  }, [selected]);
+  useEffect(() => {}, [selected]);
 
   const ClickHandler = () => {
     setTimeout(() => {
@@ -44,13 +43,20 @@ export default function DoctorsDropDown({ changeMessage }) {
       {({ open }) => (
         <>
           <div className="relative mt-2">
-            <Listbox.Button className="relative w-[82%] h-[55px] cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
+            <Listbox.Button className="relative w-[100%] h-[58px] cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
               <span className="flex items-center">
-                <img src={selected.profile_pic} alt="" className="h-5 w-5 flex-shrink-0 rounded-full" />
+                <img
+                  src={selected.profile_pic}
+                  alt=""
+                  className="h-5 w-5 flex-shrink-0 rounded-full"
+                />
                 <span className="ml-3 block truncate">{selected.doc_name}</span>
               </span>
               <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                <ChevronUpDownIcon
+                  className="h-5 w-5 text-gray-400"
+                  aria-hidden="true"
+                />
               </span>
             </Listbox.Button>
 
@@ -73,10 +79,20 @@ export default function DoctorsDropDown({ changeMessage }) {
                   >
                     {({ selected, active }) => (
                       <>
-                        <div className="flex items-center" onClick={ClickHandler}>
-                          <img src={doctor.profile_pic} alt="" className="h-5 w-5 flex-shrink-0 rounded-full" />
+                        <div
+                          className="flex items-center"
+                          onClick={ClickHandler}
+                        >
+                          <img
+                            src={doctor.profile_pic}
+                            alt=""
+                            className="h-5 w-5 flex-shrink-0 rounded-full"
+                          />
                           <span
-                            className={classNames(selected ? 'font-semibold' : 'font-normal', 'ml-3 block truncate')}
+                            className={classNames(
+                              selected ? 'font-semibold' : 'font-normal',
+                              'ml-3 block truncate',
+                            )}
                           >
                             {doctor.doc_name}
                           </span>
