@@ -140,7 +140,7 @@ const Sidebar = () => {
           ))}
         </ul>
       </div>
-      <div className="text-[#181818] w-[20%] min-h-screen py-2 border-r-2 border-r-[#f3f3f3] overflow-x-hidden hidden lg:grid bg-white">
+      <div className="text-[#181818] w-[20%] min-h-screen py-2 border-r-2 border-r-[#f3f3f3] overflow-none hidden lg:grid bg-white">
         <ul className="flex flex-col py-16 justify-center items-center text-base sm:text-lg md:text-lg lg:text-xl xl:text-2xl">
           <button
             type="button"
