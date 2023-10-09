@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { Fragment, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Listbox, Transition } from '@headlessui/react';
@@ -18,16 +19,12 @@ export default function DoctorsDropDown({ changeMessage }) {
   }, [dispatch]);
 
   useEffect(() => {
-    // console.log(selected.id);
   }, [selected]);
-
-  console.log(selected.doc_name, 'useEffect');
 
   const ClickHandler = () => {
     setTimeout(() => {
       changeMessage(selected.id);
     }, 600);
-    // changeMessage(selected.doc_name);
   };
 
   useEffect(() => {
@@ -36,14 +33,12 @@ export default function DoctorsDropDown({ changeMessage }) {
       timeOutId = setTimeout(() => {
         changeMessage(selected.id);
       }, 600);
-      console.log(selected.id, 'clickhandler');
     }
     return () => {
       clearTimeout(timeOutId); // Clear the timeout if the effect runs again
     };
   }, [selected]);
 
-  console.log(allDoctorList);
   return (
     <Listbox value={selected} onChange={setSelected}>
       {({ open }) => (
@@ -84,7 +79,6 @@ export default function DoctorsDropDown({ changeMessage }) {
                             className={classNames(selected ? 'font-semibold' : 'font-normal', 'ml-3 block truncate')}
                           >
                             {doctor.doc_name}
-                            {/* {doctor.doctor.id} */}
                           </span>
                         </div>
 

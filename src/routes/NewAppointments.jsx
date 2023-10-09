@@ -135,7 +135,7 @@ const NewAppointments = () => {
         <div className="w-[20%]">
           <Sidebar className="sidebar-doctor" />
         </div>
-        <div className="bg-grey-lighter min-h-screen flex flex-col w-[80%] h-[100%]">
+        <div className="bg-grey-lighter min-h-screen flex flex-col w-[80%] h-[]">
           <div className="new-appointment mx-auto flex-1 flex flex-col items-center justify-center px-2">
             <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
               <p className="mb-8 text-3xl text-center">Book Appointments</p>
