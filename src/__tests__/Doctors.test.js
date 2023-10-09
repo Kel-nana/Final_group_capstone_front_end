@@ -4,8 +4,8 @@ import { Provider } from "react-redux";
 import store from "../redux/store";
 import Doctors from "../routes/Doctors";
 
-describe("test if country info renders correctly", () => {
-  test("country info snapshot", () => {
+describe("Doctors", () => {
+  test("Should render doctors list correctly", () => {
     const { container } = render(
       <Provider store={store}>
         <BrowserRouter>
