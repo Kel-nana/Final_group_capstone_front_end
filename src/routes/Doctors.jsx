@@ -24,7 +24,6 @@ const Doctors = () => {
 
   // Render each doctor's information
   const doctorsList = allDoctorList.map((doctor, index) => (
-
     <div
       className={`doctor-card ${index === 7 ? 'first_doc' : ''}`}
       key={doctor.id}
@@ -103,8 +102,10 @@ const Doctors = () => {
   return (
     <>
       <div className="doctor-container">
-        <Sidebar className="sidebar-doctor" />
-        <div className="doctors-main-container">
+        <div className="w-[20%]">
+          <Sidebar className="sidebar-doctor" />
+        </div>
+        <div className="doctors-main-container w-[80%]">
           <button type="button" onClick={backArrow}>
             <img
               src={backwardIcon}

@@ -100,14 +100,19 @@ const Sidebar = () => {
   };
 
   return (
-    <>
+    <div className="h-[100%]">
       <div className="lg:hidden p-4 absolute">
         <button
           type="button"
           className="p-2 text-black hover:text-green-400 move-button"
           onClick={toggleMenu}
         >
-          <HiMenuAlt4 onClick={handleNav} className={`text-3xl cursor-pointer hover:text-green-400 transition-colors ${isNavOpen ? 'hidden' : 'block'}`} />
+          <HiMenuAlt4
+            onClick={handleNav}
+            className={`text-3xl cursor-pointer hover:text-green-400 transition-colors ${
+              isNavOpen ? 'hidden' : 'block'
+            }`}
+          />
         </button>
       </div>
       <div
@@ -116,7 +121,11 @@ const Sidebar = () => {
         }`}
       >
         <ul className="pt-24 uppercase">
-          <li className="py-4 px-8 cursor-pointer hover:text-green-400 transition-colors flex justify-center " onKeyDown={handleNav} onClick={handleNav}>
+          <li
+            className="py-4 px-8 cursor-pointer hover:text-green-400 transition-colors flex justify-center "
+            onKeyDown={handleNav}
+            onClick={handleNav}
+          >
             <AiOutlineClose onClick={toggleMenu} className="text-3xl" />
           </li>
           {menuItems.map((item, index) => (
@@ -140,7 +149,7 @@ const Sidebar = () => {
           ))}
         </ul>
       </div>
-      <div className="text-[#181818] w-[20%] min-h-screen py-2 border-r-2 border-r-[#f3f3f3] overflow-none hidden lg:grid bg-white">
+      <div className="text-[#181818] w-[100%] min-h-screen py-2 border-r-2 border-r-[#f3f3f3] overflow-none hidden lg:grid bg-white">
         <ul className="flex flex-col py-16 justify-center items-center text-base sm:text-lg md:text-lg lg:text-xl xl:text-2xl">
           <button
             type="button"
@@ -163,9 +172,7 @@ const Sidebar = () => {
             <li
               key={item.label}
               className={`w-full text-center py-4 mb-4 hover:text-white hover:bg-[#97bf0f] transition-all ${
-                item.label === 'Home'
-                  ? 'hidden'
-                  : 'block'
+                item.label === 'Home' ? 'hidden' : 'block'
               }`}
             >
               <Link to={item.to} className="block w-full">
@@ -182,7 +189,7 @@ const Sidebar = () => {
           ))}
         </ul>
       </div>
-    </>
+    </div>
   );
 };
 
