@@ -141,38 +141,42 @@ const NewAppointments = () => {
               <p className="mb-8 text-3xl text-center">Book Appointments</p>
               {/* Form add appointment data */}
               <form>
-                <div className="block border border-grey-light w-full p-3 rounded mb-4">
+                <div className="block border border-white w-full rounded mb-4">
                   <DoctorsDropDown
                     defaultValue={dayjs('2022-04-17T15:30')}
                     changeMessage={changeMessage}
                     onChange={handleChangeDrop}
+                    className="w-full"
                   />
-                  <p>{message}</p>
                 </div>
-                <div className="date-picker block border border-grey-light w-full p-3 rounded mb-4">
+                <div className="block border border-white w-full rounded mb-4">
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DatePicker
                       label="Appointment Date"
                       onChange={(date) => setDate(date)}
                       onClick={handleChangeDate}
+                      className="w-full h-full"
                     />
                   </LocalizationProvider>
                 </div>
-                <div className="time-picker block border border-grey-light w-full p-3 rounded mb-4">
-                  {/* <TimePicker onChange={(date) => setDate(date)} onClick={handleChangeDate} /> */}
+                <div className="block border border-white w-full rounded mb-4">
+                  {/* <TimePicker onChange={(date) => setDate(date)}
+                   onClick={handleChangeDate} /> */}
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <TimePicker
                       label="Appointment Time"
                       onChange={(time) => setTime(time)}
                       onClick={handleChangeTime}
+                      className="w-full"
                     />
                   </LocalizationProvider>
                 </div>
-                <div className="date-picker block border border-grey-light w-full p-3 rounded mb-4">
+                <div className="block border border-grey-light w-full rounded mb-4">
                   <TextField
                     id="outlined-read-only-input"
                     label="Location"
                     defaultValue="Location"
+                    className="w-full"
                     InputProps={{
                       readOnly: true,
                     }}
