@@ -21,7 +21,7 @@ const NewAppointments = () => {
   }, [dispatch]);
 
   // setting the values to be passed down
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState(null);
   const [date, setDate] = useState(dayjs('2023-10-07'));
   const [time, setTime] = useState(dayjs('2023-10-07T15:30'));
 
@@ -37,7 +37,7 @@ const NewAppointments = () => {
     const { location } = doctor;
     doctorsLocation = location;
   } else {
-    doctorsLocation = 'Location';
+    doctorsLocation = null;
   }
 
   // passing props from child to parent component
@@ -141,7 +141,7 @@ const NewAppointments = () => {
               </LocalizationProvider>
             </div>
             <div>
-              <p className=" text-md px-4 py-2 text-white rounded flex items-center rounded-full bg-[#97bf0f] hover:bg-[#5b740a] cursor-pointer transition-ease-in-out duration-100 sm:text-lg">{doctorsLocation}</p>
+              <p>{doctorsLocation}</p>
             </div>
             <button type="submit" onClick={handleUpdateDrop} className=" text-md px-4 py-2 text-white rounded flex items-center rounded-full bg-[#97bf0f] hover:bg-[#5b740a] cursor-pointer transition-ease-in-out duration-100 sm:text-lg">Book Now</button>
           </form>
