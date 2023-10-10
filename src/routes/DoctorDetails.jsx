@@ -1,9 +1,10 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { useParams, Link } from "react-router-dom";
-import { IoIosArrowDropright, IoIosArrowDropleft } from "react-icons/io";
-import Sidebar from "./Sidebar";
-import "../assets/styles/doctordetails.css";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { useParams, Link } from 'react-router-dom';
+import { IoIosArrowDropright, IoIosArrowDropleft } from 'react-icons/io';
+import Sidebar from './Sidebar';
+import '../assets/styles/doctordetails.css';
+
 const DoctorDetails = () => {
   const { id } = useParams();
   const doctorsList = useSelector((state) => state.doctorsList);

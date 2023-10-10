@@ -1,15 +1,15 @@
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import Appointments from '../routes/Appointments';
 import store from '../redux/store';
-import Doctors from '../routes/Doctors';
 
-describe('Doctors', () => {
-  test('Should render doctors list correctly', () => {
+describe('Appointmetns component', () => {
+  it('should render correctly', () => {
     const { container } = render(
       <Provider store={store}>
         <BrowserRouter>
-          <Doctors />
+          <Appointments />
         </BrowserRouter>
       </Provider>,
     );
