@@ -178,13 +178,13 @@
   display: block;
 }
 
-/* .appointment-bg {
-  /* background-image: url(./assets/hospitalbgsajpg.jpg) !important; */
-  /* background-size: cover; */
-  /* background-repeat: no-repeat; */
-  /* height: 100vh !important; */
-  /* z-index: 1;
-} */
+.new-appointment-container {
+    background-image: url(./assets/appointB.jpg) !important; 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    height: 100vh !important;
+    z-index: 1;
+}
 
 /* .appointment-bg::before {
   content: "";
