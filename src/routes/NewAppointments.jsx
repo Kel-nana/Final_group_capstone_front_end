@@ -97,7 +97,7 @@ const NewAppointment = () => {
           <input
             type="date"
             id="date"
-            className="rounded-3xl py-[7px] px-[35px] border-gray-300 border-2"
+            className="rounded-3xl py-[7px] px-[35px] border-gray-300 border-2 form-background text-white font-bold"
             value={date}
             onChange={(e) => setDate(e.target.value)}
           />
@@ -106,13 +106,13 @@ const NewAppointment = () => {
           <input
             type="time"
             id="time"
-            className="rounded-3xl py-[7px] px-[55px] px-[15px] border-gray-300 border-2"
+            className="rounded-3xl py-[7px] px-[55px] px-[15px] border-gray-300 border-2 form-background text-white font-bold"
             value={time}
             onChange={(e) => setTime(e.target.value)}
           />
         </div>
         <div className="pl-[5%]">
-          <button type="submit" onClick={handleSubmit} className="w-[15vw] h-[6.8vh] rounded-3xl  border-gray-300 border-2 animate-pulse justify-center  ">Book Now </button>
+          <button type="submit" onClick={handleSubmit} className="w-[15vw] h-[6.8vh] rounded-3xl  border-gray-300 border-2 animate-pulse justify-center  bg-white form-text text-white font-bold">Book Now </button>
 
         </div>
       </form>

@@ -8,7 +8,7 @@ const DoctorDropdown = ({ allDoctorList, selectedDoctorIndex, onChange }) => (
     <select
       value={selectedDoctorIndex !== null ? selectedDoctorIndex : ''}
       onChange={(e) => onChange(e.target.value !== '' ? parseInt(e.target.value, 10) : null)}
-      className="rounded-3xl py-[7px] px-[15px] border-gray-300 border-2"
+      className="rounded-3xl py-[7px] px-[15px] border-gray-300 border-2 form-background text-white font-bold"
       id="doc-select"
     >
       <option value="">Select a doctor</option>
