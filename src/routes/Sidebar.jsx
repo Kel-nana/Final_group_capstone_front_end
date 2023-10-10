@@ -1,17 +1,17 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   FaTwitter,
   FaFacebookF,
   FaGooglePlusG,
   FaVimeoV,
   FaPinterestP,
-} from "react-icons/fa";
-import { HiMenuAlt4 } from "react-icons/hi";
-import { AiOutlineClose } from "react-icons/ai";
-import DocLogo from "../assets/logo.png";
-import SignOut from "./SignOut";
+} from 'react-icons/fa';
+import { HiMenuAlt4 } from 'react-icons/hi';
+import { AiOutlineClose } from 'react-icons/ai';
+import DocLogo from '../assets/logo.png';
+import SignOut from './SignOut';
 
 const socialIcons = [
   {
@@ -44,13 +44,13 @@ const Sidebar = () => {
   };
 
   const menuItems = [
-    { label: "Home", to: "/" },
-    { label: "DOCTORS", to: "/doctors" },
-    { label: "APPOINTMENTS", to: "/appointments" },
+    { label: 'Home', to: '/' },
+    { label: 'DOCTORS', to: '/doctors' },
+    { label: 'APPOINTMENTS', to: '/appointments' },
   ];
 
   const [activeBounce, setActiveBounce] = useState(false);
-  const [activeLink, setActivelink] = useState("");
+  const [activeLink, setActivelink] = useState('');
   const navigate = useNavigate();
 
   const BounceEffect = () => {
@@ -60,8 +60,8 @@ const Sidebar = () => {
   const DelayLink = (e) => {
     e.preventDefault();
     setTimeout(() => {
-      setActivelink("/");
-      navigate("/");
+      setActivelink('/');
+      navigate('/');
     }, 600);
   };
 
@@ -69,7 +69,7 @@ const Sidebar = () => {
     let timeOutId;
     if (activeLink) {
       timeOutId = setTimeout(() => {
-        setActivelink("/");
+        setActivelink('/');
       }, 600);
     }
     return () => {
@@ -91,7 +91,7 @@ const Sidebar = () => {
     return () => {};
   }, [activeBounce]);
 
-  const setPath = activeLink || "/";
+  const setPath = activeLink || '/';
 
   const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -110,14 +110,14 @@ const Sidebar = () => {
           <HiMenuAlt4
             onClick={handleNav}
             className={`text-3xl cursor-pointer hover:text-green-400 transition-colors ${
-              isNavOpen ? "hidden" : "block"
+              isNavOpen ? 'hidden' : 'block'
             }`}
           />
         </button>
       </div>
       <div
         className={`fixed left-0 top-0 w-full h-full border-r bg-black z-10 opacity-65 border-r-gray-900 text-white transition-transform ease-in-out duration-500 ${
-          isMenuOpen ? "translate-x-0" : "-translate-x-full"
+          isMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         <ul className="pt-24 uppercase">
@@ -132,7 +132,7 @@ const Sidebar = () => {
             <li
               key={item.label}
               className={`py-4 px-8 ${
-                index < menuItems.length - 1 ? "border-b border-white-700" : ""
+                index < menuItems.length - 1 ? 'border-b border-white-700' : ''
               } cursor-pointer hover:text-green-400 transition-colors`}
             >
               <Link to={item.to} className="block w-full">
@@ -140,6 +140,7 @@ const Sidebar = () => {
               </Link>
             </li>
           ))}
+          <SignOut />
         </ul>
         <ul className="flex py-24 flex-row self-end align-center justify-center">
           {socialIcons.map((icon) => (
@@ -154,11 +155,11 @@ const Sidebar = () => {
           <button
             type="button"
             className={`logo w-[80%] ml-[2%] mb-8${
-              activeBounce ? "bounce" : ""
+              activeBounce ? 'bounce' : ''
             }`}
             onClick={BounceEffect}
             onKeyDown={(e) => {
-              if (e.key === "Enter") {
+              if (e.key === 'Enter') {
                 BounceEffect(); // Perform the same action as onClick for keyboard users
               }
             }}
@@ -168,12 +169,12 @@ const Sidebar = () => {
               <img src={DocLogo} alt="Logo img" className="" />
             </Link>
           </button>
-          <SignOut />
+
           {menuItems.map((item) => (
             <li
               key={item.label}
               className={`w-full text-center py-4 mb-4 hover:text-white hover:bg-[#97bf0f] transition-all ${
-                item.label === "Home" ? "hidden" : "block"
+                item.label === 'Home' ? 'hidden' : 'block'
               }`}
             >
               <Link to={item.to} className="block w-full">
@@ -181,6 +182,7 @@ const Sidebar = () => {
               </Link>
             </li>
           ))}
+          <SignOut />
         </ul>
         <ul className="flex py-24 flex-row self-end align-center justify-center">
           {socialIcons.map((icon) => (

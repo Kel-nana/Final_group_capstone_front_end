@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   AiOutlineHome,
   AiOutlineEye,
   AiOutlineEyeInvisible,
-} from "react-icons/ai";
-import axios from "axios";
+} from 'react-icons/ai';
+import axios from 'axios';
 
 function Login() {
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   const [showPassword, setShowPassword] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
 
   const navigate = useNavigate();
 
@@ -33,33 +33,33 @@ function Login() {
 
       // Make a POST request using Axios with the JSON data
       const response = await axios.post(
-        "https://doctalk-r977.onrender.com/users/sign_in",
+        'https://doctalk-r977.onrender.com/users/sign_in',
         jsonData,
         {
           headers: {
-            "Content-Type": "application/json", // Set the content type to JSON
+            'Content-Type': 'application/json', // Set the content type to JSON
           },
-        }
+        },
       );
       console.log(response);
       // Handle the response as needed
       if (response.status === 200) {
-        setMessage("Login successfull");
-        const token = response.headers.get("Authorization");
+        setMessage('Login successfull');
+        const token = response.headers.get('Authorization');
         // setMessage('Account created successfully'); // Set message to true
         // Clear the input field
-        localStorage.setItem("token", token);
+        localStorage.setItem('token', token);
         setFormData({
-          email: "",
-          password: "",
+          email: '',
+          password: '',
         });
         setShowSuccessModal(true);
         // navigate("/doctors");
       } else {
-        console.error("Authentication failed. Please try again");
+        console.error('Authentication failed. Please try again');
       }
     } catch (error) {
-      console.error("An error occurred:", error);
+      console.error('An error occurred:', error);
     }
   };
 
@@ -75,7 +75,7 @@ function Login() {
 
   const closeSuccessModal = () => {
     setShowSuccessModal(false);
-    navigate("/doctors");
+    navigate('/doctors');
   };
 
   return (
@@ -97,7 +97,7 @@ function Login() {
 
                 <div className="flex items-stretch justify-between border border-grey-light items-stretch w-full rounded mb-4">
                   <input
-                    type={showPassword ? "text" : "password"}
+                    type={showPassword ? 'text' : 'password'}
                     className="focus:outline-none w-3/4 p-3"
                     name="password"
                     value={formData.password}
@@ -121,7 +121,8 @@ function Login() {
                       type="checkbox"
                       defaultValue=""
                       className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 hover:cursor-pointer"
-                    />{" "}
+                    />
+                    {' '}
                     {/* eslint-disable jsx-a11y/label-has-associated-control */}
                     <label
                       className="inline-block pl-[0.15rem] hover:cursor-pointer"
@@ -141,7 +142,8 @@ function Login() {
               </form>
             </div>
             <div className="text-grey-dark mt-6">
-              Don&apos;t have an account?{" "}
+              Don&apos;t have an account?
+              {' '}
               <a
                 className="no-underline border-b border-blue text-blue-500"
                 href="../sign_up/"
@@ -155,7 +157,7 @@ function Login() {
                 className="no-underline border-b border-blue text-blue-500"
                 href="/"
               >
-                {" "}
+                {' '}
                 <AiOutlineHome className="w-6 h-6" />
               </a>
             </div>
@@ -171,6 +173,7 @@ function Login() {
               <button
                 className="bg-green-400 text-white px-4 py-2 rounded"
                 onClick={closeSuccessModal}
+                type="submit"
               >
                 OK
               </button>
