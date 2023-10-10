@@ -1,23 +1,25 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState } from 'react';
+import axios from 'axios';
 
 const AddDoctorForm = () => {
   const [doctorData, setDoctorData] = useState({
-    doc_name: "",
-    education: "",
-    bio: "",
+    doc_name: '',
+    education: '',
+    bio: '',
     years_of_experience: 0,
     profile_pic: null, // Initialize as null
   });
 
-  const [errorMessage, setErrorMessage] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleInputChange = (e) => {
-    const { name, value, type, files } = e.target;
+    const {
+      name, value, type, files,
+    } = e.target;
 
     // Handle file input separately
-    if (type === "file") {
+    if (type === 'file') {
       setDoctorData({
         ...doctorData,
         [name]: files[0], // Use the first selected file
@@ -34,43 +36,43 @@ const AddDoctorForm = () => {
     e.preventDefault();
 
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem('token');
       const formData = new FormData();
-      formData.append("doctor[doc_name]", doctorData.doc_name);
-      formData.append("doctor[education]", doctorData.education);
-      formData.append("doctor[bio]", doctorData.bio);
+      formData.append('doctor[doc_name]', doctorData.doc_name);
+      formData.append('doctor[education]', doctorData.education);
+      formData.append('doctor[bio]', doctorData.bio);
       formData.append(
-        "doctor[years_of_experience]",
-        doctorData.years_of_experience
+        'doctor[years_of_experience]',
+        doctorData.years_of_experience,
       );
-      formData.append("doctor[profile_pic]", doctorData.profile_pic);
+      formData.append('doctor[profile_pic]', doctorData.profile_pic);
 
       const headers = {
-        "Content-Type": "multipart/form-data", // Use multipart/form-data for file upload
+        'Content-Type': 'multipart/form-data', // Use multipart/form-data for file upload
         Authorization: token,
       };
 
       const response = await axios.post(
-        "https://doctalk-r977.onrender.com/api/v1/doctors",
+        'https://doctalk-r977.onrender.com/api/v1/doctors',
         formData,
-        { headers }
+        { headers },
       );
 
       // Handle success, e.g., show a success message or redirect
-      setSuccessMessage("Doctor added successfully");
+      setSuccessMessage('Doctor added successfully');
 
       // Clear form
       setDoctorData({
-        doc_name: "",
-        education: "",
-        bio: "",
+        doc_name: '',
+        education: '',
+        bio: '',
         years_of_experience: 0,
         profile_pic: null, // Reset the file input
-        location: " ",
+        location: ' ',
       });
     } catch (error) {
       // Handle error, e.g., display an error message
-      setErrorMessage("Error adding doctor: " + error.message);
+      setErrorMessage(`Error adding doctor: ${error.message}`);
     }
   };
 
