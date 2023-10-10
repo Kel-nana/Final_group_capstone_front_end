@@ -33,8 +33,16 @@ const NewAppointment = () => {
   };
   
   const doctor = allDoctorList.find((doctor) => doctor.id === selectedDoctorIndex);
+  let doctorsLocation;
+  if (doctor) {
+    // access the property of doctors object
+    const { location } = doctor;
+    doctorsLocation = location;
+  } else {
+    doctorsLocation = null;
+  }
   
-  console.log(date, time, selectedDoctorIndex, doctor, 'update');
+  console.log(date, time, selectedDoctorIndex, doctorsLocation, 'update');
 
   useEffect(() => {
     dispatch(doctorData());
@@ -47,7 +55,7 @@ const NewAppointment = () => {
       doctor_id: selectedDoctorIndex,
       appointment_time: time,
       appointment_date: date,
-      location: 'israel',
+      location: doctorsLocation,
       // doctor_id: selectedDoctorIndex,
       // appointment_time: time,
       // appointment_date: date,
