@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { addAppointment } from '../redux/reducer/appointmentSlice';
 import DoctorDropdown from '../components/DoctorsDropDown';
+import NewAppointmentMenu from '../components/NewAppointmentMenu';
 import { doctorData } from '../redux/reducer/doctorSlice';
 
 const NewAppointment = () => {
@@ -24,14 +25,13 @@ const NewAppointment = () => {
     // Add more fields as needed
   });
 
-  
   const allDoctorList = useSelector((state) => state.doctorsList.allDoctors);
   console.log(allDoctorList);
   const handleDoctorChange = (doctorIndex) => {
     setSelectedDoctorIndex(doctorIndex);
     // console.log(doctorIndex);
   };
-  
+
   const doctor = allDoctorList.find((doctor) => doctor.id === selectedDoctorIndex);
   let doctorsLocation;
   if (doctor) {
@@ -41,7 +41,7 @@ const NewAppointment = () => {
   } else {
     doctorsLocation = null;
   }
-  
+
   console.log(date, time, selectedDoctorIndex, doctorsLocation, 'update');
 
   useEffect(() => {
@@ -65,7 +65,8 @@ const NewAppointment = () => {
   };
 
   return (
-    <div>
+    <div className="new-appointment-container">
+      <NewAppointmentMenu />
       <h1>New Appointment</h1>
       <form onSubmit={handleSubmit}>
         <DoctorDropdown
