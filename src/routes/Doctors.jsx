@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import facebookIcon from '../assets/facebook.png';
-import twitterIcon from '../assets/twitter.png';
-import linkedinIcon from '../assets/linkedin.png';
-import forwardIcon from '../assets/forward.png';
-import backwardIcon from '../assets/backward.png';
-import Sidebar from './Sidebar';
-import { doctorData } from '../redux/reducer/doctorSlice';
+import React, { useEffect, useState } from "react";
+import AddDoctorForm from "./AddDoctor";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import facebookIcon from "../assets/facebook.png";
+import twitterIcon from "../assets/twitter.png";
+import linkedinIcon from "../assets/linkedin.png";
+import forwardIcon from "../assets/forward.png";
+import backwardIcon from "../assets/backward.png";
+import Sidebar from "./Sidebar";
+import { doctorData } from "../redux/reducer/doctorSlice";
 
 const Doctors = () => {
   const allDoctorList = useSelector((state) => state.doctorsList.allDoctors);
@@ -24,9 +25,8 @@ const Doctors = () => {
 
   // Render each doctor's information
   const doctorsList = allDoctorList.map((doctor, index) => (
-
     <div
-      className={`doctor-card ${index === 7 ? 'first_doc' : ''}`}
+      className={`doctor-card ${index === 7 ? "first_doc" : ""}`}
       key={doctor.id}
     >
       <Link to={`/doctor/${doctor.id}`} key={doctor.id}>
@@ -53,7 +53,7 @@ const Doctors = () => {
   ));
 
   const scrollList = (direction) => {
-    const container = document.querySelector('.doctors-listing');
+    const container = document.querySelector(".doctors-listing");
 
     if (container) {
       const currentScroll = container.scrollLeft;
@@ -61,7 +61,7 @@ const Doctors = () => {
       const scrollAmount = 282;
 
       let targetScroll;
-      if (direction === 'forward') {
+      if (direction === "forward") {
         targetScroll = Math.min(currentScroll + scrollAmount, maxScroll);
       } else {
         targetScroll = Math.max(currentScroll - scrollAmount, 0);
@@ -69,20 +69,20 @@ const Doctors = () => {
 
       container.scrollTo({
         left: targetScroll,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     }
   };
 
   const forwardArrow = () => {
-    scrollList('forward');
-    setActiveButton('backward');
+    scrollList("forward");
+    setActiveButton("backward");
     setActiveBounce(true);
   };
 
   const backArrow = () => {
-    scrollList('backward');
-    setActiveButton('forward');
+    scrollList("backward");
+    setActiveButton("forward");
     setActiveBounce(true);
   };
 
@@ -110,8 +110,8 @@ const Doctors = () => {
               src={backwardIcon}
               alt="Forward Icon"
               className={`return-back-btn ${
-                activeButton === 'backward' ? 'grey' : ''
-              } ${activeBounce && activeButton === 'forward' ? 'bounce' : ''}`}
+                activeButton === "backward" ? "grey" : ""
+              } ${activeBounce && activeButton === "forward" ? "bounce" : ""}`}
             />
           </button>
           <div className="doctor-list-container">
@@ -128,8 +128,8 @@ const Doctors = () => {
               src={forwardIcon}
               alt="Forward Icon"
               className={`forward-button ${
-                activeButton === 'forward' ? 'grey' : ''
-              } ${activeBounce && activeButton === 'backward' ? 'bounce' : ''}`}
+                activeButton === "forward" ? "grey" : ""
+              } ${activeBounce && activeButton === "backward" ? "bounce" : ""}`}
             />
           </button>
         </div>
