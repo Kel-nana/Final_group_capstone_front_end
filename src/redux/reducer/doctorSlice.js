@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+// const axios = require("axios");
 
 const url = 'https://doctalk-r977.onrender.com/api/v1/doctors/';
 const headers = {
