@@ -14,10 +14,9 @@ const NewAppointment = () => {
   const [selectedDoctorIndex, setSelectedDoctorIndex] = useState(null);
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
-  // const [location, setLocation] = useState('');
+
   const [formData, setFormData] = useState({
     // Initialize your form fields here
-    // user_id: '2',
     doctor_id: '',
     appointment_time: '',
     appointment_date: '',
@@ -26,10 +25,9 @@ const NewAppointment = () => {
   });
 
   const allDoctorList = useSelector((state) => state.doctorsList.allDoctors);
-  console.log(allDoctorList);
+
   const handleDoctorChange = (doctorIndex) => {
     setSelectedDoctorIndex(doctorIndex);
-    // console.log(doctorIndex);
   };
 
   const doctor = allDoctorList.find((doctor) => doctor.id === selectedDoctorIndex);
@@ -42,8 +40,6 @@ const NewAppointment = () => {
     doctorsLocation = null;
   }
 
-  console.log(date, time, selectedDoctorIndex, doctorsLocation, 'update');
-
   useEffect(() => {
     dispatch(doctorData());
   }, [dispatch]);
@@ -51,15 +47,10 @@ const NewAppointment = () => {
   const handleSubmit = () => {
     dispatch(addAppointment(formData));
     setFormData({
-      // user_id: '2',
       doctor_id: selectedDoctorIndex,
       appointment_time: time,
       appointment_date: date,
       location: doctorsLocation,
-      // doctor_id: selectedDoctorIndex,
-      // appointment_time: time,
-      // appointment_date: date,
-      // location: 'nairobi',
     });
     // navigate('/appointments');
   };
