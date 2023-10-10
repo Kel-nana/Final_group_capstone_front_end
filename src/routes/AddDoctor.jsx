@@ -7,7 +7,7 @@ const AddDoctorForm = () => {
     education: '',
     bio: '',
     years_of_experience: 0,
-    profile_pic: null, // Initialize as null
+    profile_pic: null,
   });
 
   const [errorMessage, setErrorMessage] = useState('');
@@ -18,11 +18,10 @@ const AddDoctorForm = () => {
       name, value, type, files,
     } = e.target;
 
-    // Handle file input separately
     if (type === 'file') {
       setDoctorData({
         ...doctorData,
-        [name]: files[0], // Use the first selected file
+        [name]: files[0],
       });
     } else {
       setDoctorData({
@@ -48,7 +47,7 @@ const AddDoctorForm = () => {
       formData.append('doctor[profile_pic]', doctorData.profile_pic);
 
       const headers = {
-        'Content-Type': 'multipart/form-data', // Use multipart/form-data for file upload
+        'Content-Type': 'multipart/form-data',
         Authorization: token,
       };
 
@@ -58,20 +57,17 @@ const AddDoctorForm = () => {
         { headers },
       );
 
-      // Handle success, e.g., show a success message or redirect
       setSuccessMessage('Doctor added successfully');
 
-      // Clear form
       setDoctorData({
         doc_name: '',
         education: '',
         bio: '',
         years_of_experience: 0,
-        profile_pic: null, // Reset the file input
+        profile_pic: null,
         location: ' ',
       });
     } catch (error) {
-      // Handle error, e.g., display an error message
       setErrorMessage(`Error adding doctor: ${error.message}`);
     }
   };
@@ -103,7 +99,7 @@ const AddDoctorForm = () => {
         <div>
           <label htmlFor="profile_pic">Profile picture</label>
           <input
-            type="text" // Use type="file" for file input
+            type="text"
             name="profile_pic"
             onChange={handleInputChange}
             required
