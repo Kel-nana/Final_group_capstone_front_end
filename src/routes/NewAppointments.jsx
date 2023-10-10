@@ -13,7 +13,7 @@ const NewAppointment = () => {
   const [selectedDoctorIndex, setSelectedDoctorIndex] = useState(null);
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
-  const [location, setLocation] = useState('');
+  // const [location, setLocation] = useState('');
   const [formData, setFormData] = useState({
     // Initialize your form fields here
     // user_id: '2',
@@ -24,19 +24,17 @@ const NewAppointment = () => {
     // Add more fields as needed
   });
 
-  console.log(date, time, selectedDoctorIndex, location, 'update');
-
+  
   const allDoctorList = useSelector((state) => state.doctorsList.allDoctors);
   console.log(allDoctorList);
   const handleDoctorChange = (doctorIndex) => {
     setSelectedDoctorIndex(doctorIndex);
     // console.log(doctorIndex);
   };
-
-  const handleLocationChange = () => {
-    setLocation();
-    // console.log(doctorIndex);
-  };
+  
+  const doctor = allDoctorList.find((doctor) => doctor.id === selectedDoctorIndex);
+  
+  console.log(date, time, selectedDoctorIndex, doctor, 'update');
 
   useEffect(() => {
     dispatch(doctorData());
@@ -72,7 +70,7 @@ const NewAppointment = () => {
           .filter((doctor) => doctor.id === selectedDoctorIndex)
           .map((doctor) => (
             <div key={doctor.id}>
-              <p {(e) => setTime(e.target.value)}>
+              <p>
                 Doctor&apos;s Location:
                 {' '}
 
