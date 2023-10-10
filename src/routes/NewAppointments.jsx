@@ -83,7 +83,7 @@ const NewAppointment = () => {
             .filter((doctor) => doctor.id === selectedDoctorIndex)
             .map((doctor) => (
               <div key={doctor.id}>
-                <p className="w-[16.2vw] h-[6.8vh] rounded-3xl  border-gray-300 border-2 animate-pulse justify-center mt-[3vh] ml-[0] text-white font-black items-center border-gray-300 border-2">
+                <p className="hidden">
                   Location:
                   {' '}
 
