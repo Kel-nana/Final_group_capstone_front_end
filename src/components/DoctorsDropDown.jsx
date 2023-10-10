@@ -4,12 +4,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const DoctorDropdown = ({ allDoctorList, selectedDoctorIndex, onChange }) => (
-  <div className="">
+  <div className="rounded-2xl">
     <label htmlFor="doc-select"> Choose your doctor:</label>
     <select
       value={selectedDoctorIndex !== null ? selectedDoctorIndex : ''}
       onChange={(e) => onChange(e.target.value !== '' ? parseInt(e.target.value, 10) : null)}
-      className=""
+      className="rounded-2xl"
       id="doc-select"
     >
       <option value="">Select a doctor</option>
