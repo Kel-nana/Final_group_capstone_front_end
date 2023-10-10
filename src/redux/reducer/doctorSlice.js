@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+// const axios = require("axios");
 
 const url = 'http://[::1]:3000/api/v1/doctors/';
 
