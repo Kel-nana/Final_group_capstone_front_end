@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   AiOutlineHome,
   AiOutlineEye,
   AiOutlineEyeInvisible,
-} from "react-icons/ai";
-import axios from "axios";
+} from 'react-icons/ai';
+import axios from 'axios';
 
 function SignUp() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirm_password: "",
+    name: '',
+    email: '',
+    password: '',
+    confirm_password: '',
   });
-  const [message, setMessage] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+  const [message, setMessage] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const navigate = useNavigate();
@@ -35,31 +35,31 @@ function SignUp() {
 
       // Make a POST request using Axios with the JSON data
       const response = await axios.post(
-        "http://127.0.0.1:3000/users",
+        'https://doctalk-r977.onrender.com/users',
         jsonData,
         {
           headers: {
-            "Content-Type": "application/json", // Set the content type to JSON
+            'Content-Type': 'application/json', // Set the content type to JSON
           },
-        }
+        },
       );
       // Handle the response as needed
       if (response.status === 200) {
-        setMessage("Account created successfully"); // Set message to true
+        setMessage('Account created successfully'); // Set message to true
         // Clear the input field
         setFormData({
-          name: "",
-          email: "",
-          password: "",
-          confirm_password: "",
+          name: '',
+          email: '',
+          password: '',
+          confirm_password: '',
         });
         setShowSuccessModal(true);
         // navigate('/login');
       } else {
-        console.error("Failed to create an account");
+        console.error('Failed to create an account');
       }
     } catch (error) {
-      console.error("An error occurred:", error);
+      console.error('An error occurred:', error);
     }
   };
 
@@ -69,12 +69,12 @@ function SignUp() {
       [e.target.name]: e.target.value,
     });
     if (
-      e.target.name === "confirm_password" &&
-      formData.password !== e.target.value
+      e.target.name === 'confirm_password'
+      && formData.password !== e.target.value
     ) {
-      setPasswordError("Passwords not match");
+      setPasswordError('Passwords not match');
     } else {
-      setPasswordError("");
+      setPasswordError('');
     }
   };
   const togglePasswordVisibility = () => {
@@ -83,7 +83,7 @@ function SignUp() {
 
   const closeSuccessModal = () => {
     setShowSuccessModal(false);
-    navigate("/login");
+    navigate('/login');
   };
 
   return (
@@ -115,7 +115,7 @@ function SignUp() {
               </div>
               <div className="flex items-stretch justify-between border border-grey-light items-stretch w-full rounded mb-4">
                 <input
-                  type={showPassword ? "text" : "password"}
+                  type={showPassword ? 'text' : 'password'}
                   className="focus:outline-none w-3/4 p-3"
                   name="password"
                   value={formData.password}
@@ -135,7 +135,7 @@ function SignUp() {
               )}
               <div className="flex items-stretch justify-between border border-grey-light items-stretch w-full rounded mb-4">
                 <input
-                  type={showPassword ? "text" : "password"}
+                  type={showPassword ? 'text' : 'password'}
                   className="focus:outline-none w-3/4 p-3"
                   name="confirm_password"
                   value={formData.confirm_password}
@@ -158,14 +158,17 @@ function SignUp() {
               </button>
             </form>
             <div className="text-center text-sm text-grey-dark mt-4">
-              By signing up, you agree to the{" "}
+              By signing up, you agree to the
+              {' '}
               <a
                 className="no-underline border-b border-grey-dark text-grey-dark"
                 href="/terms-of-service"
               >
                 Terms of Service
-              </a>{" "}
-              and{" "}
+              </a>
+              {' '}
+              and
+              {' '}
               <a
                 className="no-underline border-b border-grey-dark text-grey-dark"
                 href="/privacy-policy"
@@ -180,13 +183,13 @@ function SignUp() {
               className="no-underline border-b border-blue text-blue-500"
               href="../login/"
             >
-              {" "}
+              {' '}
               Log in
             </a>
           </div>
           <div className="text-grey-dark mt-6">
             <a className="border-blue text-blue-500" href="/">
-              {" "}
+              {' '}
               <AiOutlineHome className="w-6 h-6" />
             </a>
           </div>
@@ -208,7 +211,7 @@ function SignUp() {
               </button>
               <button
                 className="bg-blue-400 text-white px-4 py-2 rounded ml-2"
-                onClick={() => navigate("/login")}
+                onClick={() => navigate('/login')}
               >
                 Go to Login
               </button>

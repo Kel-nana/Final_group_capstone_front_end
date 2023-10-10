@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import facebookIcon from '../assets/facebook.png';
 import twitterIcon from '../assets/twitter.png';
 import linkedinIcon from '../assets/linkedin.png';
@@ -22,16 +23,27 @@ const Doctors = () => {
   }, [dispatch]);
 
   // Render each doctor's information
-  const doctorsList = allDoctorList.map((doctor) => (
-    <div className="doctor-card" key={doctor.id}>
-      <img className="doc-image" src={doctor.profile_pic} alt={doctor.doc_name} />
-      <h3>{doctor.doc_name}</h3>
-      <p>{doctor.education}</p>
-      <p>{doctor.bio}</p>
-      <p>
-        Years of Experience:
-        {doctor.years_of_experience}
-      </p>
+  const doctorsList = allDoctorList.map((doctor, index) => (
+
+    <div
+      className={`doctor-card ${index === 7 ? 'first_doc' : ''}`}
+      key={doctor.id}
+    >
+      <Link to={`/doctor/${doctor.id}`} key={doctor.id}>
+        <img
+          className="doc-image"
+          src={doctor.profile_pic}
+          alt={doctor.doc_name}
+        />
+
+        <h3>{doctor.doc_name}</h3>
+        <p>{doctor.education}</p>
+        <p>{doctor.bio}</p>
+        <p>
+          Years of Experience:
+          {doctor.years_of_experience}
+        </p>
+      </Link>
       <div className="social-icon-container">
         <img src={facebookIcon} alt="Facebook Icon" className="social-icon" />
         <img src={twitterIcon} alt="Twitter Icon" className="social-icon" />
@@ -66,36 +78,27 @@ const Doctors = () => {
     scrollList('forward');
     setActiveButton('backward');
     setActiveBounce(true);
-
-    // // Remove the bounce class after animation duration (adjust this value as needed)
-    // setTimeout(() => {
-    //   setActiveBounce(false);
-    // }, 400);
   };
 
   const backArrow = () => {
     scrollList('backward');
     setActiveButton('forward');
     setActiveBounce(true);
-
-    // // Remove the bounce class after animation duration (adjust this value as needed)
-    // setTimeout(() => {
-    //   setActiveBounce(false);
-    // }, 400);
   };
 
-  // Remove the bounce class after animation duration
-  useEffect(() => {
-    if (activeBounce) {
-      const timeoutId = setTimeout(() => {
-        setActiveBounce(false);
-      }, 400); // animation duration
+  // // Remove the bounce class after animation duration
+  // useEffect(() => {
+  //   if (activeBounce) {
+  //     const timeoutId = setTimeout(() => {
+  //       setActiveBounce(false);
+  //     }, 400); // animation duration
 
-      return () => {
-        clearTimeout(timeoutId); // Clear the timeout if the effect runs again
-      };
-    }
-  }, [activeBounce]);
+  //     return () => {
+  //       clearTimeout(timeoutId); // Clear the timeout if the effect runs again
+  //     };
+  //   }
+  //   return () => {};
+  // }, [activeBounce]);
 
   return (
     <>
@@ -103,19 +106,31 @@ const Doctors = () => {
         <Sidebar className="sidebar-doctor" />
         <div className="doctors-main-container">
           <button type="button" onClick={backArrow}>
-            <img src={backwardIcon} alt="Forward Icon" className={`return-back-btn ${activeButton === 'backward' ? 'grey' : ''} ${activeBounce && activeButton === 'forward' ? 'bounce' : ''}`} />
+            <img
+              src={backwardIcon}
+              alt="Forward Icon"
+              className={`return-back-btn ${
+                activeButton === 'backward' ? 'grey' : ''
+              } ${activeBounce && activeButton === 'forward' ? 'bounce' : ''}`}
+            />
           </button>
           <div className="doctor-list-container">
             <div className="doctor-text-container">
               <h2 className="doctor-title-text">Meet Our Doctors</h2>
-              <p className="doctor-paragraph-text">Please select a doctor for an appointment</p>
+              <p className="doctor-paragraph-text">
+                Please select a doctor for an appointment
+              </p>
             </div>
-            <div className="doctors-listing">
-              {doctorsList}
-            </div>
+            <div className="doctors-listing">{doctorsList}</div>
           </div>
           <button type="button" onClick={forwardArrow}>
-            <img src={forwardIcon} alt="Forward Icon" className={`forward-button ${activeButton === 'forward' ? 'grey' : ''} ${activeBounce && activeButton === 'backward' ? 'bounce' : ''}`} />
+            <img
+              src={forwardIcon}
+              alt="Forward Icon"
+              className={`forward-button ${
+                activeButton === 'forward' ? 'grey' : ''
+              } ${activeBounce && activeButton === 'backward' ? 'bounce' : ''}`}
+            />
           </button>
         </div>
       </div>
