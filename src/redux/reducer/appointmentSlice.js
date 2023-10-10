@@ -19,9 +19,10 @@ const addAppointment = createAsyncThunk(
     try {
       const response = await axios.post(urlappoint, newAppointment, {
         headers: {
-          Authorization: localStorage.getItem('token'),
           'Content-Type': 'application/json',
+          Authorization: localStorage.getItem('token'),
         },
+        body: JSON.stringify(newAppointment),
       });
       return response.data;
     } catch (error) {
