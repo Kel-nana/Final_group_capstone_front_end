@@ -67,8 +67,11 @@ const NewAppointment = () => {
   return (
     <div className="new-appointment-container">
       <NewAppointmentMenu />
-      <h1>New Appointment</h1>
-      <form onSubmit={handleSubmit}>
+      <h1 className="font-mono text-4xl font-black text-white pt-[15%]">New Appointment</h1>
+      <hr className="my-12 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50 text-white w-[50%] ml-[25%]" />
+      <p className="text-white "> Welcome to our hospital&apos;s appointment booking page! Your health is our priority, and we are here to make scheduling your visit as easy as possible. Whether you need a routine check-up, a specialist consultation, or any medical service, we&apos;ve got you covered. Our dedicated team of healthcare professionals is ready to assist you. Choose a convenient date and time for your appointment, and we&apos;ll ensure you receive the best care. Please provide your contact information, insurance details, and a brief description of your medical concern. Your well-being is our mission, and we look forward to serving you. Book your appointment now and take the first step toward a healthier, happier you</p>
+
+      <form onSubmit={handleSubmit} className="" >
         <DoctorDropdown
           allDoctorList={allDoctorList}
           onChange={handleDoctorChange}
