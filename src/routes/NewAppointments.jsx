@@ -83,7 +83,7 @@ const NewAppointment = () => {
             .filter((doctor) => doctor.id === selectedDoctorIndex)
             .map((doctor) => (
               <div key={doctor.id}>
-                <p className="w-[16.2vw] h-[6.8vh] rounded-3xl  border-gray-300 border-2 animate-pulse justify-center mt-[3vh] ml-[0.8vw] text-white font-black items-center">
+                <p className="w-[16.2vw] h-[6.8vh] rounded-3xl  border-gray-300 border-2 animate-pulse justify-center mt-[3vh] ml-[0] text-white font-black items-center border-gray-300 border-2">
                   Location:
                   {' '}
 
@@ -94,30 +94,29 @@ const NewAppointment = () => {
             ))}
         </div>
         <div className="pl-[5%] rounded-2xl">
-          <label htmlFor="date">Date</label>
           <input
             type="date"
             id="date"
-            className="rounded-3xl py-[7px] px-[35px]"
+            className="rounded-3xl py-[7px] px-[35px] border-gray-300 border-2"
             value={date}
             onChange={(e) => setDate(e.target.value)}
           />
         </div>
         <div className="pl-[5%]">
-          <label htmlFor="time">Time</label>
           <input
             type="time"
             id="time"
-            className="rounded-3xl py-[7px] px-[55px] px-[15px] border-gray-300 outline-4"
+            className="rounded-3xl py-[7px] px-[55px] px-[15px] border-gray-300 border-2"
             value={time}
             onChange={(e) => setTime(e.target.value)}
           />
         </div>
         <div className="pl-[5%]">
-          <button type="submit" onClick={handleSubmit} className="w-[15vw] h-[6.8vh] rounded-3xl  border-gray-300 border-2 animate-pulse justify-center mt-[3.5vh] ">Book Now </button>
+          <button type="submit" onClick={handleSubmit} className="w-[15vw] h-[6.8vh] rounded-3xl  border-gray-300 border-2 animate-pulse justify-center  ">Book Now </button>
 
         </div>
       </form>
+      <div className="w-[16.2vw] h-[6.8vh] rounded-3xl  border-gray-300 border-2 animate-pulse justify-center mt-[4vh] ml-[43%] text-white font-black items-center border-gray-300 border-2">{doctorsLocation || 'Location' }</div>
     </div>
   );
 };

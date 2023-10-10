@@ -5,11 +5,10 @@ import PropTypes from 'prop-types';
 
 const DoctorDropdown = ({ allDoctorList, selectedDoctorIndex, onChange }) => (
   <div className="rounded-2xl">
-    <label htmlFor="doc-select"> Choose your doctor:</label>
     <select
       value={selectedDoctorIndex !== null ? selectedDoctorIndex : ''}
       onChange={(e) => onChange(e.target.value !== '' ? parseInt(e.target.value, 10) : null)}
-      className="rounded-3xl py-[7px] px-[15px]"
+      className="rounded-3xl py-[7px] px-[15px] border-gray-300 border-2"
       id="doc-select"
     >
       <option value="">Select a doctor</option>
