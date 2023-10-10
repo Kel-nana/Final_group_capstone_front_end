@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { addAppointment } from '../redux/reducer/appointmentSlice';
 import DoctorDropdown from '../components/DoctorsDropDown';
@@ -8,18 +8,18 @@ import { doctorData } from '../redux/reducer/doctorSlice';
 
 const NewAppointment = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [selectedDoctorIndex, setSelectedDoctorIndex] = useState(null);
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [formData, setFormData] = useState({
     // Initialize your form fields here
-    user_id: '2',
-    doctor_id: '2',
-    appointment_time: '10:46',
-    appointment_date: '10-10-2045',
-    location: 'Nairobi',
+    // user_id: '2',
+    doctor_id: '',
+    appointment_time: '',
+    appointment_date: '',
+    location: '',
     // Add more fields as needed
   });
 
@@ -37,19 +37,19 @@ const NewAppointment = () => {
   }, [dispatch]);
 
   const handleSubmit = () => {
-    dispatch(addAppointment({ formData }));
+    dispatch(addAppointment(formData));
     setFormData({
-      user_id: '2',
-      doctor_id: '2',
-      appointment_time: '10:46',
-      appointment_date: '10-10-2045',
-      location: 'Nairobi',
+      // user_id: '2',
+      doctor_id: selectedDoctorIndex,
+      appointment_time: time,
+      appointment_date: date,
+      location: 'israel',
       // doctor_id: selectedDoctorIndex,
       // appointment_time: time,
       // appointment_date: date,
       // location: 'nairobi',
     });
-    navigate('/appointments');
+    // navigate('/appointments');
   };
 
   return (
