@@ -11,6 +11,7 @@ import {
 import { HiMenuAlt4 } from 'react-icons/hi';
 import { AiOutlineClose } from 'react-icons/ai';
 import DocLogo from '../assets/logo.png';
+import SignOut from './SignOut';
 
 const socialIcons = [
   {
@@ -140,6 +141,7 @@ const Sidebar = () => {
               </Link>
             </li>
           ))}
+          <SignOut />
         </ul>
         <ul className="flex py-24 flex-row self-end align-center justify-center">
           {socialIcons.map((icon) => (
@@ -168,6 +170,7 @@ const Sidebar = () => {
               <img src={DocLogo} alt="Logo img" className="" />
             </Link>
           </button>
+
           {menuItems.map((item) => (
             <li
               key={item.label}
@@ -180,6 +183,7 @@ const Sidebar = () => {
               </Link>
             </li>
           ))}
+          <SignOut />
         </ul>
         <ul className="flex py-24 flex-row self-end align-center justify-center">
           {socialIcons.map((icon) => (

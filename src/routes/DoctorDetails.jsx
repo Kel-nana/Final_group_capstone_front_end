@@ -16,47 +16,6 @@ const DoctorDetails = () => {
   const doctorsList = useSelector((state) => state.doctorsList);
   const finalDoctorsData = doctorsList.allDoctors;
   const doctor = finalDoctorsData.find((item) => item.id === parseInt(id, 10));
-  const dispatch = useDispatch();
-
-  const [modal, setModal] = useState(false);
-  const [formData, setFormData] = useState({
-    user_id: '',
-    doctor_id: doctor.id,
-    appointment_date: DatePicker,
-    appointment_time: TimePicker,
-    location: '',
-  });
-
-  const handleModal = () => {
-    setModal(!modal);
-  };
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    // Dispatch the addAppointment action with formData
-    dispatch(addAppointment(formData))
-      .then(() => {
-        // Handle any success actions or additional logic here
-        // For example, you can display a success message or redirect the user
-      })
-      .catch((error) => {
-        // Handle any errors here
-        console.error('Error adding appointment:', error);
-      });
-
-    // Close the modal after form submission
-    handleModal();
-  };
-
   return (
     <div>
       <Sidebar />
@@ -92,7 +51,9 @@ const DoctorDetails = () => {
               type="button"
               className="flex flex-row items-center justify-evenly mt-8 rounded-full bg-[#97bf0f] hover:bg-[#5b740a] py-4 px-8 cursor-pointer transition-bg w-64 mx-auto"
             >
-              <span className="px-4 text-white">Get Appointment</span>
+              <Link to="/new-appointment">
+                <span className="px-4 text-white">Get Appointment</span>
+              </Link>
               <IoIosArrowDropright className="text-3xl text-white" />
             </button>
           </div>

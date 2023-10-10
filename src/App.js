@@ -6,7 +6,7 @@ import SignUp from './routes/SignUp';
 import Doctors from './routes/Doctors';
 import Appointments from './routes/Appointments';
 import DoctorDetail from './routes/DoctorDetails';
-import NewAppointments from './routes/NewAppointments';
+import PrivateRoute from './routes/PrivateRoutes';
 
 function App() {
   return (
@@ -15,11 +15,18 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sign_up" element={<SignUp />} />
-        <Route path="/doctors" element={<Doctors />} />
-        <Route path="/appointments" element={<Appointments />} />
-        <Route path="/new-appointment" element={<NewAppointments />} />
-        <Route path="/doctor/:id" element={<DoctorDetail />} />
-
+        <Route
+          path="/appointments"
+          element={<PrivateRoute element={<Appointments />} />}
+        />
+        <Route
+          path="/doctor/:id"
+          element={<PrivateRoute element={<DoctorDetail />} />}
+        />
+        <Route
+          path="/doctors"
+          element={<PrivateRoute element={<Doctors />} />}
+        />
       </Routes>
     </div>
   );
