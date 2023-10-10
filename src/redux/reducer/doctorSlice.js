@@ -2,10 +2,12 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 // const axios = require("axios");
 
-const url = 'http://[::1]:3000/api/v1/doctors/';
-
+const url = 'https://doctalk-r977.onrender.com/api/v1/doctors/';
+const headers = {
+  Authorization: localStorage.getItem('token'),
+};
 const doctorData = createAsyncThunk('doctors', async () => {
-  const response = await axios.get(url);
+  const response = await axios.get(url, { headers });
   return response.data;
 });
 

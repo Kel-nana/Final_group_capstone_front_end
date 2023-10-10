@@ -11,6 +11,7 @@ import {
 import { HiMenuAlt4 } from 'react-icons/hi';
 import { AiOutlineClose } from 'react-icons/ai';
 import DocLogo from '../assets/logo.png';
+import SignOut from './SignOut';
 
 const socialIcons = [
   {
@@ -106,7 +107,12 @@ const Sidebar = () => {
           className="p-2 text-black hover:text-green-400 move-button"
           onClick={toggleMenu}
         >
-          <HiMenuAlt4 onClick={handleNav} className={`text-3xl cursor-pointer hover:text-green-400 transition-colors ${isNavOpen ? 'hidden' : 'block'}`} />
+          <HiMenuAlt4
+            onClick={handleNav}
+            className={`text-3xl cursor-pointer hover:text-green-400 transition-colors ${
+              isNavOpen ? 'hidden' : 'block'
+            }`}
+          />
         </button>
       </div>
       <div
@@ -115,7 +121,11 @@ const Sidebar = () => {
         }`}
       >
         <ul className="pt-24 uppercase">
-          <li className="py-4 px-8 cursor-pointer hover:text-green-400 transition-colors flex justify-center " onKeyDown={handleNav} onClick={handleNav}>
+          <li
+            className="py-4 px-8 cursor-pointer hover:text-green-400 transition-colors flex justify-center "
+            onKeyDown={handleNav}
+            onClick={handleNav}
+          >
             <AiOutlineClose onClick={toggleMenu} className="text-3xl" />
           </li>
           {menuItems.map((item, index) => (
@@ -130,6 +140,7 @@ const Sidebar = () => {
               </Link>
             </li>
           ))}
+          <SignOut />
         </ul>
         <ul className="flex py-24 flex-row self-end align-center justify-center">
           {socialIcons.map((icon) => (
@@ -158,13 +169,12 @@ const Sidebar = () => {
               <img src={DocLogo} alt="Logo img" className="" />
             </Link>
           </button>
+
           {menuItems.map((item) => (
             <li
               key={item.label}
               className={`w-full text-center py-4 mb-4 hover:text-white hover:bg-[#97bf0f] transition-all ${
-                item.label === 'Home'
-                  ? 'hidden'
-                  : 'block'
+                item.label === 'Home' ? 'hidden' : 'block'
               }`}
             >
               <Link to={item.to} className="block w-full">
@@ -172,6 +182,7 @@ const Sidebar = () => {
               </Link>
             </li>
           ))}
+          <SignOut />
         </ul>
         <ul className="flex py-24 flex-row self-end align-center justify-center">
           {socialIcons.map((icon) => (
