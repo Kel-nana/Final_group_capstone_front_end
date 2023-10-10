@@ -100,7 +100,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="h-[100%]">
+    <div className="h-[100%] w-[20%]">
       <div className="lg:hidden p-4 absolute">
         <button
           type="button"
