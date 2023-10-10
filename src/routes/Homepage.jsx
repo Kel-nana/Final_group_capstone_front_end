@@ -21,7 +21,7 @@ const Homepage = () => {
       </div>
 
       <div
-        className={`fixed left-0 top-0 w-full sm:w-[40%] h-full border-r backdrop-blur-sm bg-white/30  border-none text-black transition-transform ease-in-out duration-500 ${isNavOpen ? 'translate-x-0' : '-translate-x-full'}`}
+        className={`fixed left-0 top-0 w-full sm:w-[40%] h-full border-r backdrop-blur-sm sm:bg-black/30  border-none text-black transition-transform ease-in-out duration-500 ${isNavOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
         <ul className="pt-24 uppercase">
           <li className="py-4 px-8 cursor-pointer transition-colors flex justify-center">
