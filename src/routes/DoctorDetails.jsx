@@ -1,15 +1,9 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import { IoIosArrowDropright, IoIosArrowDropleft } from 'react-icons/io';
-import '../assets/styles/doctordetails.css';
-import TextField from '@mui/material/TextField';
-import { TimePicker } from '@mui/x-date-pickers/TimePicker';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { addAppointment } from '../redux/reducer/appointmentSlice';
 import Sidebar from './Sidebar';
+import '../assets/styles/doctordetails.css';
 
 const DoctorDetails = () => {
   const { id } = useParams();
@@ -47,7 +41,6 @@ const DoctorDetails = () => {
 
           <div className="float-right">
             <button
-              onClick={handleModal}
               type="button"
               className="flex flex-row items-center justify-evenly mt-8 rounded-full bg-[#97bf0f] hover:bg-[#5b740a] py-4 px-8 cursor-pointer transition-bg w-64 mx-auto"
             >
@@ -70,67 +63,6 @@ const DoctorDetails = () => {
           </button>
         </Link>
       </div>
-      {modal && (
-        <div className="fixed inset-0 flex items-center justify-center z-50">
-          <div className="bg-[#97bf0f] p-6 rounded shadow-lg relative">
-            <button
-              type="button"
-              onClick={handleModal}
-              className="absolute top-2 right-2 rounded-full p-2 bg-white text-[#97bf0f] hover:bg-[#5b740a] hover:text-white cursor-pointer transition-all duration-100"
-            >
-              Close
-            </button>
-            <div className="bg-white new-appointment mx-auto flex-1 flex flex-col items-center justify-center px-2">
-              <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-                <p className="mb-8 text-3xl text-center">Book Appointment</p>
-                {/* Form add appointment data */}
-                <form onSubmit={handleSubmit}>
-                  <div className="block border border-white w-full rounded mb-4">
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                      <DatePicker
-                        label="Appointment Date"
-                        name="appointment_date"
-                        value={formData.appointment_date}
-                        onChange={handleInputChange}
-                        className="w-full h-full"
-                      />
-                    </LocalizationProvider>
-                  </div>
-                  <div className="block border border-white w-full rounded mb-4">
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                      <TimePicker
-                        label="Appointment Time"
-                        name="appointment_time"
-                        value={formData.appointment_time}
-                        onChange={handleInputChange}
-                        className="w-full"
-                      />
-                    </LocalizationProvider>
-                  </div>
-                  <div className="block border border-grey-light w-full rounded mb-4">
-                    <TextField
-                      id="outlined-read-only-input"
-                      name="location"
-                      value={doctor.location}
-                      label="Location"
-                      className="w-full"
-                      InputProps={{
-                        readOnly: true,
-                      }}
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="ml-[31.5%] text-md px-4 py-2 text-white rounded flex items-center rounded-full bg-[#97bf0f] hover:bg-[#5b740a] cursor-pointer transition-ease-in-out duration-100 sm:text-lg"
-                  >
-                    Book Now
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

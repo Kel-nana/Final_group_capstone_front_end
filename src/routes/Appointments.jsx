@@ -16,7 +16,7 @@ const Appointments = () => {
     (state) => state.appointments.appointmentsdata,
   );
   const dispatch = useDispatch();
-
+console.log(appointmentsData)
   useEffect(() => {
     dispatch(fetchAppointments());
     dispatch(doctorData());
