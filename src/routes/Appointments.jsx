@@ -187,6 +187,31 @@ const Appointments = () => {
           </ul>
         ))}
       </div>
+      {showSuccessModal && (
+        <div className="fixed border border-green inset-0 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded shadow-lg">
+            <h2 className="text-2xl font-semibold mb-4">
+              Please confirm delete
+            </h2>
+            <div className="mt-4">
+              <button
+                className="bg-green-400 hover:bg-green-700 text-white px-4 py-2 rounded"
+                onClick={closeSuccessModal}
+                type="button"
+              >
+                Cancel
+              </button>
+              <button
+                className="bg-red-400 hover:bg-red-700 text-white px-4 py-2 rounded ml-2"
+                onClick={() => deleteDoc(id)}
+                type="submit"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
