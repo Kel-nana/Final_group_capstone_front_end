@@ -141,7 +141,7 @@ const Sidebar = () => {
               </Link>
             </li>
           ))}
-          <SignOut />
+          <SignOut className="py-4 px-8 cursor-pointer hover:text-green-400 transition-colors flex justify-center" />
         </ul>
         <ul className="flex py-24 flex-row self-end align-center justify-center">
           {socialIcons.map((icon) => (

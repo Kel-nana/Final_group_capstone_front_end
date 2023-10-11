@@ -33,7 +33,7 @@ function SignOut() {
   return (
     <div>
       <button onClick={handleSignOut} type="submit">
-        Sign Out
+        SIGN OUT
       </button>
     </div>
   );

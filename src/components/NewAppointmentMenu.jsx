@@ -11,6 +11,7 @@ import {
 import { LiaSearchSolid } from 'react-icons/lia';
 import { HiMenuAlt4 } from 'react-icons/hi';
 import { AiOutlineClose } from 'react-icons/ai';
+import SignOut from '../routes/SignOut';
 
 const socialIcons = [
   {
@@ -90,6 +91,7 @@ const NewAppointmentMenu = () => {
               </Link>
             </li>
           ))}
+          <SignOut className="py-4 px-8 cursor-pointer hover:text-green-400 transition-colors flex justify-center " />
         </ul>
         <ul className="flex py-24 flex-row self-end align-center justify-center">
           {socialIcons.map((icon) => (
