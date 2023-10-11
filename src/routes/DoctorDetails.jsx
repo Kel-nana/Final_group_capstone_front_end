@@ -26,6 +26,10 @@ const DoctorDetails = () => {
     });
   };
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const closeSuccessModal = () => {
+    setShowSuccessModal(false);
+    navigate('/login');
+  };
   return (
     <div>
       <Sidebar />
@@ -106,7 +110,7 @@ const DoctorDetails = () => {
             <h2 className="text-2xl font-semibold mb-4">
               Registration Successful
             </h2>
-            <p>{message}</p>
+            {/* <p>{message}</p> */}
             <div className="mt-4">
               <button
                 className="bg-green-400 text-white px-4 py-2 rounded"
