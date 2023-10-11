@@ -102,9 +102,7 @@ const Doctors = () => {
   return (
     <>
       <div className="doctor-container">
-        <div className="w-[20%]">
-          <Sidebar className="sidebar-doctor" />
-        </div>
+        <Sidebar />
         <div className="doctors-main-container w-[80%]">
           <button type="button" onClick={backArrow}>
             <img
