@@ -47,6 +47,7 @@ const Sidebar = () => {
     { label: 'Home', to: '/' },
     { label: 'DOCTORS', to: '/doctors' },
     { label: 'APPOINTMENTS', to: '/appointments' },
+    { label: 'NEW APPOINTMENTS', to: '/new-appointment' },
     { label: 'ADD A NEW DOCTOR', to: '/new_doctor' },
   ];
 
@@ -101,7 +102,7 @@ const Sidebar = () => {
   };
 
   return (
-    <>
+    <div className="h-[100%] w-[20%]">
       <div className="lg:hidden p-4 absolute">
         <button
           type="button"
@@ -141,7 +142,7 @@ const Sidebar = () => {
               </Link>
             </li>
           ))}
-          <SignOut />
+          <SignOut className="py-4 px-8 cursor-pointer hover:text-green-400 transition-colors flex justify-center" />
         </ul>
         <ul className="flex py-24 flex-row self-end align-center justify-center">
           {socialIcons.map((icon) => (
@@ -151,7 +152,7 @@ const Sidebar = () => {
           ))}
         </ul>
       </div>
-      <div className="text-[#181818] w-[20%] min-h-screen py-2 border-r-2 border-r-[#f3f3f3] overflow-x-hidden hidden lg:grid bg-white">
+      <div className="text-[#181818] w-[100%] min-h-screen py-2 border-r-2 border-r-[#f3f3f3] overflow-none hidden lg:grid bg-white">
         <ul className="flex flex-col py-16 justify-center items-center text-base sm:text-lg md:text-lg lg:text-xl xl:text-2xl">
           <button
             type="button"
@@ -193,7 +194,7 @@ const Sidebar = () => {
           ))}
         </ul>
       </div>
-    </>
+    </div>
   );
 };
 

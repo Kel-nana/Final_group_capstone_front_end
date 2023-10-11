@@ -172,6 +172,26 @@
   display: block;
 }
 
+.new-appointment-container {
+  background-image: url(./assets/appointBgs.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh !important;
+  z-index: 1;
+}
+
+.form-background {
+  background: #97bf0f;
+}
+
+.form-background:hover {
+  background: #638007;
+}
+
+.form-text {
+  color: #97bf0f;
+}
+
 @media screen and (max-width: 1100px) {
   .doctors-listing {
     max-width: 800px;
@@ -199,6 +219,44 @@
   .doctor-card {
     width: calc(49% - 10px);
   }
+
+  .new-appointment-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 3vh;
+    width: 350px;
+    height: 50vh;
+    border: 2px solid #b8d5b1;
+    padding: 20px;
+    background: transparent;
+    border-radius: 10px;
+  }
+
+  .form-line {
+    margin-left: 0;
+  }
+
+  .paragraph-text {
+    display: none;
+  }
+
+  .book-appoint {
+    padding: 0% !important;
+  }
+
+  .input-new-btn {
+    width: 205px;
+  }
 }
 
 @media screen and (max-width: 760px) {
@@ -215,6 +273,10 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+  }
+
+  .appointment-form {
+    width: 50% !important;
   }
 }
 

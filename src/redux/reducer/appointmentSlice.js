@@ -22,6 +22,7 @@ const addAppointment = createAsyncThunk(
           'Content-Type': 'application/json',
           Authorization: localStorage.getItem('token'),
         },
+        body: JSON.stringify(newAppointment),
       });
       return response.data;
     } catch (error) {
