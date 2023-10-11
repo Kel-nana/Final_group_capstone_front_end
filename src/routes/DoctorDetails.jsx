@@ -22,8 +22,7 @@ const DoctorDetails = () => {
   const deleteDoc = (doctorId) => {
     dispatch(deleteDoctor(doctorId)).then(() => {
       navigate('/doctors');
-      setTimeout(() => {
-      }, 3000);
+      setTimeout(() => {}, 3000);
     });
   };
   const closeSuccessModal = () => {
@@ -104,20 +103,20 @@ const DoctorDetails = () => {
       </div>
       {showSuccessModal && (
         <div className="fixed border border-green inset-0 flex items-center justify-center z-50">
-          <div className="bg-green-300 p-6 rounded shadow-lg">
+          <div className="bg-white p-6 rounded shadow-lg">
             <h2 className="text-2xl font-semibold mb-4">
               Please confirm delete
             </h2>
             <div className="mt-4">
               <button
-                className="bg-green-400 text-white px-4 py-2 rounded"
+                className="bg-[#97bf0f] hover:bg-green-400 text-white px-4 py-2 rounded"
                 onClick={closeSuccessModal}
                 type="button"
               >
                 Go Back
               </button>
               <button
-                className="bg-blue-400 text-white px-4 py-2 rounded ml-2"
+                className="bg-[#97bf0f] hover:bg-red-400 text-white px-4 py-2 rounded ml-2"
                 onClick={() => deleteDoc(id)}
                 type="submit"
               >
