@@ -47,7 +47,7 @@ const NewAppointmentMenu = () => {
     { label: 'Home', to: '/' },
     { label: 'DOCTORS', to: '/doctors' },
     { label: 'APPOINTMENTS', to: '/appointments' },
-    { label: 'NEW APPOINTMENTS', to: '/new-appointment' },
+    { label: 'NEW APPOINTMENT', to: '/new-appointment' },
   ];
 
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -58,15 +58,24 @@ const NewAppointmentMenu = () => {
 
   return (
     <>
-      <div className="p-4 absolute">
+      <div className="p-4 relative sm:absolute top-16 left-16">
         <button
           type="button"
           className="p-2 text-black hover:text-green-400 move-button"
           onClick={toggleMenu}
         >
           <div className="flex justify-between items-center h-24 w-[95vw] mx-auto text-white">
-            <HiMenuAlt4 onClick={handleNav} className={`text-3xl cursor-pointer hover:text-green-400 transition-colors ${isNavOpen ? 'hidden' : 'block'}`} />
-            <LiaSearchSolid className={`text-3xl cursor-pointer hover:text-green-400 transition-colors ${isNavOpen ? 'hidden' : 'block'}`} />
+            <HiMenuAlt4
+              onClick={handleNav}
+              className={`text-3xl cursor-pointer hover:text-green-400 transition-colors ${
+                isNavOpen ? 'hidden' : 'block'
+              }`}
+            />
+            <LiaSearchSolid
+              className={`text-3xl cursor-pointer hover:text-green-400 transition-colors ${
+                isNavOpen ? 'hidden' : 'block'
+              }`}
+            />
           </div>
         </button>
       </div>
@@ -76,7 +85,11 @@ const NewAppointmentMenu = () => {
         }`}
       >
         <ul className="pt-24 uppercase">
-          <li className="py-4 px-8 cursor-pointer hover:text-green-400 transition-colors flex justify-center " onKeyDown={handleNav} onClick={handleNav}>
+          <li
+            className="py-4 px-8 cursor-pointer hover:text-green-400 transition-colors flex justify-center "
+            onKeyDown={handleNav}
+            onClick={handleNav}
+          >
             <AiOutlineClose onClick={toggleMenu} className="text-3xl" />
           </li>
           {menuItems.map((item, index) => (
