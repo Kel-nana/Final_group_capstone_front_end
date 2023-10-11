@@ -30,11 +30,11 @@ const DoctorDetails = () => {
     <div>
       <Sidebar />
       <div className="flex justify-between align-center flex-col text-center mt-16 p-4 sm:flex-row sm:ml-16 md:-mt-125 md:-mt-125 lg:-mt-125">
-        {deleteMessage && (
+        {/* {deleteMessage && (
           <div className="delete-message bg-white shadow-md text-green-800 p-4 mt-4 rounded">
             {setDeleteMessage}
           </div>
-        )}
+        )} */}
         <div className="flex justify-center relative sm:ml-96">
           <img
             className="rounded-full w-80 h-80 z-0"
@@ -100,6 +100,32 @@ const DoctorDetails = () => {
           </button>
         </Link>
       </div>
+      {showSuccessModal && (
+        <div className="fixed border border-green inset-0 flex items-center justify-center z-50">
+          <div className="bg-green-300 p-6 rounded shadow-lg">
+            <h2 className="text-2xl font-semibold mb-4">
+              Registration Successful
+            </h2>
+            <p>{message}</p>
+            <div className="mt-4">
+              <button
+                className="bg-green-400 text-white px-4 py-2 rounded"
+                onClick={closeSuccessModal}
+                type="submit"
+              >
+                Close
+              </button>
+              <button
+                className="bg-blue-400 text-white px-4 py-2 rounded ml-2"
+                onClick={() => navigate('/login')}
+                type="submit"
+              >
+                Go to Login
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
