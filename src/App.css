@@ -163,12 +163,6 @@
   background: #97bf0f;
 }
 
-.logo {
-  overflow: hidden;
-  border-radius: 14% 14% 13% 15% / 42% 44% 44% 46%;
-  border: 1px solid #97bf0f;
-}
-
 .logo-image {
   left: 1%;
   top: 1%;

@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import doctorSlice from './reducer/doctorSlice';
+import doctorSlice, { deleteDoctor } from './reducer/doctorSlice';
 import appointmentsSlice from './reducer/appointmentSlice';
 
 const store = configureStore({
@@ -10,3 +10,4 @@ const store = configureStore({
 });
 
 export default store;
+export { deleteDoctor };
