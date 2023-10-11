@@ -47,6 +47,7 @@ const Sidebar = () => {
     { label: 'Home', to: '/' },
     { label: 'DOCTORS', to: '/doctors' },
     { label: 'APPOINTMENTS', to: '/appointments' },
+    { label: 'ADD A NEW DOCTOR', to: '/new_doctor' },
   ];
 
   const [activeBounce, setActiveBounce] = useState(false);
