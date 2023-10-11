@@ -226,23 +226,42 @@
     width: calc(49% - 10px);
   }
 
+  .new-appointment-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   .form-container{
     display: flex;
-    flex-direction: column !important;
-    width: 350px !important;
-    height: 50vh !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 3vh;
+    width: 350px;
+    height: 50vh;
     border: 2px solid #c6cbb4;
-    margin-left: 35%;
     padding: 20px;
+    background: #746f6f;
     border-radius: 10px;
+  }
+
+  .form-line{
+    margin-left: 0;
+  }
+
+  .paragraph-text{
+    display: none;
   }
 
   .book-appoint{
     padding: 0% !important;
   }
 
-  .input-field-form{
-    /* width: 10vw !important; */
+  .input-new-btn{
+    width: 205px;
   }
 }
 
