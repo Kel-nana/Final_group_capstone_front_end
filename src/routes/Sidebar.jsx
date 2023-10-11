@@ -10,7 +10,7 @@ import {
 } from 'react-icons/fa';
 import { HiMenuAlt4 } from 'react-icons/hi';
 import { AiOutlineClose } from 'react-icons/ai';
-import DocLogo from '../assets/logo.png';
+import DocLogo from '../assets/logo2.jpg';
 import SignOut from './SignOut';
 
 const socialIcons = [
