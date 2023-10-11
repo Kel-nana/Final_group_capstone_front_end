@@ -31,11 +31,11 @@ function SignOut() {
   };
 
   return (
-    <div>
+    <li className="w-full text-center py-4 mb-4 hover:text-white hover:bg-[#97bf0f] transition-all">
       <button onClick={handleSignOut} type="submit">
         SIGN OUT
       </button>
-    </div>
+    </li>
   );
 }
 

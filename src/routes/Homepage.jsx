@@ -16,21 +16,21 @@ const Homepage = () => {
   return (
     <div className={`bg-home-background bg-cover bg-center h-screen relative flex flex-col items-center ${'md:bg-home-background'}`}>
       <div className="flex justify-between items-center h-24 w-[90%] mx-auto text-white">
-        <HiMenuAlt4 onClick={handleNav} className={`text-3xl cursor-pointer hover:text-green-400 transition-colors ${isNavOpen ? 'hidden' : 'block'}`} />
-        <LiaSearchSolid className={`text-3xl cursor-pointer hover:text-green-400 transition-colors ${isNavOpen ? 'hidden' : 'block'}`} />
+        <HiMenuAlt4 onClick={handleNav} className={`text-3xl cursor-pointer hover:text-[#97bf0f] transition-colors ${isNavOpen ? 'hidden' : 'block'}`} />
+        <LiaSearchSolid className={`text-3xl cursor-pointer hover:text-[#97bf0f] transition-colors ${isNavOpen ? 'hidden' : 'block'}`} />
       </div>
 
       <div
-        className={`fixed left-0 top-0 w-full sm:w-[40%] h-full border-r bg-black opacity-65 border-r-gray-900 text-white transition-transform ease-in-out duration-500 ${isNavOpen ? 'translate-x-0' : '-translate-x-full'}`}
+        className={`fixed left-0 top-0 w-full sm:w-[40%] h-full border-r backdrop-blur-sm sm:bg-black/30  border-none text-black transition-transform ease-in-out duration-500 ${isNavOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
         <ul className="pt-24 uppercase">
-          <li className="py-4 px-8 cursor-pointer hover:text-green-400 transition-colors flex justify-center">
-            <AiOutlineClose onClick={handleNav} className="text-3xl" />
+          <li className="py-4 px-8 cursor-pointer transition-colors flex justify-center">
+            <AiOutlineClose onClick={handleNav} className="text-3xl hover:text-[#97bf0f]" />
           </li>
-          <li className="py-4 px-8 border-b flex border-gray-700 cursor-pointer hover:text-green-400 transition-colors">
+          <li className="text-xl py-4 px-8 border-b  cursor-pointer hover:bg-[#97bf0f] hover:text-[white] transition-colors">
             <Link to="/sign_up" className="flex-1">Sign up</Link>
           </li>
-          <li className="py-4 px-8 border-b flex border-gray-700 cursor-pointer hover:text-green-400 transition-colors">
+          <li className="text-xl py-4 px-8 border-b flex  cursor-pointer hover:bg-[#97bf0f] hover:text-[white] transition-colors">
             <Link to="/login" className="flex-1">Log in</Link>
           </li>
         </ul>
@@ -45,7 +45,7 @@ const Homepage = () => {
         </p>
         <button
           type="button"
-          className="flex flex-row items-center justify-evenly mt-8 rounded-full bg-green-400 py-4 px-8 cursor-pointer hover:bg-green-500 transition-bg"
+          className="flex flex-row items-center justify-evenly mt-8 rounded-full py-4 px-8 cursor-pointer bg-[#97bf0f] hover:bg-[#5b740a] transition-bg"
         >
           <IoSettingsOutline className="text-3xl text-white" />
           <Link
