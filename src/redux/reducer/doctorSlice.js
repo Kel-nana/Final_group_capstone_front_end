@@ -6,10 +6,20 @@ const url = 'https://doctalk-r977.onrender.com/api/v1/doctors/';
 const headers = {
   Authorization: localStorage.getItem('token'),
 };
-const doctorData = createAsyncThunk('doctors', async () => {
+
+export const doctorData = createAsyncThunk('doctors', async () => {
   const response = await axios.get(url, { headers });
   return response.data;
 });
+
+// delete doctor
+export const deleteDoctor = createAsyncThunk(
+  'doctors/deleteDoctor',
+  async (id) => {
+    const response = await axios.delete(`${url}${id}`, { headers });
+    return response.data;
+  },
+);
 
 const initialState = {
   allDoctors: [],
@@ -24,8 +34,12 @@ const doctorSlice = createSlice({
       const receivedData = action.payload;
       return { ...state, allDoctors: receivedData };
     });
+    builder.addCase(deleteDoctor.fulfilled, (state, action) => {
+      const deletedDoctorId = action.payload;
+      const updatedDoctors = state.allDoctors.filter((doctor) => doctor.id !== deletedDoctorId);
+      return { ...state, allDoctors: updatedDoctors };
+    });
   },
 });
-// eslint-disable-next-line import/prefer-default-export
-export { doctorData };
+
 export default doctorSlice.reducer;

@@ -8,12 +8,14 @@ import Appointments from './routes/Appointments';
 import DoctorDetail from './routes/DoctorDetails';
 import NewAppointments from './routes/NewAppointments';
 import PrivateRoute from './routes/PrivateRoutes';
+import AddDoctorForm from './routes/AddDoctor';
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/new_doctor" element={<AddDoctorForm />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sign_up" element={<SignUp />} />
         <Route
