@@ -8,27 +8,26 @@ import '../assets/styles/doctordetails.css';
 import { deleteDoctor } from '../redux/store';
 
 const DoctorDetails = () => {
-  // const [deleteMessage, setDeleteMessage] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
   const doctorsList = useSelector((state) => state.doctorsList);
   const finalDoctorsData = doctorsList.allDoctors;
   const doctor = finalDoctorsData.find((item) => item.id === parseInt(id, 10));
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-  const handleDeleteClick = (doctorId) => {
+  const handleDeleteClick = () => {
+    setShowSuccessModal(true);
+  };
+  const deleteDoc = (doctorId) => {
     dispatch(deleteDoctor(doctorId)).then(() => {
-      // setDeleteMessage('Doctor deleted successfully');
-      setTimeout(() => {
-        // setDeleteMessage(null);
-      }, 3000);
       navigate('/doctors');
+      setTimeout(() => {
+      }, 3000);
     });
   };
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const closeSuccessModal = () => {
     setShowSuccessModal(false);
-    navigate('/login');
   };
   return (
     <div>
@@ -94,7 +93,6 @@ const DoctorDetails = () => {
         </div>
       </div>
       <div>
-        {/* create a back button */}
         <Link to="/doctors">
           <button
             type="button"
@@ -108,23 +106,22 @@ const DoctorDetails = () => {
         <div className="fixed border border-green inset-0 flex items-center justify-center z-50">
           <div className="bg-green-300 p-6 rounded shadow-lg">
             <h2 className="text-2xl font-semibold mb-4">
-              Registration Successful
+              Please confirm delete
             </h2>
-            {/* <p>{message}</p> */}
             <div className="mt-4">
               <button
                 className="bg-green-400 text-white px-4 py-2 rounded"
                 onClick={closeSuccessModal}
-                type="submit"
+                type="button"
               >
-                Close
+                Go Back
               </button>
               <button
                 className="bg-blue-400 text-white px-4 py-2 rounded ml-2"
-                onClick={() => navigate('/login')}
+                onClick={() => deleteDoc(id)}
                 type="submit"
               >
-                Go to Login
+                Delete
               </button>
             </div>
           </div>
