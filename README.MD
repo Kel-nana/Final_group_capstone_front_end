@@ -82,7 +82,8 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](http://localhost:3000/) not yet deployed
+- [Live Demo Link](https://doc-talk2.onrender.com/)
+  [API Documentation](https://doctalk-r977.onrender.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
