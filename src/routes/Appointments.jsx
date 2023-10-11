@@ -39,9 +39,7 @@ const Appointments = () => {
 
   return (
     <div className="flex h-full p-4 sm:p-0">
-      <div className="w-[20%]">
-        <Sidebar />
-      </div>
+      <Sidebar />
       <div className="flex flex-col gap-8 mt-24 mx-auto w-[80%]">
         <div className="flex justify-between items-center px-8 sm:px-8">
           <h1 className="text-lg sm:text-2xl text-center font-bold uppercase">
