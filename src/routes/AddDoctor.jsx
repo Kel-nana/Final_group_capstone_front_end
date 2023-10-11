@@ -8,6 +8,7 @@ const AddDoctorForm = () => {
     doc_name: '',
     education: '',
     bio: '',
+    location: '',
     years_of_experience: 0,
     profile_pic: null,
   });
@@ -41,6 +42,7 @@ const AddDoctorForm = () => {
       const formData = new FormData();
       formData.append('doctor[doc_name]', doctorData.doc_name);
       formData.append('doctor[education]', doctorData.education);
+      formData.append('doctor[location]', doctorData.location);
       formData.append('doctor[bio]', doctorData.bio);
       formData.append(
         'doctor[years_of_experience]',
@@ -53,11 +55,12 @@ const AddDoctorForm = () => {
         Authorization: token,
       };
 
-      const response = await axios.post(
+      await axios.post(
         'https://doctalk-r977.onrender.com/api/v1/doctors',
         formData,
         { headers },
       );
+  
 
       setSuccessMessage('Doctor added successfully');
 
