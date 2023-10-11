@@ -56,10 +56,10 @@ function SignUp() {
         setShowSuccessModal(true);
         // navigate('/login');
       } else {
-        console.error('Failed to create an account');
+        // console.error('Failed to create an account');
       }
     } catch (error) {
-      console.error('An error occurred:', error);
+      // console.error('An error occurred:', error);
     }
   };
 

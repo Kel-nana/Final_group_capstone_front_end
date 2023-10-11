@@ -41,7 +41,7 @@ function Login() {
           },
         },
       );
-      console.log(response);
+      // console.log(response);
       // Handle the response as needed
       if (response.status === 200) {
         setMessage('Login successfull');
@@ -56,10 +56,10 @@ function Login() {
         setShowSuccessModal(true);
         // navigate("/doctors");
       } else {
-        console.error('Authentication failed. Please try again');
+        // console.error('Authentication failed. Please try again');
       }
     } catch (error) {
-      console.error('An error occurred:', error);
+      // console.error('An error occurred:', error);
     }
   };
 

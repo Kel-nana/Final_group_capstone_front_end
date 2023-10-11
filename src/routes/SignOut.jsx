@@ -19,14 +19,14 @@ function SignOut() {
       localStorage.removeItem('token');
 
       if (response.ok) {
-        console.log('Sign-out successful.');
+        // console.log('Sign-out successful.');
 
         navigate('/');
       } else {
-        console.error('Sign-out failed.');
+        // console.error('Sign-out failed.');
       }
     } catch (error) {
-      console.error('Error:', error);
+      // console.error('Error:', error);
     }
   };
 
