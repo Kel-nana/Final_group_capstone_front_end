@@ -83,6 +83,13 @@ exports[`Sidebar component Sidebar component should match the snapshot 1`] = `
           APPOINTMENTS
         </a>
       </li>
+      <div>
+        <button
+          type="submit"
+        >
+          Sign Out
+        </button>
+      </div>
     </ul>
     <ul
       class="flex py-24 flex-row self-end align-center justify-center"
@@ -231,6 +238,13 @@ exports[`Sidebar component Sidebar component should match the snapshot 1`] = `
           APPOINTMENTS
         </a>
       </li>
+      <div>
+        <button
+          type="submit"
+        >
+          Sign Out
+        </button>
+      </div>
     </ul>
     <ul
       class="flex py-24 flex-row self-end align-center justify-center"

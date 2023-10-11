@@ -41,7 +41,7 @@ function Login() {
           },
         },
       );
-      console.log(response);
+      // console.log(response);
       // Handle the response as needed
       if (response.status === 200) {
         setMessage('Login successfull');
@@ -56,10 +56,10 @@ function Login() {
         setShowSuccessModal(true);
         // navigate("/doctors");
       } else {
-        console.error('Authentication failed. Please try again');
+        // console.error('Authentication failed. Please try again');
       }
     } catch (error) {
-      console.error('An error occurred:', error);
+      // console.error('An error occurred:', error);
     }
   };
 
@@ -80,7 +80,7 @@ function Login() {
 
   return (
     <div>
-      <div className="bg-slate-200">
+      <div className="bg-slate-100">
         <div className="bg-grey-lighter min-h-screen flex flex-col">
           <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
             <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
@@ -135,7 +135,7 @@ function Login() {
 
                 <button
                   type="submit"
-                  className="w-full text-center py-3 rounded bg-green-400 hover:bg-green-500 text-white py-2 px-4"
+                  className="w-full text-center py-3 rounded bg-[#97bf0f] hover:bg-[#5b740a] text-white py-2 px-4"
                 >
                   Login
                 </button>
@@ -154,7 +154,8 @@ function Login() {
 
             <div className="text-grey-dark mt-6">
               <a
-                className="no-underline border-b border-blue text-blue-500"
+                title="Back to Home"
+                className="no-underline text-[#97bf0f]"
                 href="/"
               >
                 {' '}
@@ -166,12 +167,12 @@ function Login() {
       </div>
       {showSuccessModal && (
         <div className="fixed border border-green inset-0 flex items-center justify-center z-50">
-          <div className="bg-green-300 p-6 rounded shadow-lg">
+          <div className="bg-white p-6 rounded shadow-lg">
             <h2 className="text-2xl font-semibold mb-4">Login Successful</h2>
             <p>{message}</p>
             <div className="mt-4">
               <button
-                className="bg-green-400 text-white px-4 py-2 rounded"
+                className="bg-[#97bf0f] text-white px-4 py-2 rounded"
                 onClick={closeSuccessModal}
                 type="submit"
               >

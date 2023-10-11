@@ -179,7 +179,7 @@
 }
 
 .new-appointment-container {
-  background-image: url(./assets/appointB.jpg) !important;
+  background-image: url(./assets/appointBgs.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh !important;
@@ -197,6 +197,7 @@
 .form-text {
   color: #97bf0f;
 }
+
 
 @media screen and (max-width: 1100px) {
   .doctors-listing {

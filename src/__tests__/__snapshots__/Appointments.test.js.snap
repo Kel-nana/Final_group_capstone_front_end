@@ -86,6 +86,13 @@ exports[`Appointmetns component should render correctly 1`] = `
             APPOINTMENTS
           </a>
         </li>
+        <div>
+          <button
+            type="submit"
+          >
+            Sign Out
+          </button>
+        </div>
       </ul>
       <ul
         class="flex py-24 flex-row self-end align-center justify-center"
@@ -234,6 +241,13 @@ exports[`Appointmetns component should render correctly 1`] = `
             APPOINTMENTS
           </a>
         </li>
+        <div>
+          <button
+            type="submit"
+          >
+            Sign Out
+          </button>
+        </div>
       </ul>
       <ul
         class="flex py-24 flex-row self-end align-center justify-center"
