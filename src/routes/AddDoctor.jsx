@@ -60,7 +60,6 @@ const AddDoctorForm = () => {
         formData,
         { headers },
       );
-  
 
       setSuccessMessage('Doctor added successfully');
 

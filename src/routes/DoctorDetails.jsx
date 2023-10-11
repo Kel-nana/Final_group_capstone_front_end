@@ -109,14 +109,14 @@ const DoctorDetails = () => {
             </h2>
             <div className="mt-4">
               <button
-                className="bg-[#97bf0f] hover:bg-green-400 text-white px-4 py-2 rounded"
+                className="bg-green-400 hover:bg-green-700 text-white px-4 py-2 rounded"
                 onClick={closeSuccessModal}
                 type="button"
               >
-                Go Back
+                Cancel
               </button>
               <button
-                className="bg-[#97bf0f] hover:bg-red-400 text-white px-4 py-2 rounded ml-2"
+                className="bg-red-400 hover:bg-red-700 text-white px-4 py-2 rounded ml-2"
                 onClick={() => deleteDoc(id)}
                 type="submit"
               >
