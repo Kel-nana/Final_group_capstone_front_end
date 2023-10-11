@@ -238,13 +238,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
     margin-top: 3vh;
     width: 350px;
     height: 50vh;
-    border: 2px solid #c6cbb4;
+    border: 2px solid #b8d5b1;
     padding: 20px;
-    background: #746f6f;
+    background: transparent;
     border-radius: 10px;
   }
 
