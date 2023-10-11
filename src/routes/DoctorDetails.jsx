@@ -8,7 +8,7 @@ import '../assets/styles/doctordetails.css';
 import { deleteDoctor } from '../redux/store';
 
 const DoctorDetails = () => {
-  const [deleteMessage, setDeleteMessage] = useState(null);
+  // const [deleteMessage, setDeleteMessage] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -18,14 +18,14 @@ const DoctorDetails = () => {
 
   const handleDeleteClick = (doctorId) => {
     dispatch(deleteDoctor(doctorId)).then(() => {
-      setDeleteMessage('Doctor deleted successfully');
+      // setDeleteMessage('Doctor deleted successfully');
       setTimeout(() => {
-        setDeleteMessage(null);
+        // setDeleteMessage(null);
       }, 3000);
       navigate('/doctors');
     });
   };
-
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   return (
     <div>
       <Sidebar />
