@@ -24,7 +24,6 @@ const Doctors = () => {
 
   // Render each doctor's information
   const doctorsList = allDoctorList.map((doctor, index) => (
-
     <div
       className={`doctor-card ${index === 7 ? 'first_doc' : ''}`}
       key={doctor.id}
