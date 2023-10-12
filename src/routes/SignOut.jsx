@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SignOut() {
   const navigate = useNavigate();
@@ -19,19 +21,23 @@ function SignOut() {
       localStorage.removeItem('token');
 
       if (response.ok) {
-        // console.log('Sign-out successful.');
-
-        navigate('/');
+        toast.success('Sign-out successful.', { type: toast.TYPE.SUCCESS });
+        setTimeout(() => {
+          navigate('/');
+        }, 1000); // Wait for 1 second before navigating
       } else {
-        // console.error('Sign-out failed.');
+        toast.error('Sign-out failed due to technical error!', { type: toast.TYPE.ERROR });
+        navigate('/doctors');
       }
     } catch (error) {
-      // console.error('Error:', error);
+      toast.error('Sign-out failed due to technical error!', { type: toast.TYPE.ERROR });
+      navigate('/doctors');
     }
   };
 
   return (
     <li className="w-full text-center py-4 mb-4 hover:text-white hover:bg-[#97bf0f] transition-all">
+      <ToastContainer />
       <button onClick={handleSignOut} type="submit">
         SIGN OUT
       </button>
