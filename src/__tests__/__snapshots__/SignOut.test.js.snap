@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sign out button Should display on  the page 1`] = `
+<div>
+  <div>
+    <button
+      type="submit"
+    >
+      Sign Out
+    </button>
+  </div>
+</div>
+`;

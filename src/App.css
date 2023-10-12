@@ -1,0 +1,297 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+.active {
+  text-decoration: underline; /* You can add any styles you want for the active link */
+  color: green; /* Example: Change the text color to green */
+}
+
+.grey {
+  background-color: rgb(96, 94, 94) !important;
+}
+
+/* .bounce {
+  transition: all 0.4s ease;
+} */
+
+/* .bounce {
+  animation: bounceAnimation 0.6s ease 3;
+  box-shadow: rgb(38, 57, 77) 0 20px 30px -10px !important;
+}
+
+.bounce:active {
+  transform: scale(0.7);
+} */
+
+@keyframes bounceAnimation {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.9);
+  }
+
+  70% {
+    transform: scale(1.1);
+  }
+
+  85% {
+    transform: scale(0.95);
+  }
+}
+
+.doctor-container,
+.appointment-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+}
+
+.doctors-main-container {
+  display: flex;
+}
+
+.doctor-list-container {
+  width: 90%;
+  height: auto;
+  position: relative;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.doctor-text-container {
+  text-align: center;
+}
+
+.doctor-title-text {
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: "Bebas Neue", sans-serif;
+  color: #171717;
+}
+
+.doctor-paragraph-text {
+  color: #bbb;
+  font-size: 12px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.doctors-listing {
+  width: 90%;
+  max-width: 1000px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow-x: auto;
+  overflow: hidden;
+  padding: 50px;
+  text-align: center;
+}
+
+.doctor-card {
+  width: calc(33.33% - 10px);
+  height: auto;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  align-items: center;
+  margin-right: 30px;
+  padding: 20px;
+}
+
+.doc-image {
+  width: 200px;
+  height: 200px;
+  background-size: 100%;
+  background-color: #f9f99f;
+  border-radius: 100%;
+  margin-top: 50px;
+}
+
+.social-icon-container {
+  width: 80%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.social-icon {
+  margin: 0 10px;
+  width: 42px;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: transparent;
+  color: #746f6f !important;
+  border: 1px solid #a59f9f;
+}
+
+.social-icon:hover {
+  background-color: #97bf0f;
+}
+
+.forward-button {
+  padding: 10px;
+  border-top-left-radius: 45px;
+  border-bottom-left-radius: 45px;
+  background: #97bf0f;
+}
+
+.return-back-btn {
+  padding: 10px;
+  border-top-right-radius: 45px;
+  border-bottom-right-radius: 45px;
+  background: #97bf0f;
+}
+
+.logo-image {
+  left: 1%;
+  top: 1%;
+}
+
+.block {
+  display: block;
+}
+
+.new-appointment-container {
+  background-image: url(./assets/appointBgs.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh !important;
+  z-index: 1;
+}
+
+.form-background {
+  background: #97bf0f;
+}
+
+.form-background:hover {
+  background: #638007;
+}
+
+.form-text {
+  color: #97bf0f;
+}
+
+@media screen and (max-width: 1100px) {
+  .doctors-listing {
+    max-width: 800px;
+    justify-content: space-around;
+  }
+
+  .move-button {
+    position: absolute;
+    left: 1%;
+    top: 5.6%;
+    width: 50px;
+    height: 50px;
+    z-index: 33;
+  }
+
+  .menu-button {
+    height: 100%;
+    width: 100%;
+  }
+
+  .doctor-list-container {
+    margin-top: 0 !important;
+  }
+
+  .doctor-card {
+    width: calc(49% - 10px);
+  }
+
+  .new-appointment-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 3vh;
+    width: 350px;
+    height: 50vh;
+    border: 2px solid #b8d5b1;
+    padding: 20px;
+    background: transparent;
+    border-radius: 10px;
+  }
+
+  .form-line {
+    margin-left: 0;
+  }
+
+  .paragraph-text {
+    display: none;
+  }
+
+  .book-appoint {
+    padding: 0% !important;
+  }
+
+  .input-new-btn {
+    width: 205px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .doctors-listing {
+    max-width: 100%;
+    justify-content: space-around;
+  }
+
+  .doctor-card {
+    width: calc(100% - 10px);
+  }
+
+  .doctor-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .appointment-form {
+    width: 50% !important;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .forward-button,
+  .return-back-btn {
+    width: 70px;
+    height: 40px;
+  }
+
+  .doctor-card {
+    margin-left: 30% !important;
+  }
+
+  .first_doc {
+    margin-left: 160% !important;
+  }
+}
