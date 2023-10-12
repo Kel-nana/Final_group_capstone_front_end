@@ -80,7 +80,7 @@ const NewAppointmentMenu = () => {
         </button>
       </div>
       <div
-        className={`fixed left-0 top-0 w-[34%] h-full border-r bg-black z-10 opacity-65 border-r-gray-900 text-white transition-transform ease-in-out duration-500 ${
+        className={`fixed left-0 top-0 w-[34%] h-full border-r backdrop-blur-sm sm:bg-black/30 text-black z-10  border-r-gray-900 text-white transition-transform ease-in-out duration-500 ${
           isMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -90,14 +90,14 @@ const NewAppointmentMenu = () => {
             onKeyDown={handleNav}
             onClick={handleNav}
           >
-            <AiOutlineClose onClick={toggleMenu} className="text-3xl" />
+            <AiOutlineClose onClick={toggleMenu} className="text-3xl hover:text-[#97bf0f]" />
           </li>
           {menuItems.map((item, index) => (
             <li
               key={item.label}
               className={`py-4 px-8 ${
                 index < menuItems.length - 1 ? 'border-b border-white-700' : ''
-              } cursor-pointer hover:text-green-400 transition-colors`}
+              } text-xl py-4 px-8 border-b  cursor-pointer hover:bg-[#97bf0f] hover:text-[white] transition-colors`}
             >
               <Link to={item.to} className="block w-full">
                 {item.label}
@@ -109,7 +109,7 @@ const NewAppointmentMenu = () => {
         <ul className="flex py-24 flex-row self-end align-center justify-center">
           {socialIcons.map((icon) => (
             <li key={icon.id} className="p-[5px]">
-              <icon.name className="cursor-pointer hover:text-green-400 transition-colors" />
+              <icon.name className="cursor-pointer hover:text-[#97bf0f] transition-colors" />
             </li>
           ))}
         </ul>
