@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddDoctorForm = () => {
   const navigate = useNavigate();
@@ -12,9 +14,6 @@ const AddDoctorForm = () => {
     years_of_experience: 0,
     profile_pic: null,
   });
-
-  const [errorMessage, setErrorMessage] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
 
   const handleInputChange = (e) => {
     const {
@@ -61,7 +60,7 @@ const AddDoctorForm = () => {
         { headers },
       );
 
-      setSuccessMessage('Doctor added successfully');
+      toast.success('Doctor added successfully!', { type: toast.TYPE.SUCCESS });
 
       navigate('/doctors');
 
@@ -74,7 +73,7 @@ const AddDoctorForm = () => {
         location: ' ',
       });
     } catch (error) {
-      setErrorMessage(`Error adding doctor: ${error.message}`);
+      toast.error('Doctor addition failed due to technical error!', { type: toast.TYPE.ERROR });
     }
   };
 
@@ -157,8 +156,6 @@ const AddDoctorForm = () => {
             <button type="submit" className="w-full text-center py-3 rounded bg-[#97bf0f] hover:bg-[#5b740a] text-white py-2 px-4">Add Doctor</button>
           </div>
         </form>
-        {successMessage && <p>{successMessage}</p>}
-        {errorMessage && <p>{errorMessage}</p>}
         <div>
           See all
           {' '}

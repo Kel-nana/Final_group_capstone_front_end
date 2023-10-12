@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { IoIosArrowDropright, IoIosArrowDropleft } from 'react-icons/io';
 import { FaTrashAlt } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 import Sidebar from './Sidebar';
 import '../assets/styles/doctordetails.css';
 import { deleteDoctor } from '../redux/store';
@@ -14,29 +15,16 @@ const DoctorDetails = () => {
   const doctorsList = useSelector((state) => state.doctorsList);
   const finalDoctorsData = doctorsList.allDoctors;
   const doctor = finalDoctorsData.find((item) => item.id === parseInt(id, 10));
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-  const handleDeleteClick = () => {
-    setShowSuccessModal(true);
-  };
-  const deleteDoc = (doctorId) => {
-    dispatch(deleteDoctor(doctorId)).then(() => {
-      navigate('/doctors');
-      setTimeout(() => {}, 3000);
-    });
-  };
-  const closeSuccessModal = () => {
-    setShowSuccessModal(false);
+  const handleDeleteClick = async (doctorId) => {
+    navigate('/doctors');
+    await dispatch(deleteDoctor(doctorId)); // Wait for the doctor to be deleted
+    toast.success('Doctor deleted successfully.', { type: toast.TYPE.SUCCESS });
   };
   return (
     <div>
       <Sidebar />
       <div className="flex justify-between align-center flex-col text-center mt-16 p-4 sm:flex-row sm:ml-16 md:-mt-125 md:-mt-125 lg:-mt-125">
-        {/* {deleteMessage && (
-          <div className="delete-message bg-white shadow-md text-green-800 p-4 mt-4 rounded">
-            {setDeleteMessage}
-          </div>
-        )} */}
         <div className="flex justify-center relative sm:ml-96">
           <img
             className="rounded-full w-80 h-80 z-0"
@@ -101,31 +89,6 @@ const DoctorDetails = () => {
           </button>
         </Link>
       </div>
-      {showSuccessModal && (
-        <div className="fixed border border-green inset-0 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded shadow-lg">
-            <h2 className="text-2xl font-semibold mb-4">
-              Please confirm delete
-            </h2>
-            <div className="mt-4">
-              <button
-                className="bg-green-400 hover:bg-green-700 text-white px-4 py-2 rounded"
-                onClick={closeSuccessModal}
-                type="button"
-              >
-                Cancel
-              </button>
-              <button
-                className="bg-red-400 hover:bg-red-700 text-white px-4 py-2 rounded ml-2"
-                onClick={() => deleteDoc(id)}
-                type="submit"
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
