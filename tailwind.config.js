@@ -9,7 +9,7 @@ module.exports = {
         'home-background': "url('/public/assets/bg-home.jpg')",
       },
       spacing: {
-        125: '600px',
+        125: '700px',
       },
     },
   },
