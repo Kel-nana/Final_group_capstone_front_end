@@ -34,6 +34,13 @@
 
 **DocTalk** is your trusted health companion, bringing the power of informed conversations to your fingertips. We believe that clear and open communication is the key to better healthcare decisions, and that's what Doctalk is all about.
 
+## Link to the Kanban-board
+https://github.com/users/Kel-nana/projects/6/views/1?filterQuery=&layout=board
+
+## Screenshot of Kanban-board
+![Alt text](271257080-41cc161d-2d75-4e42-a93a-ae0569a7712c.png)
+
+
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
