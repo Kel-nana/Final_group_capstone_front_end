@@ -1,17 +1,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useDispatch, useSelector } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
 import { addAppointment } from '../redux/reducer/appointmentSlice';
 import DoctorDropdown from '../components/DoctorsDropDown';
 import NewAppointmentMenu from '../components/NewAppointmentMenu';
 import { doctorData } from '../redux/reducer/doctorSlice';
-import 'react-toastify/dist/ReactToastify.css';
 
 const NewAppointment = () => {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
 
   const [selectedDoctorIndex, setSelectedDoctorIndex] = useState(null);
   const [date, setDate] = useState('');
@@ -54,11 +50,6 @@ const NewAppointment = () => {
       appointment_date: date,
       location: doctorsLocation,
     });
-
-    // Show toast message after a short dela
-    // navigate('/appointments');
-    toast.success('Appointment booked successfully.', { type: toast.TYPE.SUCCESS });
-    // Wait for 1 second before showing the toast and navigating
   };
 
   return (
