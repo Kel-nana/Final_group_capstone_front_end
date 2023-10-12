@@ -3,12 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { IoMdAdd } from 'react-icons/io';
+import { toast } from 'react-toastify';
 import {
   fetchAppointments,
   deleteAppointment,
 } from '../redux/reducer/appointmentSlice';
 import Sidebar from './Sidebar';
 import { doctorData } from '../redux/reducer/doctorSlice';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Appointments = () => {
   const allDoctorList = useSelector((state) => state.doctorsList.allDoctors);
@@ -24,6 +26,7 @@ const Appointments = () => {
   }, [dispatch]);
 
   const handleDeleteClick = (appointmentId) => {
+    toast.success('Appointment deleted successfully.', { type: toast.TYPE.SUCCESS });
     dispatch(deleteAppointment(appointmentId));
   };
 
@@ -57,7 +60,7 @@ const Appointments = () => {
             </button>
           </Link>
         </div>
-        <div className="relative overflow-x-auto shadow-md rounded-lg hidden md:block mx-auto">
+        <div className="relative overflow-x-auto shadow-md rounded-lg hidden md:block mx-auto sm:w-[90%]">
           <table className="w-full text-lg text-left text-gray-500 dark:text-gray-400 sm:overflow-x-auto p-4">
             <thead className="text-md text-white uppercase bg-[#97bf0f]">
               <tr>
