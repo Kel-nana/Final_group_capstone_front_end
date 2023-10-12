@@ -6,6 +6,8 @@ import {
   AiOutlineEyeInvisible,
 } from 'react-icons/ai';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -43,6 +45,7 @@ function SignUp() {
           },
         },
       );
+
       // Handle the response as needed
       if (response.status === 200) {
         setMessage('Account created successfully'); // Set message to true
@@ -53,13 +56,17 @@ function SignUp() {
           password: '',
           confirm_password: '',
         });
-        setShowSuccessModal(true);
-        // navigate('/login');
+        toast.success('Account creation successful! Please login.', { type: toast.TYPE.SUCCESS });
+        setTimeout(() => {
+          navigate('/login');
+        }, 1000); // Wait for 1 second before navigating
       } else {
-        // console.error('Failed to create an account');
+        toast.error('Account creation failed! Please try again.', { type: toast.TYPE.ERROR });
+        navigate('/signup');
       }
     } catch (error) {
-      // console.error('An error occurred:', error);
+      toast.error('Account creation failed! Please try again.', { type: toast.TYPE.ERROR });
+      navigate('/signup');
     }
   };
 
