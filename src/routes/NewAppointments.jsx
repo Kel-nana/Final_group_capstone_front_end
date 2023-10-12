@@ -6,7 +6,7 @@ import DoctorDropdown from '../components/DoctorsDropDown';
 import NewAppointmentMenu from '../components/NewAppointmentMenu';
 import { doctorData } from '../redux/reducer/doctorSlice';
 
-const NewAppointment = () => {
+const NewAppointments = () => {
   const dispatch = useDispatch();
 
   const [selectedDoctorIndex, setSelectedDoctorIndex] = useState(null);
@@ -110,4 +110,4 @@ const NewAppointment = () => {
   );
 };
 
-export default NewAppointment;
+export default NewAppointments;
