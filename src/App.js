@@ -1,14 +1,14 @@
-import './App.css';
-import { Routes, Route } from 'react-router-dom';
-import Homepage from './routes/Homepage';
-import Login from './routes/Login';
-import SignUp from './routes/SignUp';
-import Doctors from './routes/Doctors';
-import Appointments from './routes/Appointments';
-import DoctorDetail from './routes/DoctorDetails';
-import NewAppointments from './routes/NewAppointments';
-import PrivateRoute from './routes/PrivateRoutes';
-import AddDoctorForm from './routes/AddDoctor';
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Homepage from "./routes/Homepage";
+import Login from "./routes/Login";
+import SignUp from "./routes/SignUp";
+import Doctors from "./routes/Doctors";
+import Appointments from "./routes/Appointments";
+import DoctorDetail from "./routes/DoctorDetails";
+import NewAppointments from "./routes/NewAppointments";
+import PrivateRoute from "./routes/PrivateRoutes";
+import AddDoctorForm from "./routes/AddDoctor";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
           element={<PrivateRoute element={<Appointments />} />}
         />
         <Route
-          path="/new-appointment"
+          path="/new_appointment"
           element={<PrivateRoute element={<NewAppointments />} />}
         />
         <Route
