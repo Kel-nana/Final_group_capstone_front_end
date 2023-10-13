@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { addAppointment } from '../redux/reducer/appointmentSlice';
 import DoctorDropdown from '../components/DoctorsDropDown';
@@ -8,7 +9,7 @@ import { doctorData } from '../redux/reducer/doctorSlice';
 
 const NewAppointments = () => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const [selectedDoctorIndex, setSelectedDoctorIndex] = useState(null);
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
@@ -44,6 +45,7 @@ const NewAppointments = () => {
 
   const handleSubmit = () => {
     dispatch(addAppointment(formData));
+    navigate('/appointments');
     setFormData({
       doctor_id: selectedDoctorIndex,
       appointment_time: time,
