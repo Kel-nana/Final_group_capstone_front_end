@@ -1,19 +1,20 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { addAppointment } from '../redux/reducer/appointmentSlice';
 import DoctorDropdown from '../components/DoctorsDropDown';
 import NewAppointmentMenu from '../components/NewAppointmentMenu';
 import { doctorData } from '../redux/reducer/doctorSlice';
 
-const NewAppointment = () => {
+const NewAppointments = () => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const [selectedDoctorIndex, setSelectedDoctorIndex] = useState(null);
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
 
-  const [formData, setFormData] = useState({
+  useState({
     // Initialize your form fields here
     doctor_id: '',
     appointment_time: '',
@@ -42,14 +43,22 @@ const NewAppointment = () => {
     dispatch(doctorData());
   }, [dispatch]);
 
-  const handleSubmit = () => {
-    dispatch(addAppointment(formData));
-    setFormData({
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent the form from submitting the traditional way
+
+    // Create a new appointment object with form data
+    const newAppointment = {
       doctor_id: selectedDoctorIndex,
       appointment_time: time,
       appointment_date: date,
       location: doctorsLocation,
-    });
+    };
+
+    // Dispatch the action to add the appointment
+    await dispatch(addAppointment(newAppointment));
+
+    // Redirect to the /appointments page after the appointment is added
+    navigate('/appointments');
   };
 
   return (
@@ -110,4 +119,4 @@ const NewAppointment = () => {
   );
 };
 
-export default NewAppointment;
+export default NewAppointments;
